@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	
+ 
+	
+<!-- 	<typeAliases>
+		<typeAlias alias="Member" type="com.duna.dto.Member"/> 
+		<typeAlias alias="FreeBoard" type="com.duna.dto.FreeBoard"/>
+		<typeAlias alias="FBComment" type="com.duna.dto.FBComment"/>
+		<typeAlias alias="Cp" type="com.duna.dto.Cp"/>
+		<typeAlias alias="CpImageAttach" type="com.duna.dto.CpImageAttach"/>
+		<typeAlias alias="CpQnaComment" type="com.duna.dto.CpQnaComment"/>
+		<typeAlias alias="CpOrder" type="com.duna.dto.CpOrder"/>
+		<typeAlias alias="CppsBoard" type="com.duna.dto.CppsBoard"/>
+		<typeAlias alias="InfoBoard" type="com.duna.dto.InfoBoard"/>
+		<typeAlias alias="IBFileAttach" type="com.duna.dto.IBFileAttach"/>
+		<typeAlias alias="SmallGroup" type="com.duna.dto.SmallGroup"/>
+		<typeAlias alias="SGMember" type="com.duna.dto.SGMember"/>
+		<typeAlias alias="Survey" type="com.duna.dto.Survey"/> 
+		<typeAlias alias="SurveyTypeQuestion" type="com.duna.dto.SurveyTypeQuestion"/> 
+		<typeAlias alias="STQDetail" type="com.duna.dto.STQDetail"/>  
+		<typeAlias alias="SurveyDeatil" type="com.duna.dto.SurveyDeatil"/> 
+	</typeAliases> -->
+	
+	
+	
+	<environments default="development">
+		<environment id="development">
+			<transactionManager type="JDBC" />
+			<dataSource type="POOLED">
+				<property name="driver" value="${driver}" />
+				<property name="url" value="${url}" />
+				<property name="username" value="${username}" />
+				<property name="password" value="${password}" />
+			</dataSource>
+		</environment>
+	</environments>
+	
+<!-- 	<mappers>
+		<mapper resource="com/duna/mapper/member-mapper.xml" /> 
+		<mapper resource="com/duna/mapper/freeboard-mapper.xml" /> 
+		<mapper resource="com/duna/mapper/cp-mapper.xml" /> 
+		<mapper resource="com/duna/mapper/cpps-mapper.xml" />
+		<mapper resource="com/duna/mapper/infoboard-mapper.xml" /> 
+		<mapper resource="com/duna/mapper/smallgroup-mapper.xml" />
+		<mapper resource="com/duna/mapper/cporder-mapper.xml" />  
+		
+		
+	</mappers> -->
+</configuration>
