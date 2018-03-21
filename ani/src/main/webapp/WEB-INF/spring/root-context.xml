@@ -6,20 +6,16 @@
 						http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 	
 	<!-- Root Context: defines shared resources visible to all other web components -->
-
-<context:component-scan base-package="com.ani.service" />
-<!-- 	<context:component-scan base-package="com.duna.dao" />
-	<context:component-scan base-package="com.duna.service" />
+	<context:component-scan base-package="com.ani.service" />
+	<context:component-scan base-package="com.ani.dao" />
 	
 	
-	
-	
-		 주요 설정정보를 외부 파일에 저장 후 읽어오는 빈을 등록
+	<!--  주요 설정정보를 외부 파일에 저장 후 읽어오는 빈을 등록 -->
 	<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
 		<property name="location" value="classpath:environment.properties"></property>
 	</bean>
 	
-	Root Context: defines shared resources visible to all other web components
+	<!-- Root Context: defines shared resources visible to all other web components -->
 	<bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource">
 		<property name="driverClassName" value="${datasource.driverClassName}"></property>
 		<property name="url" value="${datasource.url}"></property>
@@ -28,7 +24,7 @@
 	</bean>
 	
 	
-		<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="dataSource"></property>
 		<property name="configLocation" value="classpath:mybatis-config.xml"></property>
 	</bean>
@@ -37,44 +33,11 @@
 		<constructor-arg ref="sqlSessionFactory"></constructor-arg>
 	</bean>
 	
-	<bean id="MemberMapper"
+	<!-- Mapper 등록 -->
+	<bean id="aniMMapper"
 	class="org.mybatis.spring.mapper.MapperFactoryBean">
-		<property name="mapperInterface" value="com.duna.mapper.MemberMapper"></property>
+		<property name="mapperInterface" value="com.ani.mapper.AniMMapper"></property>
 		<property name="sqlSessionFactory" ref="sqlSessionFactory"></property>
 	</bean> 
 	
-	<bean id="FreeBoardMapper"
-	class="org.mybatis.spring.mapper.MapperFactoryBean">
-		<property name="mapperInterface" value="com.duna.mapper.FreeBoardMapper"></property>
-		<property name="sqlSessionFactory" ref="sqlSessionFactory"></property>
-	</bean> 
-	
-	<bean id="cpMapper"
-	class="org.mybatis.spring.mapper.MapperFactoryBean">
-		<property name="mapperInterface" value="com.duna.mapper.CpMapper"></property>
-		<property name="sqlSessionFactory" ref="sqlSessionFactory"></property>
-	</bean> 
-
-	<bean id="CppsMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
-	<property name="mapperInterface" value="com.duna.mapper.CppsMapper"></property>
-	<property name="sqlSessionFactory" ref="sqlSessionFactory"></property>
-	
-	 </bean>
-	 <bean id="infoBoardMapper"
-	class="org.mybatis.spring.mapper.MapperFactoryBean">
-		<property name="mapperInterface" value="com.duna.mapper.InfoBoardMapper"></property>
-		<property name="sqlSessionFactory" ref="sqlSessionFactory"></property>
-	</bean>
-	
-	<bean id="smallGroupMapper"
-	class="org.mybatis.spring.mapper.MapperFactoryBean">
-		<property name="mapperInterface" value="com.duna.mapper.SmallGroupMapper"></property>
-		<property name="sqlSessionFactory" ref="sqlSessionFactory"></property>
-	</bean> 
-		<bean id="cporderMapper"
-	class="org.mybatis.spring.mapper.MapperFactoryBean">
-		<property name="mapperInterface" value="com.duna.mapper.CporderMapper"></property>
-		<property name="sqlSessionFactory" ref="sqlSessionFactory"></property>
-	</bean> 
-	 -->
 </beans>

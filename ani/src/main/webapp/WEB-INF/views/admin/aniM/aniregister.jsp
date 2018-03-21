@@ -117,7 +117,7 @@
 				</div>
 				
 				<form:form id="regform" modelAttribute="ani"
-	       			 class="form-horizontal" role="form" method="post" action="register.action" enctype="multipart/form-data">
+	       			 class="form-horizontal" role="form" method="post" action="aniregister.action" enctype="multipart/form-data">
 	       			 
 	            <div class="form-group" id="divSpecies">
 	                <label for="inputSpecies" class="col-lg-2 control-label"> 동물 분류 </label>
@@ -163,13 +163,6 @@
                         data-rule-required="true" placeholder="품종을 입력하세요" maxlength="30"/>
 	                </div>
 	            </div>
-
-	  			<div class="form-group">
-	    			<label for="File" class="col-lg-2 control-label">동물 사진</label>
-	    			<div class="col-lg-10">
-	    				<input type="file" id="File" name="aniAttach">
-	    			</div>
-	  			</div>
 	  			
 	            <div class="form-group" id="divName">
 	                <label for="inputName" class="col-lg-2 control-label">이름</label>
@@ -192,17 +185,17 @@
 	                <div class="col-lg-10">
                          <div class="radio">
 	                        <label>
-	                            <form:radiobutton id="aniGender" path="aniGender" value="1"/>
+	                            <form:radiobutton id="aniGender" path="aniGender" value="F"/>
 	                          	  암컷
 	                        </label>
 	                        &nbsp;&nbsp;
 	                        <label>
-	                            <form:radiobutton id="aniGender" path="aniGender" value="2" />
+	                            <form:radiobutton id="aniGender" path="aniGender" value="M" />
 	                          	 수컷
 	                        </label>
 	                        &nbsp;&nbsp;
 	                        <label>
-	                            <form:radiobutton id="aniGender" path="aniGender" value="0"  checked="checked" />
+	                            <form:radiobutton id="aniGender" path="aniGender" value="-"  checked="checked" />
 	                          	 기타
 	                        </label>
 	                    </div> 
@@ -214,22 +207,29 @@
 	                <div class="col-lg-10">
                          <div class="radio">
 	                        <label>
-	                            <form:radiobutton id="neuter" path="neuter" value="1"/>
+	                            <form:radiobutton id="neuter" path="neuter" value="O"/>
 	                          	  O
 	                        </label>
 	                        &nbsp;&nbsp;&nbsp;
 	                        <label>
-	                            <form:radiobutton id="neuter" path="neuter" value="2" />
+	                            <form:radiobutton id="neuter" path="neuter" value="X" />
 	                          	 X
 	                        </label>
 	                        &nbsp;&nbsp;&nbsp;
 	                        <label>
-	                            <form:radiobutton id="neuter" path="neuter" value="0"  checked="checked" />
+	                            <form:radiobutton id="neuter" path="neuter" value="-"  checked="checked" />
 	                          	 기타
 	                        </label>
 	                    </div> 
 	                </div>
 	            </div>	
+	            
+	  			<div class="form-group">
+	    			<label for="File" class="col-lg-2 control-label">동물 사진</label>
+	    			<div class="col-lg-10">
+	    				<input type="file" id="File" name="aniAttach">
+	    			</div>
+	  			</div>
 	            
 				<div class="form-group" id="divSite">
 	                <label for="inputSite" class="col-lg-2 control-label"> 발견 장소  </label>

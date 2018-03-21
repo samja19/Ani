@@ -53,7 +53,6 @@ public class AniMController {
 			String aniSaveName =file.getOriginalFilename();
 			aniSaveName = Util.makeUniqueFileName(aniSaveName);
 			try {
-				//지정된 경로에 업로드된 파일 저장
 				file.transferTo(new File(path, aniSaveName));
 				attach= new AniAttach();
 				attach.setAniSaveName(aniSaveName);
@@ -72,7 +71,7 @@ public class AniMController {
 		
 	
 		  
-		return "redirect:/admin/aniM/anilist.action";
+		return "redirect:/admin/admin.action";
 		
 	}	
 	

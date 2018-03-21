@@ -4,20 +4,12 @@ import java.sql.Date;
 import java.util.ArrayList;
 
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Pattern;
-import javax.validation.constraints.Pattern.Flag;
-import javax.validation.constraints.Size;
-
-import org.hibernate.validator.constraints.Email;
-import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotBlank;
-
-import com.ani.common.RegularExpressionUtil;
  
 
 public class Ani { 
 	
-	//cpmain와 CpQnaComment간의 1:Many 관계를 구현하는 필드
+	//ani와 aniAttach, aniComment간의 1:Many 관계를 구현하는 필드
 	//private ArrayList<AniComment> comments;
 	private ArrayList<AniAttach> attachments;
 	
@@ -43,10 +35,10 @@ public class Ani {
 	private Date aniBirth; 
 	
 	@NotNull(message="필수 선택 항목 입니다.")
-	private int aniGender;	
+	private String aniGender;	
 	
 	@NotNull(message="필수 선택 항목 입니다.")
-	private int neuter;	
+	private String neuter;	
 	
 	@NotNull(message="필수 입력 항목 입니다.")
 	@NotBlank(message="필수 입력 항목 입니다.")
@@ -145,19 +137,19 @@ public class Ani {
 		this.aniBirth = aniBirth;
 	}
 
-	public int getAniGender() {
+	public String getAniGender() {
 		return aniGender;
 	}
 
-	public void setAniGender(int aniGender) {
+	public void setAniGender(String aniGender) {
 		this.aniGender = aniGender;
 	}
 
-	public int getNeuter() {
+	public String getNeuter() {
 		return neuter;
 	}
 
-	public void setNeuter(int neuter) {
+	public void setNeuter(String neuter) {
 		this.neuter = neuter;
 	}
 
