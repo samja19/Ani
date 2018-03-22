@@ -10,11 +10,11 @@
 		keyColumn="aniNo" keyProperty="aniNo">
 	INSERT INTO ANI (
 		ANINO, ANIBREED, ANINAME, ANIBIRTH, ANISITE, ANIINFO, 
-		SPCIESNO, ANIGENDER, NEUTER, MEMBERNO
+		SPECIESNO, ANIGENDER, NEUTER, MEMBERNO
 	) 
 	VALUES (
 		ANI_SEQUENCE.NEXTVAL, #{aniBreed}, #{aniName}, #{aniBirth}, #{aniSite}, #{aniInfo},
-		#{speciesNo}, #{aniGender}, #{NEUTER}, 9999
+		#{speciesNo}, #{aniGender}, #{neuter}, 0
 	)
 	</insert>
 	
