@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="com.ani.mapper.AniMMapper">
+	
+	<!-- 동물 등록 -->
+	<insert id="insertAni" parameterType="Ani" useGeneratedKeys="true" 
+		keyColumn="aniNo" keyProperty="aniNo">
+	INSERT INTO ANI (
+		ANINO, ANIBREED, ANINAME, ANIBIRTH, ANISITE, ANIINFO, 
+		SPCIESNO, ANIGENDER, NEUTER, MEMBERNO
+	) 
+	VALUES (
+		ANI_SEQUENCE.NEXTVAL, #{aniBreed}, #{aniName}, #{aniBirth}, #{aniSite}, #{aniInfo},
+		#{speciesNo}, #{aniGender}, #{NEUTER}, 9999
+	)
+	</insert>
+	
+	<insert id="insertAniAttach" parameterType="AniAttach">
+		<selectKey resultType="int" keyProperty="aniAttachNo" order="AFTER">
+			SELECT ANI_SEQUENCE.CURRVAL FROM DUAL
+		</selectKey>
+		INSERT INTO ANIATTACH
+		(ANIATTACHNO, ANINO, ANISAVENAME, ANIUSERNAME) 
+		VALUES (ANI_ATTACH_SEQUENCE.NEXTVAL, #{aniNo}, #{aniSaveName}, #{aniUserName})
+	</insert>
+	
+</mapper>

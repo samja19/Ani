@@ -24,6 +24,7 @@
 	</beans:bean>
 	<!-- <beans:bean id="jacksonMessageConverter" class="org.springframework.http.converter.json.JsonbHttpMessageConverter" /> -->
 	<context:component-scan base-package="com.ani.controller" />
+	
 	 
 	<!-- 컨트롤러에서 넘어온 데이터(JSON 같은)를 messageConverter로 사용할 수 있는 방법 1 -->        
 	<!--<mvc:message-converters> -->            
