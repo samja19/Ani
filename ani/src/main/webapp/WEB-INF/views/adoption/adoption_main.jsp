@@ -45,7 +45,7 @@ $(function(){
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="panel panel-default">
         		<div class="panel-heading">
-			    	<h3 class="panel-title"> 입양신청 </h3>
+			    	<h3 class="panel-title"> 입양신청1 </h3>
 			 			</div>
 			 			<div class="panel-body">
 			    		<form role="form" id="adoptionform">
