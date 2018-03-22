@@ -7,6 +7,7 @@
     <typeAliases>
 		<typeAlias alias="Ani" type="com.ani.dto.Ani"/> 
 		<typeAlias alias="AniAttach" type="com.ani.dto.AniAttach"/>
+		<typeAlias alias="Adoption" type="com.ani.dto.Adoption"/>
 	</typeAliases>
 	
 	<environments default="development">
@@ -23,6 +24,7 @@
 	
 	<mappers>
 		<mapper resource="com/ani/mapper/anim-mapper.xml" />
+		<mapper resource="com/ani/mapper/adoption-mapper.xml" />  
 	</mappers>
 	
 </configuration>
