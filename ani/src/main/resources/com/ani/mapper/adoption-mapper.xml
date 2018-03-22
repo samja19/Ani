@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="com.ani.mapper.AdoptionMapper">
+	
+	<!-- 동물 등록 -->
+	<insert id="insertAdoption" parameterType="Adoption" useGeneratedKeys="true" 
+		keyColumn="adoptionno" keyProperty="adoptionno">
+	INSERT INTO ADOPTION (
+		ADOPTIONNO, PHONE, ADDRESS, REASON, ANINO
+	) 
+	VALUES (
+		ADOPTION_SEQUENCE.NEXTVAL,  #{phone}, #{address}, #{reason},#{anino}
+	)
+	</insert>
+	
+	 
+</mapper>
