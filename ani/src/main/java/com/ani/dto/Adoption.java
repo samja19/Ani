@@ -7,7 +7,7 @@ import lombok.Setter;
 @Data
 @Getter @Setter
 public class Adoption {
-	int adopttionno;
+	int adoptionno;
 	int anino;
 	String phone;
 	String address;

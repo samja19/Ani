@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.ani.dto.Adoption;
 import com.ani.service.AdoptionService;
 
 @Controller
@@ -18,10 +19,13 @@ public class AdoptionController {
 	@RequestMapping(value="main.action", method=RequestMethod.GET)
 	public String adoptionMain() { 
 		return "adoption/adoption_main";
+		
 	}
 	@RequestMapping(value="main.action", method=RequestMethod.POST)
-	public String insertAdoption() { 
+	public String insertAdoption(Adoption adoption) { 
+		service.insertAdoption(adoption);
+		
 		 
-		 return "redirect:/";
+		return "redirect:/";
 	}
 }

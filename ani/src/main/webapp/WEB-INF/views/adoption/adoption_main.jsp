@@ -56,8 +56,9 @@ $(function(){
 	});
 	
 	$('#adoptionform').submit(function(event){
-		alert("aaa");
+		$('#address').val($('#address_main').val()+$('#address_detail').val()+$('#postnum').val());
 		
+		 
 	});
 	
 	
@@ -115,12 +116,14 @@ $(function(){
 							
 			    			<div class="input-field">
 			    				<input type="text" name="email" id="email" class="form-control input-sm validate" placeholder="이메일"   >
-			    				 
 			    			</div>
+			    			
 			    			<div class="input-field"><BR>
-			    				<textarea rows="6" cols="10" name="cause" id="cause" style="resize: none;" placeholder="신청사유"></textarea>
+			    				<textarea rows="6" cols="10" name="reason" id="cause" style="resize: none;" placeholder="신청사유"></textarea>
 			    			</div><BR>
-			    			<input type="hidden" id="aninum" name="aninum" value="1">
+			    			<input type="hidden" id="anino" name="anino" value="7">
+			    			<input type="text" id="address" name="address" >
+			    			
 			    			<div class="row">
 			    				<div class="col-xs-6 col-xs-offset-3 col-sm-6 col-sm-offset-3 col-md-6 col-md-offset-3 ">
 			    					<input type="submit" value="신청하기" class="btn btn-info btn-block">

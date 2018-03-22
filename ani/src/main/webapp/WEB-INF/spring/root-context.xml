@@ -41,5 +41,10 @@
 		<property name="mapperInterface" value="com.ani.mapper.AniMMapper"></property>
 		<property name="sqlSessionFactory" ref="sqlSessionFactory"></property>
 	</bean> 
+	<bean id="adoptionMapper"
+	class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface" value="com.ani.mapper.AdoptionMapper"></property>
+		<property name="sqlSessionFactory" ref="sqlSessionFactory"></property>
+	</bean> 
 	
 </beans>
