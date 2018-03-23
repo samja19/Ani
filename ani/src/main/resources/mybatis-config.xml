@@ -4,12 +4,11 @@
   "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
 	
- 
-
-	<typeAliases>
-		<typeAlias alias="Adoption" type="com.ani.dto.Adoption"/> 
+    <typeAliases>
+		<typeAlias alias="Ani" type="com.ani.dto.Ani"/> 
+		<typeAlias alias="AniAttach" type="com.ani.dto.AniAttach"/>
+		<typeAlias alias="Adoption" type="com.ani.dto.Adoption"/>
 	</typeAliases>
-	
 	
 	<environments default="development">
 		<environment id="development">
@@ -23,7 +22,9 @@
 		</environment>
 	</environments>
 	
- 	<mappers>
+	<mappers>
+		<mapper resource="com/ani/mapper/anim-mapper.xml" />
 		<mapper resource="com/ani/mapper/adoption-mapper.xml" />  
-	</mappers>  
+	</mappers>
+	
 </configuration>
