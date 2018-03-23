@@ -5,10 +5,10 @@
   
   <mapper namespace="com.ani.mapper.MyPageMapper">
 	
-	<insert id="insertMypage" parameterType="Mypage" useGeneratedKeys="true" 
+	<insert id="insertmypage" parameterType="MyPage" useGeneratedKeys="true" 
 		keyColumn="mypageNo" keyProperty="mypageNo">
-		INSERT INTO MYPAGE (MYPAGENO, MYPAGEDEL, MEMBERNO, MYPAGECONTENT) 
-		VALUES (MYPAGE_SEQUENCE.NEXTVAL, #{mypageDel}, #{memberNo}, #{mypageContent})
+		INSERT INTO MYPAGE (MYPAGENO, MEMBERNO, MYPAGECONTENT, MYPAGETITLE) 
+		VALUES (MYPAGE_SEQUENCE.NEXTVAL, 1, #{mypageContent}, #{mypageTitle} )
 	</insert>
 	
 	<select id ="selectMyPageList" parameterType="hashmap" resultType="MyPage">

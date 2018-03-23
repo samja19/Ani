@@ -46,7 +46,7 @@
 		    <hr>
 		   	<br>
 		    
-			<form role="form" method="post" action="write.action" >
+			<form role="form" method="post" action="mypagewrite.action" >
       			<div class="form-group">				
        				<label for="InputTitle">제목</label>
        				<div>

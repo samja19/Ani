@@ -17,7 +17,7 @@
 		<link rel="stylesheet" href="/duna/resources/bootstrap/bootstrap-submenu.min.css">
 		<script src="/duna/resources/bootstrap/bootstrap-submenu.min.js" defer></script>
 		<script src="/duna/resources/bootstrap/jquery.twbsPagination.js"></script>
-		<script>
+<!-- 		<script>
 		$(document).ready(function(){
 			$('[data-submenu]').submenupicker();
 			
@@ -39,7 +39,7 @@
 	    		}
 			}); */
 		});
-        </script>
+        </script> -->
 	</head>
     <body topmargin="0">
     
@@ -96,7 +96,7 @@
 			</table>
  			
  			<hr/>
- 			<div class="text-right"><a href="#" class="btn btn-default" id="write">글쓰기</a></div>
+ 			<div class="text-right"><a href="/ani/mypage/mypagewrite.action" class="btn btn-default" id="write">글쓰기</a></div>
  			
  			<!-- 페이징 -->	
 			 <div class="text-center">

@@ -48,10 +48,10 @@ public class MyPageController {
 	
 	@RequestMapping(value = "mypagewrite.action", method = RequestMethod.GET)
 	public String mypagewriteform() {
-		return "mypage/mypgaewrite";
+		return "mypage/mypagewrite";
 	}
 	
-	@RequestMapping(value = "/write.action", method = RequestMethod.POST)
+	@RequestMapping(value = "mypagewrite.action", method = RequestMethod.POST)
 	public String mypagewrite(HttpSession session, MyPage mypage) {
 		//Member m = (Member) session.getAttribute("loginuser");
 		//mypage.setId(m.getId());

@@ -50,7 +50,7 @@
 						</ul></li>
 					<li class=""><a href="/ani/infoboard/i	nfoboardlist.action">정보게시판</a></li>
 					<li class=""><a href="/ani/freeboard/freeboardlist.action">자유게시판</a></li>
-					
+					<li class=""><a href="/ani/mypage/mypagelist.action">자유게시판</a></li>
 					<!--  관리자메뉴 -->
 					   <%-- <c:if test='${ not empty loginuser and not loginuser.usertype }'> --%>
 					   <li class=""><a href="/ani/admin/admin.action">관리자 페이지</a></li>
