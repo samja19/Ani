@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="com.ani.mapper.MemberMapper">
+
+
+<insert id="insertMember" parameterType="Member" useGeneratedKeys="true"
+ 		keyColumn="MemberNo" keyProperty="MemberNo">
+INSERT INTO MEMBER 
+( ACTIVE, USERTYPE, ID, NICKNAME, PASSWD, NAME, EMAIL,BREEDS,MEMBERNO) 
+VALUES (1, 1,#{id},#{nickname},#{passwd},#{name},#{email},#{breeds},MEMBER_SEQUENCE.NEXTVAL)
+</insert>
+ 	 
+
+<select id ="seletMemberList" resultType="Member">
+	SELECT ID,NAME,EMAIL FROM MEMBER
+</select>
+
+
+<select id="seletMemberListByParmas" parameterType="hashmap" resultType="Member">
+	SELECT  ID,NAME,USERTYPE as usertype ,EMAIL FROM (SELECT rownum as rn , ID,NAME,USERTYPE,EMAIL FROM MEMBER ) WHERE  rn>=#{start} AND rn<![CDATA[<]]>=#{end} 
+</select>
+
+
+<select id="selectMemberByIdAndPasswd" parameterType="hashmap" resultType="Member">
+	SELECT ID, USERTYPE as usertype, NICKNAME,EMAIL FROM MEMBER 
+	WHERE ID = #{id} AND PASSWD = #{passwd} 
+</select>
+
+<select id = "selectMemberById" parameterType="String" resultType="Member">
+	SELECT ID, NICKNAME, NAME, BREEDS, EMAIL FROM MEMBER
+	WHERE ID = #{id} 
+</select>
+
+
+<update id="updateMemberById" parameterType="Member">
+	UPDATE MEMBER SET 
+	PASSWD = #{passwd} ,NICKNAME = #{nickname}, NAME = #{name}, EMAIL = #{email}
+	WHERE ID = #{id}
+	
+</update>
+
+<select id="selectMemberCount" parameterType="hashmap" resultType="int">
+	SELECT count(ID) FROM MEMBER
+	<if test="id != null">
+		WHERE id = #{id}
+	</if>
+</select>
+
+<select id="selectNicknameCount" parameterType="hashmap" resultType="int">
+	SELECT count(nickname) FROM MEMBER
+	<if test="nickname != null">
+		WHERE nickname = #{nickname}
+	</if>
+</select>
+
+
+
+
+	
+</mapper>
+
+
+
+
+
+
+
+

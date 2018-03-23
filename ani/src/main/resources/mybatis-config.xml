@@ -10,6 +10,7 @@
 		<typeAlias alias="AniAttach" type="com.ani.dto.AniAttach"/>
 		<typeAlias alias="Adoption" type="com.ani.dto.Adoption"/>
 		<typeAlias alias="MyPage" type="com.ani.dto.MyPage"/> 
+		<typeAlias alias="Member" type="com.ani.dto.Member"/>
 		
 	</typeAliases>
 	
@@ -29,7 +30,8 @@
 	<mappers>
 		<mapper resource="com/ani/mapper/anim-mapper.xml" />
 		<mapper resource="com/ani/mapper/adoption-mapper.xml" />  
-		<mapper resource="com/ani/mapper/mypage-mapper.xml" /> 		
+		<mapper resource="com/ani/mapper/mypage-mapper.xml" /> 
+		<mapper resource="com/ani/mapper/member-mapper.xml" />		
 	</mappers>
 	
 </configuration>
