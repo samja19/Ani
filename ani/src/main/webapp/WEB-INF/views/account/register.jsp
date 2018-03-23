@@ -82,7 +82,7 @@
 	            <div class="form-group" id="divpasswd">
 	                <label for="inputpasswd" class="col-lg-2 control-label">패스워드</label>
 	                <div class="col-lg-10">
-                        <form:passwd class="form-control" id="passwd2" path="passwd"
+                        <form:password class="form-control" id="passwd2" path="passwd"
                         data-rule-required="true" placeholder="패스워드" maxlength="30"/> 
 	                </div>
 	            </div>
