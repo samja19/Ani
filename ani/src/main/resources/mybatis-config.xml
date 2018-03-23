@@ -32,7 +32,6 @@
 		<mapper resource="com/ani/mapper/adoption-mapper.xml" />  
 		<mapper resource="com/ani/mapper/mypage-mapper.xml" /> 
 		<mapper resource="com/ani/mapper/member-mapper.xml" />	
-		<mapper resource="com/ani/mapper/infoboard-mapper.xml" /> 
 	</mappers>
 	
 </configuration>
