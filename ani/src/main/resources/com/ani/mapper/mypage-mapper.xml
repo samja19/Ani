@@ -7,12 +7,12 @@
 	
 	<insert id="insertmypage" parameterType="MyPage" useGeneratedKeys="true" 
 		keyColumn="mypageNo" keyProperty="mypageNo">
-		INSERT INTO MYPAGE (MYPAGENO, MEMBERNO, MYPAGECONTENT, MYPAGETITLE) 
-		VALUES (MYPAGE_SEQUENCE.NEXTVAL, 1, #{mypageContent}, #{mypageTitle} )
+		INSERT INTO MYPAGE (MYPAGENO, MEMBERNO, MYPAGEDEL, MYPAGECONTENT, MYPAGETITLE) 
+		VALUES (MYPAGE_SEQUENCE.NEXTVAL, 0, 1, #{mypageContent}, #{mypageTitle} )
 	</insert>
 	
 	<select id ="selectMyPageList" parameterType="hashmap" resultType="MyPage">
-		SELECT MYPAGENO, MEMBERNO, MYPAGECONTENT, MYPAGEDATE,MYPAGETITLE
+		SELECT MYPAGENO, MEMBERNO, MYPAGEDEL, MYPAGECONTENT, MYPAGEDATE,MYPAGETITLE
 		FROM MYPAGE
 		ORDER BY MYPAGENO DESC
 	</select>
@@ -29,9 +29,9 @@
 		WHERE MYPAGENO = #{mypageNo}
 	</update>
 	
-	<update id="deletemypage" parameterType="hashmap" >
+	<update id="deletemypage" parameterType="MyPage" >
 		UPDATE MYPAGE  
-		SET MYPAGEDEL = 1
+		SET MYPAGEDEL = 0
 		WHERE MYPAGENO = #{ mypageNo }
 	</update>
 </mapper>

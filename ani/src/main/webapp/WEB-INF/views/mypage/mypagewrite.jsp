@@ -50,12 +50,12 @@
       			<div class="form-group">				
        				<label for="InputTitle">제목</label>
        				<div>
-       				<input type="text" name='fbTitle' class="form-control" data-rule-required="true" placeholder="제목을 입력해주세요." id="title">
+       				<input type="text" name='mypageTitle' class="form-control" data-rule-required="true" placeholder="제목을 입력해주세요." id="mypageTitle">
       				</div>
       			</div>
       			<div class="form-group">
        				<label for="InputContent">내용</label>
-		       		<textarea class="form-control" name="fbContent" rows="15" placeholder="내용을 입력해주세요." id="content"></textarea>
+		       		<textarea class="form-control" name="mypageContent" rows="15" placeholder="내용을 입력해주세요." id="mypageContent"></textarea>
       			</div>
       			<div class="text-center"><button type="submit" class="btn btn-primary" id="write">등록</button>
 				</div>

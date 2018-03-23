@@ -59,9 +59,9 @@
 					<tr>
 						<th class="col-xs-1" style='text-align: center'></th>
 						<th class="col-xs-5" style='text-align: center'>제목</th>
-						<th class="col-xs-2" style='text-align: center'>작성자</th>
+						
 						<th class="col-xs-2" style='text-align: center'>날짜</th>
-						<th class="col-xs-1" style='text-align: center'>조회수</th>
+						
 					</tr>
 				</thead>
 				<tbody>
@@ -72,7 +72,7 @@
 							<td style='text-align: center'>${ mypage.mypageNo }</td>
 							<td style='text-align: left'>
 		 						<c:choose>
-									<c:when test="${ mypage.mypageDel eq 1 }">
+									<c:when test="${ mypage.mypageDel eq 0 }">
 										<span style="color:lightgray">[ 삭제된 글입니다. ]</span>
 									</c:when>
 									<c:otherwise>

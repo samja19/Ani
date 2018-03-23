@@ -24,7 +24,7 @@ public class MyPageController {
 	private MyPageService service;
 	
 	@RequestMapping(value= "mypagelist.action", method = RequestMethod.GET)
-	public String mypagelist(@RequestParam(value="pageno", required=false)Integer pageNo, Model model) {
+	public String mypagelist(@RequestParam(value="pageNo", required=false)Integer pageNo, Model model) {
 		String linkUrl = "mypagelist.action";
 		
 		int maxPost = 10;
@@ -35,12 +35,12 @@ public class MyPageController {
 		int first = (pageNo - 1) * maxPost + 1;
 		int last = first + maxPost;
 		
-		ArrayList<MyPage> MypageList = service.getMypageList(first, last);
+		ArrayList<MyPage> mypagelist = service.getMypageList(first, last);
 		int countMypage = service.getPageCount();
 		
-		model.addAttribute("MypageList", MypageList);	
+		model.addAttribute("mypagelist", mypagelist);	
 		//model.addAttribute("paging", paging);
-		model.addAttribute("pageno", pageNo);
+		model.addAttribute("pageNo", pageNo);
 		
 		return "mypage/mypagelist";
 		
@@ -83,7 +83,7 @@ public class MyPageController {
 		MyPage mypage = service.getMypageByMypageNo(mypageNo);
 		model.addAttribute("mypage", mypage);
 		
-		return "freeboard/freeboardupdate";
+		return "mypage/mypageupdate";
 	}
 	
 	@RequestMapping(value="mypageupdate.action", method = RequestMethod.POST)
