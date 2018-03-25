@@ -27,4 +27,43 @@
 		VALUES (ANI_ATTACH_SEQUENCE.NEXTVAL, #{aniNo}, #{aniSaveName}, #{aniUserName})
 	</insert>
 	
+	
+	<!-- 동물 목록 가져오기-->
+	<select id="selectAniList" resultType="Ani">
+		SELECT ANINO, ANINAME, ANIREGDATE, ANIBIRTH, ANI.SPECIESNO, SPECIESNAME
+		FROM ANI INNER JOIN SPECIES ON ANI.SPECIESNO = SPECIES.SPECIESNO
+		ORDER BY ANINO DESC
+	</select>
+	
+	<!-- 동물 사진 가져오기 -->
+	<select id="selectAniAttach" resultType="AniAttach" parameterType="int" >
+		SELECT ANISAVENAME 
+		FROM ANIATTACH
+		WHERE ANINO = #{aniNo}
+	</select>	
+	
+	<!-- 동물 상세정보 가져오기 -->
+	<select id="selectAniByAniNo" parameterType="int" resultType="Ani">
+		SELECT ANINO, ANIBREED, ANINAME, ANIBIRTH, ANISITE, ANIINFO, ANIREGDATE,
+			   ANIGENDER, NEUTER, ANIHITS, ANI.SPECIESNO, SPECIESNAME
+		FROM ANI INNER JOIN SPECIES ON ANI.SPECIESNO = SPECIES.SPECIESNO
+		WHERE ANINO=#{aniNo}		 
+	</select>
+	
+	
+	<!-- 동물 정보 수정 -->
+	<update id="updateAni" parameterType="Ani">
+		UPDATE ANI
+		SET ANIBREED = #{aniBreed}, ANINAME = #{aniName}, ANIBIRTH = #{aniBirth}, ANISITE = #{aniSite}, ANIINFO = #{aniInfo}, 
+			SPECIESNO = #{speciesNo}, ANIGENDER = #{aniGender}, NEUTER = #{neuter}, MEMBERNO = #{memberNo}
+		WHERE ANINO = #{aniNo}
+	</update>
+	
+	<!-- 동물 삭제 -->
+	<update id="deleteAni" parameterType="int">
+		UPDATE ANI
+		SET ANIDEL ='1'
+		WHERE ANINO = #{aniNo}
+	</update>
+	
 </mapper>

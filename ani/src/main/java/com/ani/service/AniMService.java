@@ -27,5 +27,31 @@ public class AniMService {
 			dao.insetAniAttach(attachment);
 		}
 	}
+	
+	public ArrayList<Ani> getAniList() {  
+		ArrayList<Ani> aniList = dao.selectAniList();
+		for (Ani ani : aniList) {
+			int aniNo = ani.getAniNo();
+			ArrayList<AniAttach> attach = dao.selectAniAttach(aniNo);
+			ani.setAttachments(attach);
+		}
+		return aniList;
+	}
+	
+	public Ani getAniByAniNo(int aniNo) {  
+		Ani ani = dao.selectAniByAniNo(aniNo);
+		ArrayList<AniAttach> attach = dao.selectAniAttach(aniNo);
+		ani.setAttachments(attach);
+		return ani;
+	}
+	
+	public void updateAni(Ani ani) {
+		dao.updateAni(ani);
+	}
 
+	public void deleteAni(int aniNo) {
+		dao.deleteAni(aniNo);
+	}
+
+	
 }

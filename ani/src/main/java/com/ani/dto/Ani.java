@@ -19,6 +19,7 @@ public class Ani {
 	private int aniHits;
 	private int attention;
 	private int memberNo;
+    private String speciesName;
 	
 	@NotNull(message="필수 선택 항목 입니다.")
 	private int speciesNo;	
@@ -169,6 +170,15 @@ public class Ani {
 		this.aniInfo = aniInfo;
 	}
 
+	public String getSpeciesName() {
+		return speciesName;
+	}
+
+	public void setSpeciesName(String speciesName) {
+		this.speciesName = speciesName;
+	}
+	
+	
 
 	
 	

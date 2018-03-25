@@ -54,8 +54,8 @@
 		<property name="mapperInterface" value="com.ani.mapper.MyPageMapper"></property>
 		<property name="sqlSessionFactory" ref="sqlSessionFactory"></property>
 	</bean> 
-	<bean id="infoBoardMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+<!-- 	<bean id="infoBoardMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
 		<property name="mapperInterface" value="com.ani.mapper.InfoBoardMapper"></property>
 		<property name="sqlSessionFactory" ref="sqlSessionFactory"></property>
-	</bean>
+	</bean> -->
 </beans>
