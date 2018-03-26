@@ -58,4 +58,8 @@
 		<property name="mapperInterface" value="com.ani.mapper.InfoBoardMapper"></property>
 		<property name="sqlSessionFactory" ref="sqlSessionFactory"></property>
 	</bean> -->
+	<bean id="donationMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface" value="com.ani.mapper.DonationMapper"></property>
+		<property name="sqlSessionFactory" ref="sqlSessionFactory"></property>
+	</bean>
 </beans>

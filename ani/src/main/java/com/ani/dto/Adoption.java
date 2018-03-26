@@ -11,5 +11,7 @@ public class Adoption {
 	int anino;
 	String phone;
 	String address;
+	String addressDetail;
+	String postcode;
 	String reason;
 }

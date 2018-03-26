@@ -2,12 +2,16 @@
 <!DOCTYPE configuration
   PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-config.dtd">
-<configuration>
-	
- 
+  
+  <configuration>
 
-	<typeAliases>
-		<typeAlias alias="Adoption" type="com.ani.dto.Adoption"/> 
+    <typeAliases>
+		<typeAlias alias="Ani" type="com.ani.dto.Ani"/> 
+		<typeAlias alias="AniAttach" type="com.ani.dto.AniAttach"/>
+		<typeAlias alias="Adoption" type="com.ani.dto.Adoption"/>
+		<typeAlias alias="MyPage" type="com.ani.dto.MyPage"/> 
+		<typeAlias alias="Member" type="com.ani.dto.Member"/>
+		<typeAlias alias="Donation" type="com.ani.dto.Donation"/>
 	</typeAliases>
 	
 	
@@ -22,8 +26,13 @@
 			</dataSource>
 		</environment>
 	</environments>
-	
- 	<mappers>
+
+	<mappers>
+		<mapper resource="com/ani/mapper/anim-mapper.xml" />
 		<mapper resource="com/ani/mapper/adoption-mapper.xml" />  
-	</mappers>  
+		<mapper resource="com/ani/mapper/mypage-mapper.xml" /> 
+		<mapper resource="com/ani/mapper/member-mapper.xml" />	
+		<mapper resource="com/ani/mapper/donation-mapper.xml" />	
+	</mappers>
+	
 </configuration>
