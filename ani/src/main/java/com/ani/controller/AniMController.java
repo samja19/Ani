@@ -4,6 +4,8 @@ import java.io.File;
 import java.sql.Date;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -15,6 +17,7 @@ import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
@@ -48,30 +51,36 @@ public class AniMController {
 	public String aniRegister(MultipartHttpServletRequest req, Ani ani) {
 		
 		AniAttach attach = null;
-		MultipartFile file =req.getFile("aniAttach");
-		if (!file.isEmpty() && 
-				file.getOriginalFilename().length() != 0) {
-			String path = req.getServletContext().getRealPath("/resources/animg/");	
-			String aniSaveName =file.getOriginalFilename();
-			aniSaveName = Util.makeUniqueFileName(aniSaveName);
-			try {
-				file.transferTo(new File(path, aniSaveName));
-				attach= new AniAttach();
-				attach.setAniSaveName(aniSaveName);
-				attach.setAniUserName(file.getOriginalFilename());
-			}catch(Exception ex) {}
-				
-		}
+		List<MultipartFile> files =req.getFiles("aniAttach");
 		ArrayList<AniAttach> attachments =new ArrayList<>();
-		if (attach !=null) {
-			attachments.add(attach);
+		if (!files.isEmpty()) {
+			for (MultipartFile file : files) {
+				if (file.getOriginalFilename().length() != 0) {
+					String path = req.getServletContext().getRealPath("/resources/animg/");	
+	                // 저장되는 파일명
+					String aniSaveName =file.getOriginalFilename();
+					aniSaveName = Util.makeUniqueFileName(aniSaveName);
+					// 파일 사이즈
+					long aniFileSize = file.getSize(); 
+					try {
+						file.transferTo(new File(path, aniSaveName));
+						attach= new AniAttach();
+						attach.setAniSaveName(aniSaveName);
+						attach.setAniUserName(file.getOriginalFilename());
+						attach.setAniFileSize(aniFileSize);
+					}catch(Exception ex) {
+						ex.printStackTrace();
+					}
+					attachments.add(attach);
+				}	
+			}
 		}
 		ani.setAttachments(attachments);
-		
 		service.aniRegister(ani);
-
-		  
-		return "redirect:/admin/admin.action";
+		
+		System.out.println("성공");
+		
+		return "redirect:/aniM/anilist.action";
 		
 	}	
 	
@@ -82,15 +91,13 @@ public class AniMController {
 		return "admin/aniM/anilist";
 	}
 	
-	
-/*	@RequestMapping(value = "aniDetail.action", method = RequestMethod.GET)	
-	public String aniDetail(
+    @RequestMapping(value = "aniDetail.action", method = RequestMethod.POST)	
+    @ResponseBody
+	public Ani aniDetail(
 			@RequestParam(value="aniNo")int aniNo, Model model) {
 		Ani ani = service.getAniByAniNo(aniNo);		
-		model.addAttribute("ani", ani); 
-
-		return "admin/aniM/aniDetail";	
-	}*/
+		return ani;	
+	}
 
 	@RequestMapping(value="aniupdate.action", method = RequestMethod.GET)
 	public String updateAniform (@RequestParam(value="aniNo", required=false)Integer aniNo, Model model) {

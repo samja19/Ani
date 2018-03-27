@@ -5,6 +5,8 @@ import java.util.ArrayList;
 
 import javax.validation.constraints.NotNull;
 import org.hibernate.validator.constraints.NotBlank;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
  
 
 public class Ani { 
@@ -14,6 +16,9 @@ public class Ani {
 	private ArrayList<AniAttach> attachments;
 	
 	private int aniNo;
+	
+	@JsonFormat
+    (shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
 	private Date aniRegdate;
 	private int aniDel;
 	private int aniHits;
@@ -32,6 +37,8 @@ public class Ani {
 	@NotBlank(message="필수 입력 항목 입니다.")
 	private String aniName;
 	
+	@JsonFormat
+    (shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
 	@NotNull(message="필수 입력 항목 입니다.")
 	private Date aniBirth; 
 	

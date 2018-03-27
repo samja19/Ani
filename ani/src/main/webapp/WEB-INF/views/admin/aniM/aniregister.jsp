@@ -140,7 +140,9 @@
 	  			<div class="form-group">
 	    			<label for="File" class="col-lg-2 control-label">동물 사진</label>
 	    			<div class="col-lg-10">
-	    				<input type="file" id="File" name="aniAttach">
+	    				<table id="fileview">
+	    					<tr><td><input id="addFile" type="button" value="파일 추가" /></td><td></td><td></td></tr>
+					    </table>
 	    			</div>
 	  			</div>
 	            
@@ -193,6 +195,24 @@
         <script>
          
         	$(document).ready(function(){
+        		
+        	    //add more file components if Add is clicked
+        	    $('#addFile').click(function() {
+        	        var trno = $('#fileview tr').children().length;   
+        	        $('#fileview').append(
+        	                '<tr id="trIndex'+trno+'">'+
+        	                '   <td><input type="file" id="File" name="aniAttach"></td>'+
+        	                '   <td><a id="delFile'+trno+'" data-trno="'+trno+'">취소</a></td>'+
+        	                '</tr>'
+        	        );
+        	    });  
+        	    
+        	    //delete file
+        	    $('table#fileview').on('click', 'a[id^=delFile]', function(event) {
+        	    	var trno = $(this).attr('data-trno');
+        	    	$("#fileview tr[id=trIndex" + trno + "]").remove();
+        	    });   
+        		
                 //모달을 전역변수로 선언
                 var modalContents = $(".modal-contents");
                 var modal = $("#defaultModal");
