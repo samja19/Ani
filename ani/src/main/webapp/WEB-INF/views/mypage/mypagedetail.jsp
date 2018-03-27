@@ -16,7 +16,7 @@
 		<link rel="stylesheet" href="/duna/resources/styles/css/header.css">
 		<link rel="stylesheet" href="/duna/resources/styles/css/comment.css">
 		<link rel="stylesheet" href="/duna/resources/bootstrap/bootstrap-submenu.min.css">
-		<script src="/duna/resources/bootstrap/bootstrap-submenu.min.js" defer></script>
+		<script src="/ani/resources/bootstrap/bootstrap-submenu.min.js" defer></script>
 		<script>
 			$(document).ready(function(){
 				$('[data-submenu]').submenupicker();
@@ -35,8 +35,8 @@
     
     	<!-- header -->
     	<jsp:include page="../include/header.jsp" />
+
     			
-    	<br><br><br><br>
     	
     	<!-- 본문 들어가는 부분 -->
         <div class="container">
@@ -44,12 +44,11 @@
         	<!-- 게시판 상세보기 -->
 			<h3>나만의 일기장</h3>
 		    <hr>
-		   	<br>
 		   	
 			<table class="table table-view">
 				<thead>
 					<tr>
-						<th class="subject"><h4>${ mypage.mypageTitle }</h4></th>
+						<th class="subject"><h4><b>제목 :</b> ${ mypage.mypageTitle }</h4></th>
 					</tr>
 				</thead>
 				<tbody>
@@ -98,12 +97,12 @@
 			<hr>
 			<!-- 작성자의 권한으로만 동작하는 기능 -->
 			<div class="huge-top">
-				<c:if test="${not empty loginuser eq loginuser.id}">
-					<button class="btn btn-basic" onclick="location.href='mypageupdate.action?fbNum=${ mypage.mypageNo }'">수정</button>
-				</c:if>	
-				<c:if test="${not empty loginuser eq (loginuser.id or not loginuser.usertype)}">
+				
+					<button class="btn btn-basic" onclick="location.href='mypageupdate.action?mypageNo=${ mypage.mypageNo }'">수정</button>
+				
+				
 					<button class="btn btn-basic" id="delete">삭제</button>
-				</c:if>
+					
 					<button class="btn btn-primary pull-right" onclick="location.href='mypagelist.action'">목록</button>
 			</div>
 			

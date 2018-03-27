@@ -40,7 +40,7 @@
 			<li data-target="#myCarousel" data-slide-to="1"></li>
 			<li data-target="#myCarousel" data-slide-to="2"></li>
 			<li data-target="#myCarousel" data-slide-to="3"></li>
-			<li data-target="#myCarousel" data-slide-to="4"></li>
+			<!-- <li data-target="#myCarousel" data-slide-to="4"></li> -->
 		</ol>
 
 		<div class="carousel-inner">
@@ -53,32 +53,32 @@
 			<div class="item">
 				<img src="/ani/resources/image/hands.jpg">
 				<div class="carousel-caption">
-					<h1>공동구매</h1>
-					<p>1인 가구를 위한 안성맞춤 제품! 두나가 직접 진행합니다!</p>
+					<h1>유기동물기부</h1>
+					<p>유기동물의 행복한 삶을 위하여 기부하세요</p>
 					<p><a class="btn btn-lg btn-primary" href="/ani/communalpurchase/cpintro.action">바로가기</a></p>
 				</div>
 			</div>
-			<div class="item">
+<!--		<div class="item">
 				<img src="/ani/resources/image/friends.jpg">
 				<div class="carousel-caption">
 					<h1>소모임</h1>
 					<p>직접 소모임을 만들고 참여도 해보세요 :) 만나면 더욱 즐거워요~ </p>
 					<p><a class="btn btn-lg btn-primary" href="/ani/smallgroup/smallgrouplist.action">바로가기</a></p>
 				</div>
-			</div>
+			</div> -->
 			<div class="item">
 				<img src="/ani/resources/image/infoboard.jpg">
 				<div class="carousel-caption">	
 					<h1>정보게시판</h1>
-					<p>생활,운동,독서 등 다양한 정보를 공유해보세요.</p>
+					<p>유기동물에 대한 다양한 정보를 공유해보세요.</p>
 					<p><a class="btn btn-lg btn-primary" href="/ani/infoboard/infoboardlist.jsp">바로가기</a></p>
 				</div>
 			</div>
 			<div class="item">
 				<img src="/ani/resources/image/freeboard.jpg">
 				<div class="carousel-caption">
-					<h1>자유게시판</h1>
-					<p>심심한 사람  모두모두 모여라!</p>
+					<h1>유기동물입양</h1>
+					<p>사지마세요! 입양하세요!</p>
 					<p><a class="btn btn-lg btn-primary" href="/ani/freeboard/freeboardlist.action">바로가기</a></p>
 				</div>
 			</div>

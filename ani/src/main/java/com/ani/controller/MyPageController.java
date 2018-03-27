@@ -12,6 +12,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.ani.dto.Donation;
+import com.ani.dto.InterestAni;
+import com.ani.dto.Member;
 import com.ani.dto.MyPage;
 import com.ani.service.MyPageService;
 
@@ -24,7 +27,7 @@ public class MyPageController {
 	private MyPageService service;
 	
 	@RequestMapping(value= "mypagelist.action", method = RequestMethod.GET)
-	public String mypagelist(@RequestParam(value="pageno", required=false)Integer pageNo, Model model) {
+	public String mypagelist(@RequestParam(value="pageNo", required=false)Integer pageNo, Model model) {
 		String linkUrl = "mypagelist.action";
 		
 		int maxPost = 10;
@@ -35,12 +38,21 @@ public class MyPageController {
 		int first = (pageNo - 1) * maxPost + 1;
 		int last = first + maxPost;
 		
-		ArrayList<MyPage> MypageList = service.getMypageList(first, last);
+		ArrayList<MyPage> mypagelist = service.getMypageList(first, last);
 		int countMypage = service.getPageCount();
+		Member member = service.getMyProfile();
+		ArrayList<Donation> donateAni = service.getDonateAniList();
+		ArrayList<InterestAni> interestAni = service.getInterestAniList();
 		
-		model.addAttribute("MypageList", MypageList);	
+		
+		
+		model.addAttribute("mypagelist", mypagelist);	
 		//model.addAttribute("paging", paging);
-		model.addAttribute("pageno", pageNo);
+		model.addAttribute("pageNo", pageNo);
+		model.addAttribute("member", member);
+		model.addAttribute("donateAni",donateAni);
+		model.addAttribute("interestAni", interestAni);
+		
 		
 		return "mypage/mypagelist";
 		
@@ -48,10 +60,10 @@ public class MyPageController {
 	
 	@RequestMapping(value = "mypagewrite.action", method = RequestMethod.GET)
 	public String mypagewriteform() {
-		return "mypage/mypgaewrite";
+		return "mypage/mypagewrite";
 	}
 	
-	@RequestMapping(value = "/write.action", method = RequestMethod.POST)
+	@RequestMapping(value = "mypagewrite.action", method = RequestMethod.POST)
 	public String mypagewrite(HttpSession session, MyPage mypage) {
 		//Member m = (Member) session.getAttribute("loginuser");
 		//mypage.setId(m.getId());
@@ -83,7 +95,7 @@ public class MyPageController {
 		MyPage mypage = service.getMypageByMypageNo(mypageNo);
 		model.addAttribute("mypage", mypage);
 		
-		return "freeboard/freeboardupdate";
+		return "mypage/mypageupdate";
 	}
 	
 	@RequestMapping(value="mypageupdate.action", method = RequestMethod.POST)
