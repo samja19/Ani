@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+ <mapper namespace="com.ani.mapper.InfoBoardMapper">
+ 
+ 	<insert id="insertInfoBoard" parameterType="InfoBoard"
+ 		useGeneratedKeys="true" keyColumn="ib_num" keyProperty="ib_num">
+ 		INSERT INFOBOARD (IB_NUM, IB_TITLE, IB_CONTNET, ID, INFO_CAT_NUM)
+ 		VALUES (INFOBOARD_SEQUENCE.NEXTVAL, #{ib_title}, #{ib_content}, #{id},
+ 		#{in_cat_num})
+ 		</insert>
+ 
+ 	<select id="selectInfoBoardList" parameterType="hashmap" resultType="InfoBoard">
+ 		SELECT IB_NUM, ID, IB_TITLE, ib.IN_CAT_NUM, CAT_IN, IB_DATE
+ 		FROM INFOBOARD ib INNER JOIN IN_CATEGORY ic ON ib.IN_CAT_NUM = ic.IN_CAT_NUM
+ 		ORDER BY IB_NUM DESC
+ 	</select>
+ 	
+ 	<insert id="insertIBFileAttach" parameterType="IBFileAttach">
+ 		<selectKey resultType="int" keyProperty="ibf_num" order="AFTER">
+ 			SELECT IBFILE_ATTACH_SEQUENCE.CURRVAL FROM DUAL
+ 		</selectKey>
+ 		INSERT INTO IBFILE_ATTACH
+ 		(IBF_NUM, IBF_SAVENAME, IBF_USERNAME, IB_NUM)
+ 		VALUES (IBFILE_ATTACH_SEQUENCE.NEXTVAL, #{ibf_savename}, #{ibf_username}, #{ib_num})
+ 	</insert>
+ 
+ 	<select id="selectBoardByBoardNo" parameterType="int" resultType="InfoBoard">
+ 		SELECT IB_NUM as ib_num, IB_TITLE as ib_title, ID as id,
+ 		IB_DATE as ib_date, IB_HITS as ib_hits, IB_CONTENT as ib_content
+ 		FROM INFOBOARD
+ 		WHERE IB_NUM=#{ib_num}
+ 	
+ 	</select>
+ 
+ 	<select id="selectBoardAttachByBoardNo" parameterType="int" resultType="IBFileAttach">
+		SELECT ibf_num, ibf_savename, ibf_username
+		FROM IBFILE_ATTACH
+		WHERE IB_NUM=#{ib_num}
+
+	</select>
+	
+	<select id="selectIBFileAttachByAttachNo" parameterType="int" resultType="IBFileAttach">
+		SELECT ibf_savename, ibf_username
+		FROM IBFILE_ATTACH
+		WHERE IBF_NUM=#{ibf_num}
+
+	</select>
+
+ </mapper>
