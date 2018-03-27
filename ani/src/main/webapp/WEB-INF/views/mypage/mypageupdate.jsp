@@ -37,25 +37,24 @@
     
     	<!-- header -->
     	<jsp:include page="../include/header.jsp" />
+
     			
-    	<br><br><br><br>
+
     	
     	<!-- 본문 들어가는 부분 -->
         <div class="container"><!-- 좌우측의 공간 확보 -->
 			<h3>나만의 일기장 글수정</h3>
-		    <hr>
-		   	<br>
 		    
 			<form role="form" method="post" action="mypageupdate.action" >
       			<div class="form-group">				
        				<label for="InputTitle">제목</label>
        				<div>
-       				<input type="text" name='fbTitle' class="form-control" data-rule-required="true" placeholder="제목을 입력해주세요." id="title" value="${ mypage.mypageTitle }">
+       				<input type="text" name='mypageTitle' class="form-control" data-rule-required="true" placeholder="제목을 입력해주세요." id="mypageTitle" value="${ mypage.mypageTitle }">
       				</div>
       			</div>
       			<div class="form-group">
        				<label for="InputContent">내용</label>
-		       		<textarea class="form-control" name="fbContent" rows="15" placeholder="내용을 입력해주세요." id="content">${ mypage.mypageContent }</textarea>
+		       		<textarea class="form-control" name="mypageContent" rows="15" placeholder="내용을 입력해주세요." id="mypageContent">${ mypage.mypageContent }</textarea>
       			</div>
       			<div class="text-center"><button type="submit" class="btn btn-primary" id="update">글수정</button>
 				</div>

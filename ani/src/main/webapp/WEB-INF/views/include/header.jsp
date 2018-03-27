@@ -36,7 +36,7 @@
 			<div id="navbar" class="navbar-collapse collapse">
 				<ul class="nav navbar-nav navbar-left">
 					<li class="dropdown"><a class="dropdown-toggle"
-						data-toggle="dropdown" href="#">공동구매<span class="caret"></span></a>
+						data-toggle="dropdown" href="#">기부하기<span class="caret"></span></a>
 						<ul class="dropdown-menu">
 							<li><a href="/ani/communalpurchase/cpintro.action">공구항목</a></li>
 							<li><a href="/ani/cppsboard/cppslist.action">공구후기</a></li>
@@ -50,7 +50,7 @@
 						</ul></li>
 					<li class=""><a href="/ani/infoboard/i	nfoboardlist.action">정보게시판</a></li>
 					<li class=""><a href="/ani/freeboard/freeboardlist.action">자유게시판</a></li>
-					
+					<li class=""><a href="/ani/mypage/mypagelist.action">마이페이지</a></li>
 					<!--  관리자메뉴 -->
 					   <%-- <c:if test='${ not empty loginuser and not loginuser.usertype }'> --%>
 					   <li class=""><a href="/ani/admin/admin.action">관리자 페이지</a></li>

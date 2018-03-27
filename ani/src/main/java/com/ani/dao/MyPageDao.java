@@ -11,6 +11,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
 
+import com.ani.dto.Donation;
+import com.ani.dto.InterestAni;
+import com.ani.dto.Member;
 import com.ani.dto.MyPage;
 import com.ani.mapper.MyPageMapper;
 
@@ -75,6 +78,21 @@ public class MyPageDao {
 	public void deletemypage(Integer mypageNo) {
 		mypageMapper.deletemypage(mypageNo);
 		
+	}
+
+	public Member getMyProfile() {
+		Member member = mypageMapper.getMyProfile();
+		return member;
+	}
+
+	public ArrayList<Donation> getDonateAniList() {
+		ArrayList<Donation> donateAni = mypageMapper.getDonationAniList();
+		return donateAni;
+	}
+
+	public ArrayList<InterestAni> getInterestAniList() {
+		ArrayList<InterestAni> interestAni = mypageMapper.getInterestAniList();
+		return interestAni;
 	}
 
 	
