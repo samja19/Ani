@@ -27,9 +27,23 @@ public class DonationDao {
 	public ArrayList<Donation> selectDonationListByMemberno(int memberno) {
 		return mapper.selectDonationListByMemberno(memberno);
 	}
-	
+
+	public int selectDonationCountByAnino(int anino) {
+		return mapper.selectDonationCountByAnino(anino);
+	}
+
+	public int selectDonationCountByMemberno(int memberno) {
+		return mapper.selectDonationCountByMemberno(memberno);
+	}
+
+	public int selectDonationAmountByAnino(int anino) {
+		return mapper.selectDonationAmountByAnino(anino);
+	}
+
+	public int selectDonationAmountByMemberno(int memberno) {
+		return mapper.selectDonationAmountByMemberno(memberno);
+	}
 	 
- 
  
 	
 }

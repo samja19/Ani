@@ -20,13 +20,27 @@
 	
 	
 	 
+	 <select id="selectAdoptioinListByAnino">
+	 SELECT * FROM ADOPTION WHERE ANINO = #{anino}
+	 </select>
 	
-	
+	 <select id="selectAdoptioinListByMemberno">
+	 SELECT * FROM ADOPTION WHERE MEMBERNO = #{memberno}
+	 </select>
+	 
+	 <select id="selectAdoptionCountByAnino">
+	 SELECT count(*) FROM ADOPTION WHERE ANINO = #{anino}
+	 </select>
+	 
+	 <select id="selectAdoptionCountByMemberno">
+	 SELECT count(*) FROM ADOPTION WHERE MEMBERNO = #{memberno}
+	 </select>
+	 
+	 
 	
 	<select id="selectAniCount" resultType="int">
 	SELECT count(anino) FROM ANI
 	</select>
-	
 	
 	
 	

@@ -58,9 +58,13 @@ public class AdoptionController {
 		return "adoption/ani_list";
 	}
 	
+	
+	
+	//동물리스트이니 주의
+	
 	@RequestMapping(value="list.action", method=RequestMethod.POST)
 	@ResponseBody
-	public ArrayList<Ani> adoptionList(
+	public ArrayList<Ani> getAniList(
 			@RequestParam(value="pagecount",defaultValue="5")int pagecount, 
 			@RequestParam(value="page",defaultValue="1")int page) {
 		int start=0;
@@ -73,4 +77,59 @@ public class AdoptionController {
 		
 		return list;
 	} 
+	
+	
+	
+	
+	
+	
+	@RequestMapping(value="getadoptionbyanino", method=RequestMethod.GET)
+	public String getAdoptionTest1(
+			@RequestParam(value="anino",required=false, defaultValue="12")int anino){
+				
+		
+		ArrayList<Adoption> alist = service.getAdoptionListByAnino(anino);
+		for(Adoption a : alist) {
+			System.out.println(a.getAnino()+"/"+a.getMemberno()+":"+a.getPostcode());
+		}
+		
+		
+		return "redirect:/";
+	}
+	
+	@RequestMapping(value="getadoptionbymemberno", method=RequestMethod.GET)
+	public String getAdoptionTest2(
+			@RequestParam(value="memberno",required=false, defaultValue="0")int memberno){
+		
+		ArrayList<Adoption> alist = service.getAdoptionListByMemberno(memberno);
+		for(Adoption a : alist) {
+			System.out.println(a.getAnino()+"/"+a.getMemberno()+":"+a.getPostcode());
+		}
+		return "redirect:/";
+	}	
+	
+	@RequestMapping(value="getadoptioncountbyanino")
+	public String getAdoptionTest3(
+			@RequestParam(value="anino",required=false,defaultValue="12")int anino
+			){
+		
+		int count = service.getAdoptionCountByAnino(anino);
+		System.out.println(count);
+		return "redirect:/";
+	}
+	
+	@RequestMapping(value="getadoptioncountbymemberno")
+	public String getAdoptionTest4(
+			@RequestParam(value="memberno",required=false,defaultValue="0")int memberno
+			){
+		int count = service.getAdoptionCountByMemberno(memberno);
+		System.out.println(count);
+		return "redirect:/";
+	}
+	
+	
+	
+	
+	
+	
 }

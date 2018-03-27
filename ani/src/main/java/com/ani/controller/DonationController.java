@@ -60,8 +60,42 @@ public class DonationController {
 	}
 	
 	
+	@RequestMapping(value="getdcountbyanino")
+	public String getAdoptionTest3(
+			@RequestParam(value="anino",required=false,defaultValue="12")int anino
+			){
+		
+		int count = service.getDonationCountByAnino(anino);
+		System.out.println(count);
+		return "redirect:/";
+	}
 	
+	@RequestMapping(value="getdcountbymemberno")
+	public String getAdoptionTest4(
+			@RequestParam(value="memberno",required=false,defaultValue="0")int memberno
+			){
+		int count = service.getDonationCountByMemberno(memberno);
+		System.out.println(count);
+		return "redirect:/";
+	}
 	
+	@RequestMapping(value="getdamountbyanino")
+	public String getAdoptionTest5(
+			@RequestParam(value="anino",required=false,defaultValue="7")int anino
+			){
+		int amount = service.getDonationAmountByAnino(anino);
+		System.out.println(amount);
+		return "redirect:/";
+	}
+	
+	@RequestMapping(value="getdamountbymemberno")
+	public String getAdoptionTest6(
+			@RequestParam(value="memberno",required=false,defaultValue="0")int memberno
+			){
+		int amount = service.getDonationAmountByMemberno(memberno);
+		System.out.println(amount);
+		return "redirect:/";
+	}
 	 
 	
 }

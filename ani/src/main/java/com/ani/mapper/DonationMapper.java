@@ -11,5 +11,13 @@ public interface DonationMapper {
 	ArrayList<Donation> selectDonationListByAnino(int anino);
 
 	ArrayList<Donation> selectDonationListByMemberno(int memberno);
+
+	int selectDonationCountByAnino(int anino);
+
+	int selectDonationCountByMemberno(int memberno);
+
+	int selectDonationAmountByAnino(int anino);
+
+	int selectDonationAmountByMemberno(int memberno);
  
 }

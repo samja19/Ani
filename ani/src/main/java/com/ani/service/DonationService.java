@@ -31,5 +31,21 @@ public class DonationService {
 	public ArrayList<Donation> selectDonationListByMemberno(int memberno) {
 		return dao.selectDonationListByMemberno(memberno);
 	}
+
+	public int getDonationCountByAnino(int anino) {
+		return dao.selectDonationCountByAnino(anino);
+	}
+
+	public int getDonationCountByMemberno(int memberno) {
+		return dao.selectDonationCountByMemberno(memberno);
+	}
+
+	public int getDonationAmountByAnino(int anino) {
+		return dao.selectDonationAmountByAnino(anino);
+	}
+
+	public int getDonationAmountByMemberno(int memberno) {
+		return dao.selectDonationAmountByMemberno(memberno);
+	}
  
 }
