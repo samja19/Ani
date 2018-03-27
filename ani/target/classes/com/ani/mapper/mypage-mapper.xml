@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="com.ani.mapper.MyPageMapper">
+	
+	<insert id="insertMypage" parameterType="Mypage" useGeneratedKeys="true" 
+		keyColumn="mypageNo" keyProperty="mypageNo">
+		INSERT INTO MYPAGE (MYPAGENO, MYPAGEDEL, MEMBERNO, MYPAGECONTENT) 
+		VALUES (MYPAGE_SEQUENCE.NEXTVAL, #{mypageDel}, #{memberNo}, #{mypageContent})
+	</insert>
+	
+	<select id ="selectMyPageList" parameterType="hashmap" resultType="MyPage">
+		SELECT MYPAGENO, MEMBERNO, MYPAGECONTENT, MYPAGEDATE,MYPAGETITLE
+		FROM MYPAGE
+		ORDER BY MYPAGENO DESC
+	</select>
+	
+	<select id ="selectMypageBymypageNo" parameterType="int" resultType="MyPage">
+		SELECT MYPAGENO, MYPAGEDEL, MEMBERNO, MYPAGECONTENT, MYPAGEDATE, MYPAGETITLE
+		FROM MYPAGE
+		WHERE MYPAGENO = #{mypageNo}
+	</select>
+	
+	<update id="updatemypage" parameterType="MyPage" >
+		UPDATE MYPAGE 
+		SET MYPAGETITLE = #{mypageTitle}, MYPAGECONTENT = #{mypageContent}
+		WHERE MYPAGENO = #{mypageNo}
+	</update>
+	
+	<update id="deletemypage" parameterType="hashmap" >
+		UPDATE MYPAGE  
+		SET MYPAGEDEL = 1
+		WHERE MYPAGENO = #{ mypageNo }
+	</update>
+</mapper>
