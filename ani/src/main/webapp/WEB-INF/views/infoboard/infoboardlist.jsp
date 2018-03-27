@@ -12,11 +12,11 @@
 		<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 		
-		<link rel="stylesheet" href="/duna/resources/styles/css/header.css">
-		<link rel="stylesheet" href="/duna/resources/styles/css/table.css">
-		<link rel="stylesheet" href="/duna/resources/bootstrap/bootstrap-submenu.min.css">
-		<script src="/duna/resources/bootstrap/bootstrap-submenu.min.js" defer></script>
-		<script src="/duna/resources/bootstrap/jquery.twbsPagination.js"></script>
+		<link rel="stylesheet" href="/ani/resources/styles/css/header.css">
+		<link rel="stylesheet" href="/ani/resources/styles/css/table.css">
+		<link rel="stylesheet" href="/ani/resources/bootstrap/bootstrap-submenu.min.css">
+		<script src="/ani/resources/bootstrap/bootstrap-submenu.min.js" defer></script>
+		<script src="/ani/resources/bootstrap/jquery.twbsPagination.js"></script>
 		<script>
 		$(document).ready(function(){
 			$('[data-submenu]').submenupicker();
@@ -91,7 +91,7 @@
 			</table>
  			
  			<hr/>
- 			<div class="text-right"><a href="/duna/infoboard/infoboardwrite.action" class="btn btn-default">글쓰기</a></div>	
+ 			<div class="text-right"><a href="/ani/infoboard/infoboardwrite.action" class="btn btn-default">글쓰기</a></div>	
 			<div class="text-center">
 				<ul id="pagination-demo" class="pagination"></ul>
 			</div>

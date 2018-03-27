@@ -4,8 +4,10 @@ package com.ani.dto;
 
 public class InfoCategory {
 	
-	private int in_cat_num;
+
+	private int in_cat_num;	
 	private String cat_in;
+
 	public int getIn_cat_num() {
 		return in_cat_num;
 	}
@@ -18,4 +20,7 @@ public class InfoCategory {
 	public void setCat_in(String cat_in) {
 		this.cat_in = cat_in;
 	}
+
+	
+	
 }

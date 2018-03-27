@@ -5,25 +5,14 @@
 <configuration>
 	
  
-	
-<!-- 	<typeAliases>
-		<typeAlias alias="Member" type="com.duna.dto.Member"/> 
-		<typeAlias alias="FreeBoard" type="com.duna.dto.FreeBoard"/>
-		<typeAlias alias="FBComment" type="com.duna.dto.FBComment"/>
-		<typeAlias alias="Cp" type="com.duna.dto.Cp"/>
-		<typeAlias alias="CpImageAttach" type="com.duna.dto.CpImageAttach"/>
-		<typeAlias alias="CpQnaComment" type="com.duna.dto.CpQnaComment"/>
-		<typeAlias alias="CpOrder" type="com.duna.dto.CpOrder"/>
-		<typeAlias alias="CppsBoard" type="com.duna.dto.CppsBoard"/>
-		<typeAlias alias="InfoBoard" type="com.duna.dto.InfoBoard"/>
-		<typeAlias alias="IBFileAttach" type="com.duna.dto.IBFileAttach"/>
-		<typeAlias alias="SmallGroup" type="com.duna.dto.SmallGroup"/>
-		<typeAlias alias="SGMember" type="com.duna.dto.SGMember"/>
-		<typeAlias alias="Survey" type="com.duna.dto.Survey"/> 
-		<typeAlias alias="SurveyTypeQuestion" type="com.duna.dto.SurveyTypeQuestion"/> 
-		<typeAlias alias="STQDetail" type="com.duna.dto.STQDetail"/>  
-		<typeAlias alias="SurveyDeatil" type="com.duna.dto.SurveyDeatil"/> 
-	</typeAliases> -->
+	<typeAliases>
+		<typeAlias alias="Ani" type="com.ani.dto.Ani"/> 
+		<typeAlias alias="AniAttach" type="com.ani.dto.AniAttach"/> 
+		<typeAlias alias="MyPage" type="com.ani.dto.MyPage"/> 
+		<typeAlias alias="Member" type="com.ani.dto.Member"/> 
+		<typeAlias alias="InfoBoard" type="com.ani.dto.InfoBoard"/> 
+		
+	</typeAliases>
 	
 	
 	
@@ -50,4 +39,8 @@
 		
 		
 	</mappers> -->
+	
+	<mappers>
+	<mapper resource="com/ani/mapper/infoboard-mapper.xml" /> 
+	</mappers>
 </configuration>

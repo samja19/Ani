@@ -10,9 +10,9 @@
 		<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 		
-		<link rel="stylesheet" href="/duna/resources/styles/css/header.css">
-		<link rel="stylesheet" href="/duna/resources/bootstrap/bootstrap-submenu.min.css">
-		<script src="/duna/resources/bootstrap/bootstrap-submenu.min.js" defer></script>
+		<link rel="stylesheet" href="/ani/resources/styles/css/header.css">
+		<link rel="stylesheet" href="/ani/resources/bootstrap/bootstrap-submenu.min.css">
+		<script src="/ani/resources/bootstrap/bootstrap-submenu.min.js" defer></script>
 		<script>
 			$(document).ready(function(){
 				$('[data-submenu]').submenupicker();
