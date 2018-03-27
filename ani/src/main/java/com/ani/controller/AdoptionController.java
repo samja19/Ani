@@ -66,14 +66,18 @@ public class AdoptionController {
 	@ResponseBody
 	public ArrayList<Ani> getAniList(
 			@RequestParam(value="pagecount",defaultValue="5")int pagecount, 
-			@RequestParam(value="page",defaultValue="1")int page) {
+			@RequestParam(value="pageno",defaultValue="1")int page) {
 		int start=0;
 		int end=0; 
 		
 		start = pagecount*(page-1)+1;
 		end = pagecount*page;	
+		System.out.println(start+"/"+end);
 		 
 		ArrayList<Ani> list = service.getAniList(start,end);
+		
+		System.out.println("length:"+list.size());
+		
 		
 		return list;
 	} 

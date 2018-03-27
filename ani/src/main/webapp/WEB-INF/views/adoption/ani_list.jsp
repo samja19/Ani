@@ -47,10 +47,10 @@
 				visiblePages : visiblePages,
 			    totalPages : totalPage,
 			    onPageClick : function (evt, page) {
-		            $('#content').text('Page ' + page);
+		             
 		            $.ajax({
 		    			url : '/ani/adoption/list.action',
-		    			data : { pageno :  page, pagecount : pageCount},
+		    			data : { pageno : page, pagecount : pageCount},
 		    			method : "POST", 
 		    			dataType : "json",
 		    			success : listProcess,
@@ -103,7 +103,7 @@
 					//td_check_glyphicon = $('<span class="glyphicon glyphicon-check" style="width:10px;height:10px;">a</span>');
 					
 					//td_check_glyphicon = $('<a href="main.action?anino='+anis[i].aniNo+'"><span class="glyphicon glyphicon-check"></span></a>');
-					td_check_glyphicon = $('<span class="glyphicon glyphicon-check" >'+anis[i].aniNo+'</span>');
+					td_check_glyphicon = $('<span class="glyphicon glyphicon-check" ></span>');
 					
 					
 					td_detail.append(td_check_glyphicon);
@@ -212,7 +212,7 @@
                 <h4 class="modal-title">알림</h4>
             </div>
             <div class="modal-body">
-                <p class="modal-contents"><jsp:include page="../adoption/adoption_main2.jsp"/></p>
+                <p class="modal-contents"><jsp:include page="../adoption/adoption_detail.jsp"/></p>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
