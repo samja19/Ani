@@ -23,7 +23,7 @@ import com.ani.mapper.InfoBoardMapper;
 public class InfoBoardDao {
 //	
 	@Autowired
-	@Qualifier("infoBoardMapper")
+	@Qualifier("infoboardMapper")
 	private InfoBoardMapper infoBoardMapper;
 
 	public void insertInfoBoard(InfoBoard board) {

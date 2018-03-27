@@ -52,15 +52,16 @@
 					<li class=""><a href="/ani/freeboard/freeboardlist.action">자유게시판</a></li>
 					
 					<!--  관리자메뉴 -->
-					   <c:if test='${ not empty loginuser and not loginuser.usertype }'>
-                    	<li class="dropdown"><a class="dropdown-toggle"
+					   <%-- <c:if test='${ not empty loginuser and not loginuser.usertype }'> --%>
+					   <li class=""><a href="/ani/admin/admin.action">관리자 페이지</a></li>
+                    	<!-- <li class="dropdown"><a class="dropdown-toggle"
 						data-toggle="dropdown" href="#" data-submenu>관리자메뉴<span class="caret"></span></a>
 						<ul class="dropdown-menu">
 							<li><a href="/ani/admin/memberlist.action">회원관리</a></li>
 							<li><a href="/ani/communalpurchase/cpadminlist.action">공구관리</a></li>
 						</ul>
-						</li>
-                         </c:if>                                                    
+						</li> -->
+                         <%-- </c:if>  --%>                                                   
                     
 				</ul>
 

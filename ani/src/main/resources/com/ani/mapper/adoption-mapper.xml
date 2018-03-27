@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="com.ani.mapper.AdoptionMapper">
+	
+	<!-- 입양신청 -->
+	<insert id="insertAdoption" parameterType="Adoption" useGeneratedKeys="true" 
+		keyColumn="adoptionno" keyProperty="adoptionno">
+	INSERT INTO ADOPTION (
+		ADOPTIONNO, PHONE, ADDRESS,ADDRESSDETAIL, POSTCODE, REASON, ANINO
+	) 
+	VALUES (
+		ADOPTION_SEQUENCE.NEXTVAL, #{phone},#{address},#{addressDetail},#{postcode},#{reason},#{anino}
+	)
+	</insert>
+	
+	<!-- 입양목록  -->
+	<select id="selectAniCount" resultType="int">
+	SELECT count(anino) FROM ANI
+	</select>
+	
+	<select id="selectAniListByParam" resultType="Ani">
+	SELECT ANINO, ANINAME, ANIGENDER,ANIBREED, ANIBIRTH, ANI.SPECIESNO, SPECIESNAME,NEUTER, ROWNUM 
+	FROM ANI INNER JOIN SPECIES ON ANI.SPECIESNO = SPECIES.SPECIESNO
+	WHERE  ROWNUM>=#{start} AND ROWNUM<![CDATA[<]]>=#{end}
+	ORDER BY ANINO DESC
+	</select>
+	  
+</mapper>

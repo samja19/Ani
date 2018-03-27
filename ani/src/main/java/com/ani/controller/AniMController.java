@@ -9,10 +9,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
@@ -67,12 +69,52 @@ public class AniMController {
 		ani.setAttachments(attachments);
 		
 		service.aniRegister(ani);
-		
-		
-	
+
 		  
 		return "redirect:/admin/admin.action";
 		
 	}	
 	
+	@RequestMapping(value="anilist.action", method = RequestMethod.GET)
+	public String aniList(Model model) {
+		ArrayList<Ani> aniList = service.getAniList();
+		model.addAttribute("aniList", aniList);
+		return "admin/aniM/anilist";
+	}
+	
+	
+/*	@RequestMapping(value = "aniDetail.action", method = RequestMethod.GET)	
+	public String aniDetail(
+			@RequestParam(value="aniNo")int aniNo, Model model) {
+		Ani ani = service.getAniByAniNo(aniNo);		
+		model.addAttribute("ani", ani); 
+
+		return "admin/aniM/aniDetail";	
+	}*/
+
+	@RequestMapping(value="aniupdate.action", method = RequestMethod.GET)
+	public String updateAniform (@RequestParam(value="aniNo", required=false)Integer aniNo, Model model) {
+		Ani ani = service.getAniByAniNo(aniNo);
+		model.addAttribute("ani", ani);
+		return "admin/aniM/aniupdate";
+	}
+	
+	
+	@RequestMapping(value = "aniupdate.action", method = RequestMethod.POST)
+	public String updateAni(Ani ani) {
+		service.updateAni(ani);	
+		//return String.format("redirect:freeboarddetail.action?fbNum=%d", board.getFreeNum());		
+		//return "redirect:cpmain.action?productNo=" + productNo;
+		return "redirect:anilist.action";
+		
+	}
+	
+	@RequestMapping(value = "anidelete.action", method = RequestMethod.GET)
+	public String deleteAni(int aniNo) {
+		service.deleteAni(aniNo);
+		
+		//return "redirect:cpmain.action?productNo=" + productNo;
+		return "redirect:anilist.action";
+	}
+
 }

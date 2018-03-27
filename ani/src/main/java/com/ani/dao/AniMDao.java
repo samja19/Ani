@@ -1,5 +1,7 @@
 package com.ani.dao;
 
+import java.util.ArrayList;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
@@ -24,4 +26,24 @@ public class AniMDao {
 		aniMMapper.insertAniAttach(attachment);
 	}
 
+	public ArrayList<Ani> selectAniList() {
+		return aniMMapper.selectAniList();
+	}
+
+	public Ani selectAniByAniNo(int aniNo) {
+		Ani ani = aniMMapper.selectAniByAniNo(aniNo);
+		return ani;
+	}
+	
+	public ArrayList<AniAttach> selectAniAttach(int aniNo) {		
+		return aniMMapper.selectAniAttach(aniNo);
+	}
+	
+	public void updateAni(Ani ani) {
+		aniMMapper.updateAni(ani);
+	}
+	
+	public void deleteAni(int aniNo) {
+		aniMMapper.deleteAni(aniNo);	
+	}
 }

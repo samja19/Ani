@@ -2,19 +2,23 @@
 <!DOCTYPE configuration
   PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-config.dtd">
-<configuration>
-	
  
-	<typeAliases>
+  
+  <configuration>
+
+    <typeAliases>
 		<typeAlias alias="Ani" type="com.ani.dto.Ani"/> 
-		<typeAlias alias="AniAttach" type="com.ani.dto.AniAttach"/> 
+		<typeAlias alias="AniAttach" type="com.ani.dto.AniAttach"/>
+		<typeAlias alias="Adoption" type="com.ani.dto.Adoption"/>
 		<typeAlias alias="MyPage" type="com.ani.dto.MyPage"/> 
-		<typeAlias alias="Member" type="com.ani.dto.Member"/> 
+		<typeAlias alias="Member" type="com.ani.dto.Member"/>
+		<typeAlias alias="Donation" type="com.ani.dto.Donation"/>
 		<typeAlias alias="InfoBoard" type="com.ani.dto.InfoBoard"/> 
+		<typeAlias alias="IBFileAttach" type="com.ani.dto.IBFileAttach"/> 
+		
+		
 		
 	</typeAliases>
-	
-	
 	
 	<environments default="development">
 		<environment id="development">
@@ -27,20 +31,14 @@
 			</dataSource>
 		</environment>
 	</environments>
-	
-<!-- 	<mappers>
-		<mapper resource="com/duna/mapper/member-mapper.xml" /> 
-		<mapper resource="com/duna/mapper/freeboard-mapper.xml" /> 
-		<mapper resource="com/duna/mapper/cp-mapper.xml" /> 
-		<mapper resource="com/duna/mapper/cpps-mapper.xml" />
-		<mapper resource="com/duna/mapper/infoboard-mapper.xml" /> 
-		<mapper resource="com/duna/mapper/smallgroup-mapper.xml" />
-		<mapper resource="com/duna/mapper/cporder-mapper.xml" />  
-		
-		
-	</mappers> -->
-	
+
+
 	<mappers>
-	<mapper resource="com/ani/mapper/infoboard-mapper.xml" /> 
+		<mapper resource="com/ani/mapper/anim-mapper.xml" />
+		<mapper resource="com/ani/mapper/adoption-mapper.xml" />  
+		<mapper resource="com/ani/mapper/mypage-mapper.xml" /> 
+		<mapper resource="com/ani/mapper/member-mapper.xml" />	
+		<mapper resource="com/ani/mapper/donation-mapper.xml" />	
+		<mapper resource="com/ani/mapper/infoboard-mapper.xml" />
 	</mappers>
 </configuration>

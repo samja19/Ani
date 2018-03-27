@@ -53,5 +53,4 @@ public class Member {
 	private Boolean avtive;
 	private Boolean usertype;
 	 
-	 
 }
