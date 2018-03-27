@@ -132,12 +132,10 @@ $(function(){
 	</div> -->
 	<div class="input-field">
 				<input type="text" name="phone" id="phone" class="form-control input-sm" placeholder="연락처" required >
-				
-				 
 	</div>
+	
 	<div class="input-field">
 				<input type="text" name="address" id="address" class="form-control input-sm" placeholder="주소" required  >
-
 	</div>
 	<div class="row"> 
 		<div class="col-xs-6 col-sm-6 col-md-6">
@@ -164,6 +162,8 @@ $(function(){
 		 
 	</div><BR>
 	<input type="hidden" id="anino" name="anino"> 
+	<input type="hidden" id="memberno" name="memberno" value="0"> 
+	
 	
 	<div class="row">
 		<div class="col-xs-6 col-xs-offset-3 col-sm-6 col-sm-offset-3 col-md-6 col-md-offset-3 ">

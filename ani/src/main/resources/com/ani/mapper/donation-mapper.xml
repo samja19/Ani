@@ -16,6 +16,15 @@
 	)
 	</insert>
 	
+	
+	<select id="selectDonationListByAnino" parameterType="Int" resultType="Donation">
+	  SELECT * FROM DONATION WHERE ANINO = #{anino} 
+	</select>
+	
+	<select id="selectDonationListByMemberno" parameterType="Int" resultType="Donation">
+	  SELECT * FROM DONATION WHERE MEMBERNO = #{memberno} 
+	</select>
+	
 <!-- 
 	<select id="insertDonation" resultType="int">
 	SELECT count(anino) FROM ANI
