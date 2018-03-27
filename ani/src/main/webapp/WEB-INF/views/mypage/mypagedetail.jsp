@@ -16,8 +16,8 @@
 		<link rel="stylesheet" href="/duna/resources/styles/css/header.css">
 		<link rel="stylesheet" href="/duna/resources/styles/css/comment.css">
 		<link rel="stylesheet" href="/duna/resources/bootstrap/bootstrap-submenu.min.css">
-		<script src="/duna/resources/bootstrap/bootstrap-submenu.min.js" defer></script>
-			<script>
+		<script src="/ani/resources/bootstrap/bootstrap-submenu.min.js" defer></script>
+		<script>
 			$(document).ready(function(){
 				$('[data-submenu]').submenupicker();
 				
