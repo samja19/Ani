@@ -5,14 +5,14 @@
   
   <mapper namespace="com.ani.mapper.MyPageMapper">
 	
-	<insert id="insertMypage" parameterType="Mypage" useGeneratedKeys="true" 
+	<insert id="insertmypage" parameterType="MyPage" useGeneratedKeys="true" 
 		keyColumn="mypageNo" keyProperty="mypageNo">
-		INSERT INTO MYPAGE (MYPAGENO, MYPAGEDEL, MEMBERNO, MYPAGECONTENT) 
-		VALUES (MYPAGE_SEQUENCE.NEXTVAL, #{mypageDel}, #{memberNo}, #{mypageContent})
+		INSERT INTO MYPAGE (MYPAGENO, MEMBERNO, MYPAGEDEL, MYPAGECONTENT, MYPAGETITLE) 
+		VALUES (MYPAGE_SEQUENCE.NEXTVAL, 0, 1, #{mypageContent}, #{mypageTitle} )
 	</insert>
 	
 	<select id ="selectMyPageList" parameterType="hashmap" resultType="MyPage">
-		SELECT MYPAGENO, MEMBERNO, MYPAGECONTENT, MYPAGEDATE,MYPAGETITLE
+		SELECT MYPAGENO, MEMBERNO, MYPAGEDEL, MYPAGECONTENT, MYPAGEDATE,MYPAGETITLE
 		FROM MYPAGE
 		ORDER BY MYPAGENO DESC
 	</select>
@@ -29,9 +29,29 @@
 		WHERE MYPAGENO = #{mypageNo}
 	</update>
 	
-	<update id="deletemypage" parameterType="hashmap" >
+	<update id="deletemypage" parameterType="MyPage" >
 		UPDATE MYPAGE  
-		SET MYPAGEDEL = 1
+		SET MYPAGEDEL = 0
 		WHERE MYPAGENO = #{ mypageNo }
 	</update>
+	
+	<select id ="getMyProfile" parameterType="int" resultType="Member">
+		SELECT NICKNAME, USERTYPE, ID, NAME, BREEDS
+		FROM MEMBER
+		WHERE MEMBERNO = 0
+	</select>
+	
+	<select id ="getDonationAniList" parameterType="int" resultType="Ani">
+		SELECT DISTINCT A.ANINAME
+		FROM ANI A, DONATION D
+		WHERE A.ANINO = D.ANINO AND A.MEMBERNO = D.MEMBERNO
+	</select>
+	
+	<select id ="getInterestAniList" parameterType="int" resultType="Ani">
+		SELECT DISTINCT A.ANINAME
+		FROM ANI A, INTERESTANI ITN
+		WHERE A.ANINO = ITN.ANINO AND A.MEMBERNO = ITN.MEMBERNO
+	</select>
+	
+
 </mapper>

@@ -9,17 +9,41 @@
 	<insert id="insertAdoption" parameterType="Adoption" useGeneratedKeys="true" 
 		keyColumn="adoptionno" keyProperty="adoptionno">
 	INSERT INTO ADOPTION (
-		ADOPTIONNO, PHONE, ADDRESS,ADDRESSDETAIL, POSTCODE, REASON, ANINO
+		ADOPTIONNO, MEMBERNO, PHONE, ADDRESS,ADDRESSDETAIL, POSTCODE, REASON, ANINO
 	) 
 	VALUES (
-		ADOPTION_SEQUENCE.NEXTVAL, #{phone},#{address},#{addressDetail},#{postcode},#{reason},#{anino}
+		ADOPTION_SEQUENCE.NEXTVAL,#{memberno} ,#{phone},#{address},#{addressDetail},#{postcode},#{reason},#{anino}
 	)
 	</insert>
 	
 	<!-- 입양목록  -->
+	
+	
+	 
+	 <select id="selectAdoptioinListByAnino">
+	 SELECT * FROM ADOPTION WHERE ANINO = #{anino}
+	 </select>
+	
+	 <select id="selectAdoptioinListByMemberno">
+	 SELECT * FROM ADOPTION WHERE MEMBERNO = #{memberno}
+	 </select>
+	 
+	 <select id="selectAdoptionCountByAnino">
+	 SELECT count(*) FROM ADOPTION WHERE ANINO = #{anino}
+	 </select>
+	 
+	 <select id="selectAdoptionCountByMemberno">
+	 SELECT count(*) FROM ADOPTION WHERE MEMBERNO = #{memberno}
+	 </select>
+	 
+	 
+	
 	<select id="selectAniCount" resultType="int">
 	SELECT count(anino) FROM ANI
 	</select>
+	
+	
+	
 	
 	<select id="selectAniListByParam" resultType="Ani">
 	SELECT ANINO, ANINAME, ANIGENDER,ANIBREED, ANIBIRTH, ANI.SPECIESNO, SPECIESNAME,NEUTER, ROWNUM 
@@ -27,5 +51,5 @@
 	WHERE  ROWNUM>=#{start} AND ROWNUM<![CDATA[<]]>=#{end}
 	ORDER BY ANINO DESC
 	</select>
-	  
+	
 </mapper>

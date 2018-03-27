@@ -12,5 +12,13 @@ public interface AdoptionMapper {
 	int selectAniCount();
 
 	ArrayList<Ani> selectAniListByParam(HashMap<String, Object> map);
+
+	ArrayList<Adoption> selectAdoptioinListByAnino(int anino);
+
+	ArrayList<Adoption> selectAdoptioinListByMemberno(int memberno);
+
+	int selectAdoptionCountByAnino(int anino);
+
+	int selectAdoptionCountByMemberno(int memberno);
  
 }

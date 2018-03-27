@@ -37,32 +37,32 @@
 	                <div class="col-lg-10">
                          <div class="radio">
 	                        <label>
-	                            <form:radiobutton id="speciesNo" path="speciesNo" value="1" ${ani.speciesNo == '1' ? 'checked' : '' }/>
+	                            <form:radiobutton id="speciesNo" path="speciesNo" value="1" checked="${ani.speciesNo == '1' ? 'checked' : '' }" />
 	                          	  개
 	                        </label>
 	                        &nbsp;&nbsp;
 	                        <label>
-	                            <form:radiobutton id="speciesNo" path="speciesNo" value="2" ${ani.speciesNo == '2' ? 'checked' : '' }/>
+	                            <form:radiobutton id="speciesNo" path="speciesNo" value="2" checked="${ani.speciesNo == '2' ? 'checked' : '' }" />
 	                          	 고양이
 	                        </label>
 	                        &nbsp;&nbsp;
 	                        <label>
-	                            <form:radiobutton id="speciesNo" path="speciesNo" value="3" ${ani.speciesNo == '3' ? 'checked' : '' }/>
+	                            <form:radiobutton id="speciesNo" path="speciesNo" value="3" checked="${ani.speciesNo == '3' ? 'checked' : '' }" />
 	                          	 설치류
 	                        </label>
 	                        &nbsp;&nbsp;
 	                        <label>
-	                            <form:radiobutton id="speciesNo" path="speciesNo" value="4" ${ani.speciesNo == '4' ? 'checked' : '' }/>
+	                            <form:radiobutton id="speciesNo" path="speciesNo" value="4" checked="${ani.speciesNo == '4' ? 'checked' : '' }" />
 	                          	 조류
 	                        </label>
 	                        &nbsp;&nbsp;
 	                        <label>
-	                            <form:radiobutton id="speciesNo" path="speciesNo" value="5" ${ani.speciesNo == '5' ? 'checked' : '' }/>
+	                            <form:radiobutton id="speciesNo" path="speciesNo" value="5" checked="${ani.speciesNo == '5' ? 'checked' : '' }" />
 	                          	 파충류
 	                        </label>
 	                        &nbsp;&nbsp;
 	                        <label>
-	                            <form:radiobutton id="speciesNo" path="speciesNo" value="0" ${ani.speciesNo == '0' ? 'checked' : '' }/>
+	                            <form:radiobutton id="speciesNo" path="speciesNo" value="0" checked="${ani.speciesNo == '0' ? 'checked' : '' }" />
 	                          	 기타
 	                        </label>
 	                    </div> 
@@ -98,17 +98,17 @@
 	                <div class="col-lg-10">
                          <div class="radio">
 	                        <label>
-	                            <form:radiobutton id="aniGender" path="aniGender" value="F" ${ani.aniGender == 'F' ? 'checked' : '' }/>
+	                            <form:radiobutton id="aniGender" path="aniGender" value="F" checked="${ani.aniGender == 'F' ? 'checked' : '' }" />
 	                          	  암컷
 	                        </label>
 	                        &nbsp;&nbsp;
 	                        <label>
-	                            <form:radiobutton id="aniGender" path="aniGender" value="M" ${ani.aniGender == 'M' ? 'checked' : '' }/>
+	                            <form:radiobutton id="aniGender" path="aniGender" value="M" checked="${ani.aniGender == 'M' ? 'checked' : '' }" />
 	                          	 수컷
 	                        </label>
 	                        &nbsp;&nbsp;
 	                        <label>
-	                            <form:radiobutton id="aniGender" path="aniGender" value="-" ${ani.aniGender == '-' ? 'checked' : '' }/>
+	                            <form:radiobutton id="aniGender" path="aniGender" value="-" checked="${ani.aniGender == '-' ? 'checked' : '' }" />
 	                          	 기타
 	                        </label>
 	                    </div> 
@@ -120,17 +120,17 @@
 	                <div class="col-lg-10">
                          <div class="radio">
 	                        <label>
-	                            <form:radiobutton id="neuter" path="neuter" value="O" ${ani.neuter == 'O' ? 'checked' : '' }/>
+	                            <form:radiobutton id="neuter" path="neuter" value="O" checked="${ani.neuter == 'O' ? 'checked' : '' }" />
 	                          	  O
 	                        </label>
 	                        &nbsp;&nbsp;&nbsp;
 	                        <label>
-	                            <form:radiobutton id="neuter" path="neuter" value="X" ${ani.neuter == 'X' ? 'checked' : '' }/>
+	                            <form:radiobutton id="neuter" path="neuter" value="X" checked="${ani.neuter == 'X' ? 'checked' : '' }" />
 	                          	 X
 	                        </label>
 	                        &nbsp;&nbsp;&nbsp;
 	                        <label>
-	                            <form:radiobutton id="neuter" path="neuter" value="-"  ${ani.neuter == '-' ? 'checked' : '' }/>
+	                            <form:radiobutton id="neuter" path="neuter" value="-"  checked="${ani.neuter == '-' ? 'checked' : '' }" />
 	                          	 기타
 	                        </label>
 	                    </div> 
@@ -140,7 +140,9 @@
 	  			<div class="form-group">
 	    			<label for="File" class="col-lg-2 control-label">동물 사진</label>
 	    			<div class="col-lg-10">
-	    				<input type="file" id="File" name="aniAttach">
+	    				<table id="fileview">
+	    					<tr><td><input id="addFile" type="button" value="파일 추가" /></td><td></td><td></td></tr>
+					    </table>
 	    			</div>
 	  			</div>
 	            
@@ -155,8 +157,8 @@
 	            <div class="form-group" id="divAniInfo">
 	                <label for="aniInfo" class="col-lg-2 control-label">상세정보</label>
 	                <div class="col-lg-10" id="aniInfoDiv">
-	                    <form:textarea class="form-control" id="aniInfo" path="aniInfo"
-	                    maxlength ="1000" rows="20" style="resize:none">${ani.aniInfo}</form:textarea> 
+	                    <textarea class="form-control" id="aniInfo" path="aniInfo"
+	                    maxlength ="1000" rows="20" style="resize:none">${ani.aniInfo}</textarea> 
 	                </div>
 	            </div>	            
 				
@@ -193,6 +195,24 @@
         <script>
          
         	$(document).ready(function(){
+        		
+        	    //add more file components if Add is clicked
+        	    $('#addFile').click(function() {
+        	        var trno = $('#fileview tr').children().length;   
+        	        $('#fileview').append(
+        	                '<tr id="trIndex'+trno+'">'+
+        	                '   <td><input type="file" id="File" name="aniAttach"></td>'+
+        	                '   <td><a id="delFile'+trno+'" data-trno="'+trno+'">취소</a></td>'+
+        	                '</tr>'
+        	        );
+        	    });  
+        	    
+        	    //delete file
+        	    $('table#fileview').on('click', 'a[id^=delFile]', function(event) {
+        	    	var trno = $(this).attr('data-trno');
+        	    	$("#fileview tr[id=trIndex" + trno + "]").remove();
+        	    });   
+        		
                 //모달을 전역변수로 선언
                 var modalContents = $(".modal-contents");
                 var modal = $("#defaultModal");

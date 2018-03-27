@@ -17,7 +17,7 @@
 		<link rel="stylesheet" href="/duna/resources/bootstrap/bootstrap-submenu.min.css">
 		<script src="/duna/resources/bootstrap/bootstrap-submenu.min.js" defer></script>
 		<script src="/duna/resources/bootstrap/jquery.twbsPagination.js"></script>
-		<script>
+<!-- 		<script>
 		$(document).ready(function(){
 			$('[data-submenu]').submenupicker();
 			
@@ -39,29 +39,113 @@
 	    		}
 			}); */
 		});
-        </script>
+        </script> -->
 	</head>
     <body topmargin="0">
     
     	<!-- header -->
     	<jsp:include page="../include/header.jsp" />
+
+   	<div class="container">
+        <h3 class="site-title">My Profile</h3>
+        <div class="row">
+            <div class="col-md-9">
+                <div class="row">
+                 <div class="panel">
+                <div class=" panel-body ">
+                   
+                   	<div class="col-md-5">
+                   	    <img class="img-responsive" src="http://www.pvhc.net/img240/uyttxprhsqycyximpzjb.png" style="width:30%;">
+		    <div class=" clearfix">
+		        <h3></h3>
+		        <h5></h5>
+		        <h5></h5>
+		        <div class="profile-ratings">
+		            <i class="fa fa-star"></i>
+		            <i class="fa fa-star"></i>
+		            <i class="fa fa-star"></i>
+		            <i class="fa fa-star"></i>
+		            <i class="fa fa-star"></i>
+		        </div>
+		        
+		       <hr>
+		       
+		        
+		       
+		    </div>
+		</div>
+		            <div class="col-md-7">
+		                 <div class="profile-block">
+                <ul class="list-group">
+    <li class="list-group-item"><b>ID : </b> ${ member.id }</li>
+    <li class="list-group-item"><b>NAME :  </b>  ${ member.name }</li>
+    <li class="list-group-item"><b>NickName :  </b>  ${ member.nickname }</li>
+    <li class="list-group-item"><b>Interest Animal : </b>
+   					<c:choose>
+						<c:when test="${not empty  interestAni}">
+						<c:forEach var="interestAni" items="${ interestAni }">
+							${ interestAni.aniName }
+						</c:forEach>
+						</c:when>
+						<c:otherwise>
+							흥미동물 내역이 없습니다.
+						</c:otherwise>
+					</c:choose>
+    
+    
+    </li>
+
+    <li class="list-group-item"><b>Donation Animal : </b>
+
+					<c:choose>
+						<c:when test="${not empty  donateAni}">
+						<c:forEach var="donateAni" items="${ donateAni }">
+							${ donateAni.aniName }
+						</c:forEach>
+						</c:when>
+						<c:otherwise>
+							동물기부 내역이 없습니다.
+						</c:otherwise>
+					</c:choose>
+	</li>
+
+
+
+  </ul>
+            </div>
+		            </div>
+						
+					
+                </div>
+                </div>
+                </div>
+                
+               </div>
+               
+               
+            </div>
+           
+        </div>
     			
-    	<br><br><br><br>
+    	
+ 
+ 
+    	
+
     	
     	<!-- 본문 들어가는 부분 -->
         <div class="container"><!-- 좌우측의 공간 확보 -->
 			<h3>나만의 일기장</h3>
-		    <hr>
-		   	<br>
+
 		    
 			<table class="table table-striped">
 				<thead>
 					<tr>
 						<th class="col-xs-1" style='text-align: center'></th>
 						<th class="col-xs-5" style='text-align: center'>제목</th>
-						<th class="col-xs-2" style='text-align: center'>작성자</th>
+						
 						<th class="col-xs-2" style='text-align: center'>날짜</th>
-						<th class="col-xs-1" style='text-align: center'>조회수</th>
+						
 					</tr>
 				</thead>
 				<tbody>
@@ -72,7 +156,7 @@
 							<td style='text-align: center'>${ mypage.mypageNo }</td>
 							<td style='text-align: left'>
 		 						<c:choose>
-									<c:when test="${ mypage.mypageDel eq 1 }">
+									<c:when test="${ mypage.mypageDel eq 0 }">
 										<span style="color:lightgray">[ 삭제된 글입니다. ]</span>
 									</c:when>
 									<c:otherwise>
@@ -96,7 +180,7 @@
 			</table>
  			
  			<hr/>
- 			<div class="text-right"><a href="#" class="btn btn-default" id="write">글쓰기</a></div>
+ 			<div class="text-right"><a href="/ani/mypage/mypagewrite.action" class="btn btn-default" id="write">글쓰기</a></div>
  			
  			<!-- 페이징 -->	
 			 <div class="text-center">

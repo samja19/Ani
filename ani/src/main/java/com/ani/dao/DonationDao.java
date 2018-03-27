@@ -1,5 +1,7 @@
 package com.ani.dao;
 
+import java.util.ArrayList;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
@@ -17,9 +19,31 @@ public class DonationDao {
 		mapper.insertDonation(d);
 		
 	}
-	
+
+	public ArrayList<Donation> selectDonationListByAnino(int anino) {
+		return mapper.selectDonationListByAnino(anino);
+	}
+
+	public ArrayList<Donation> selectDonationListByMemberno(int memberno) {
+		return mapper.selectDonationListByMemberno(memberno);
+	}
+
+	public int selectDonationCountByAnino(int anino) {
+		return mapper.selectDonationCountByAnino(anino);
+	}
+
+	public int selectDonationCountByMemberno(int memberno) {
+		return mapper.selectDonationCountByMemberno(memberno);
+	}
+
+	public int selectDonationAmountByAnino(int anino) {
+		return mapper.selectDonationAmountByAnino(anino);
+	}
+
+	public int selectDonationAmountByMemberno(int memberno) {
+		return mapper.selectDonationAmountByMemberno(memberno);
+	}
 	 
- 
  
 	
 }

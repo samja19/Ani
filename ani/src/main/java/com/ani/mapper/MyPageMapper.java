@@ -3,6 +3,9 @@ package com.ani.mapper;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import com.ani.dto.Donation;
+import com.ani.dto.InterestAni;
+import com.ani.dto.Member;
 import com.ani.dto.MyPage;
 
 public interface MyPageMapper {
@@ -16,6 +19,12 @@ public interface MyPageMapper {
 	void updatemypage(MyPage mypage);
 
 	void deletemypage(Integer mypageNo);
+
+	Member getMyProfile();
+
+	ArrayList<Donation> getDonationAniList();
+
+	ArrayList<InterestAni> getInterestAniList();
 
 	
 	

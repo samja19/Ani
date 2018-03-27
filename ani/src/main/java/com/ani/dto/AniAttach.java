@@ -7,6 +7,7 @@ public class AniAttach {
 	private int aniNo;
 	private String aniSaveName;
 	private String aniUserName;
+	private long aniFileSize;
 	
 	public int getAniAttachNo() {
 		return aniAttachNo;
@@ -32,9 +33,11 @@ public class AniAttach {
 	public void setAniUserName(String aniUserName) {
 		this.aniUserName = aniUserName;
 	}
-	
-
-	
-	
+	public long getAniFileSize() {
+		return aniFileSize;
+	}
+	public void setAniFileSize(long aniFileSize) {
+		this.aniFileSize = aniFileSize;
+	}
 	
 }
