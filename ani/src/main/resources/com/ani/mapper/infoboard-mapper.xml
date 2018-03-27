@@ -7,14 +7,14 @@
  
  	<insert id="insertInfoBoard" parameterType="InfoBoard"
  		useGeneratedKeys="true" keyColumn="ib_num" keyProperty="ib_num">
- 		INSERT INFOBOARD (IB_NUM, IB_TITLE, IB_CONTNET, ID, IN_CAT_NUM)
- 		VALUES (INFOBOARD_SEQUENCE.NEXTVAL, #{ib_title}, #{ib_content}, #{id},
+ 		INSERT INTO INFOBOARD (IB_NUM, IB_TITLE, IB_CONTENT,  IN_CAT_NUM)
+ 		VALUES (INFOBOARD_SEQUENCE.NEXTVAL, #{ib_title}, #{ib_content}, 
  		#{in_cat_num})
  		</insert>
  
  	<select id="selectInfoBoardList" parameterType="hashmap" resultType="InfoBoard">
- 		SELECT IB_NUM, ID, IB_TITLE, ib.IN_CAT_NUM, CAT_IN, IB_DATE
- 		FROM INFOBOARD ib INNER JOIN IN_CATEGORY ic ON ib.IN_CAT_NUM = ic.IN_CAT_NUM
+ 		SELECT IB_NUM, IB_TITLE, ib.IN_CAT_NUM, CAT_IN, IB_DATE
+ 		FROM INFOBOARD ib INNER JOIN INFOCATEGORY ic ON ib.IN_CAT_NUM = ic.IN_CAT_NUM
  		ORDER BY IB_NUM DESC
  	</select>
  	
@@ -28,8 +28,8 @@
  	</insert>
  
  	<select id="selectBoardByBoardNo" parameterType="int" resultType="InfoBoard">
- 		SELECT IB_NUM as ib_num, IB_TITLE as ib_title, ID as id,
- 		IB_DATE as ib_date, IB_HITS as ib_hits, IB_CONTENT as ib_content
+ 		SELECT IB_NUM as ib_num, IB_TITLE as ib_title, IB_CONTENT as ib_content 
+ 		IB_DATE as ib_date, IB_HITS as ib_hits
  		FROM INFOBOARD
  		WHERE IB_NUM=#{ib_num}
  	
