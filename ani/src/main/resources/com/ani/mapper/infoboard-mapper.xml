@@ -13,7 +13,7 @@
  		</insert>
  
  	<select id="selectInfoBoardList" parameterType="hashmap" resultType="InfoBoard">
- 		SELECT IB_NUM, IB_TITLE, ib.IN_CAT_NUM, CAT_IN, IB_DATE
+ 		SELECT IB_NUM, IB_TITLE, ib.IN_CAT_NUM, IB_DATE
  		FROM INFOBOARD ib INNER JOIN INFOCATEGORY ic ON ib.IN_CAT_NUM = ic.IN_CAT_NUM
  		ORDER BY IB_NUM DESC
  	</select>

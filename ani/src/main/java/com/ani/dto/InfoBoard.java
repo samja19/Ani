@@ -19,8 +19,8 @@ public class InfoBoard {
 	private int ib_hits;
 	private String ib_delete;
 	private int memberno;
-	
 	private int in_cat_num;
+ 
 	private List<IBFileAttach> attachments;
 
 	
