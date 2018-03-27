@@ -7,7 +7,7 @@
  
  	<insert id="insertInfoBoard" parameterType="InfoBoard"
  		useGeneratedKeys="true" keyColumn="ib_num" keyProperty="ib_num">
- 		INSERT INFOBOARD (IB_NUM, IB_TITLE, IB_CONTNET, ID, INFO_CAT_NUM)
+ 		INSERT INFOBOARD (IB_NUM, IB_TITLE, IB_CONTNET, ID, IN_CAT_NUM)
  		VALUES (INFOBOARD_SEQUENCE.NEXTVAL, #{ib_title}, #{ib_content}, #{id},
  		#{in_cat_num})
  		</insert>
