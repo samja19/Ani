@@ -42,9 +42,9 @@
 	</select>
 	
 	<select id ="getDonationAniList" parameterType="int" resultType="Ani">
-		SELECT DISTINCT A.ANINAME
-		FROM ANI A, DONATION D
-		WHERE A.ANINO = D.ANINO AND A.MEMBERNO = D.MEMBERNO
+		SELECT ANT.ANISAVENAME, A.ANINO, A.ANINAME, A.ANIBIRTH, A.SITE, A.ANIINFO, A.ANIBREED, A.ANIGENDER, D.DOAMOUNT
+		FROM ANI A, DONATION D, ANIATTACH ANT, 
+		WHERE A.ANINO = D.ANINO AND A.ANINO = ANT.ANINO AND D.ANINO = ANT.ANINO AND MEMBERNO = 0
 	</select>
 	
 	<select id ="getInterestAniList" parameterType="int" resultType="Ani">
@@ -53,5 +53,6 @@
 		WHERE A.ANINO = ITN.ANINO AND A.MEMBERNO = ITN.MEMBERNO
 	</select>
 	
+
 
 </mapper>

@@ -55,13 +55,9 @@ public class MyPageService {
 		return donateAni;
 	}
 
-	public ArrayList<InterestAni> getInterestAniList() {
-		ArrayList<InterestAni> interestAni = dao.getInterestAniList();
+	public ArrayList<InterestAni> getInterestAniList(Member member) {
+		ArrayList<InterestAni> interestAni = dao.getInterestAniList(member);
 		return interestAni;
 	}
 
-	
-	
-	
-	
 }

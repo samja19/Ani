@@ -41,18 +41,13 @@ public class MyPageController {
 		ArrayList<MyPage> mypagelist = service.getMypageList(first, last);
 		int countMypage = service.getPageCount();
 		Member member = service.getMyProfile();
-		ArrayList<Donation> donateAni = service.getDonateAniList();
-		ArrayList<InterestAni> interestAni = service.getInterestAniList();
-		
 		
 		
 		model.addAttribute("mypagelist", mypagelist);	
 		//model.addAttribute("paging", paging);
 		model.addAttribute("pageNo", pageNo);
 		model.addAttribute("member", member);
-		model.addAttribute("donateAni",donateAni);
-		model.addAttribute("interestAni", interestAni);
-		
+
 		
 		return "mypage/mypagelist";
 		
@@ -113,5 +108,31 @@ public class MyPageController {
 		return "redirect:mypagelist.action";
 	}
 	
+	@RequestMapping(value="myinterestlist.action", method = RequestMethod.GET)
+	public String myinterestlist(HttpSession session, Member member, Model model) {
+		//Member m = (Member) session.getAttribute("loginuser");
+		
+		//member.setId(m.getId());
+		
+		ArrayList<InterestAni> ani = service.getInterestAniList(member);
+		
+		model.addAttribute("ani",ani);
+		
+		return "mypage/myinterestlist";
+	}
+	
+	@RequestMapping(value="mydonationlist.action", method = RequestMethod.GET)
+	public String mydonationlist(HttpSession session, Member member, Model model) {
+		
+		//Member m = (Member) session.getAttribute("loginuser");
+		
+		//member.setId(m.getId());
+		
+		ArrayList<Donation> ani = service.getDonateAniList();
+		
+		model.addAttribute("ani",ani);
+		
+		return "mypage/myinterestlist";
+	}
 	
 }

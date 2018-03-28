@@ -90,8 +90,8 @@ public class MyPageDao {
 		return donateAni;
 	}
 
-	public ArrayList<InterestAni> getInterestAniList() {
-		ArrayList<InterestAni> interestAni = mypageMapper.getInterestAniList();
+	public ArrayList<InterestAni> getInterestAniList(Member member) {
+		ArrayList<InterestAni> interestAni = mypageMapper.getInterestAniList(member);
 		return interestAni;
 	}
 

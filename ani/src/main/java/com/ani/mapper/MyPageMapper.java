@@ -24,7 +24,7 @@ public interface MyPageMapper {
 
 	ArrayList<Donation> getDonationAniList();
 
-	ArrayList<InterestAni> getInterestAniList();
+	ArrayList<InterestAni> getInterestAniList(Member member);
 
 	
 	
