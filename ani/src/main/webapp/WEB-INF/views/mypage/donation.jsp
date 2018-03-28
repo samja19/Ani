@@ -1,9 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+    pageEncoding="utf-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%> 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Insert title here</title>
 <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
@@ -137,36 +138,38 @@ h3 {
 </style>
 </head>
 <body>
-	
+
+
+               
+<jsp:include page="../include/header.jsp" />
 <div class="container">
+	<c:forEach items="${ ani }" var="ani" varStatus="i">
+	<c:set var="i" value="${i.index }"/>
     <div class="row padding-top-1">
         <div class="col-sm-12 col-md-6 col-lg-12 main-card no-paddings display-flex">
-            <div class="col-sm-12 col-md-2 col-lg-2 background-green status en-proceso">
+            <div class="col-sm-12 col-md-2 col-lg-2  status en-proceso">
                 <div class="row status-text">
-                    
+                    <img src="/ani/resources/animg/${ ani.attachments[0].aniSaveName }" height="122">
                 </div>
-                <div class="status-id">
-                    <p><strong>${ ani.aniName }</strong></p>
-                    <h2>${ ani.doamount }</h2>
-                </div>
+                
             </div>
             <div class="col-sm-12 col-md-9 white-card box-shadow display-flex">
                 <div class="col-sm-12 col-md-3 padding-top-2 padding-bottom-2 display-inline-grid">
+                    
+                    <div><p class="text-bold margin-bottom-0">이름</p>
+                    <p class="margin-bottom-0">${ ani.aniName }</p></div>
+                    
+                    <div><p class="text-bold margin-bottom-0">기부 금액</p>
+                    <p class="margin-bottom-0">${ don[i].doamount } 원</p></div>
+                </div>
+                
+                <div class="col-sm-12 col-md-3 padding-top-2 padding-bottom-2 display-inline-grid" style="background: #fafafa;">
                     
                     <div><p class="text-bold margin-bottom-0">기부동물 생년월일</p>
                     <p class="margin-bottom-0">${ ani.aniBirth }</p></div>
                     
                     <div><p class="text-bold margin-bottom-0">기부동물 성별</p>
                     <p class="margin-bottom-0">${ ani.aniGender }</p></div>
-                </div>
-                
-                <div class="col-sm-12 col-md-3 padding-top-2 padding-bottom-2 display-inline-grid" style="background: #fafafa;">
-                    
-                    <div><p class="text-bold margin-bottom-0">기부동물 종</p>
-                    <p class="margin-bottom-0">${ ani.speciesName }</p></div>
-                    
-                    <div><p class="text-bold margin-bottom-0">기부동물 품종</p>
-                    <p class="margin-bottom-0">${ ani.aniBreed }</p></div>
                     
                 </div>
                 <div class="col-sm-12 col-md-3 padding-top-2 padding-bottom-2 display-inline-grid" style="background: #fafafa;">
@@ -179,22 +182,23 @@ h3 {
                 <div class="col-sm-12 col-md-3 padding-top-2 padding-bottom-2 display-inline-grid">
                     <div class="col-md-12 no-paddings">
                         <div class="col-md-6 no-paddings">
-                        <p class="text-bold margin-bottom-0">좋아요 횟수</p>
-                        <p class="margin-bottom-0">${ ani.aniHit }</p>
+                        <p class="text-bold margin-bottom-0">중성화 여부</p>
+                        <p class="margin-bottom-0">${ ani.neuter}</p>
                     </div>
                         <div class="col-md-6 no-paddings">
-                        <p class="text-bold margin-bottom-0">관심 횟수</p>
-                        <p class="margin-bottom-0">${ ani.attention }</p>
+                        <p class="text-bold margin-bottom-0"></p>
+                        <p class="margin-bottom-0"></p>
                     </div>
                     </div>
-                    <div><p class="text-bold margin-bottom-0">중성화 여부</p>
-                    <p class="margin-bottom-0">${ ani.neuter }</p></div>
+                    <div><p class="text-bold margin-bottom-0"></p>
+                    <p class="margin-bottom-0"></p></div>
                     
                 </div>
             </div>
         </div>
        
     </div>
+    </c:forEach>
 </div>
 </body>
 </html>

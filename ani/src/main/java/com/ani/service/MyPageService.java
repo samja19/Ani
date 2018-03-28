@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import com.ani.dao.MyPageDao;
+import com.ani.dto.Ani;
 import com.ani.dto.Donation;
 import com.ani.dto.InterestAni;
 import com.ani.dto.Member;
@@ -50,14 +51,16 @@ public class MyPageService {
 		return member;
 	}
 
-	public ArrayList<Donation> getDonateAniList() {
-		ArrayList<Donation> donateAni = dao.getDonateAniList();
-		return donateAni;
+
+	public ArrayList<Ani> selectAniByMemberno() {
+		ArrayList<Ani> ani = dao.selectAniByMemberno();
+		return ani;
 	}
 
-	public ArrayList<InterestAni> getInterestAniList(Member member) {
-		ArrayList<InterestAni> interestAni = dao.getInterestAniList(member);
-		return interestAni;
+
+	public ArrayList<Donation> selectDonationListByMemberno() {
+		ArrayList<Donation> don = dao.selectDonationListByMemberno();
+		return don;
 	}
 
 }

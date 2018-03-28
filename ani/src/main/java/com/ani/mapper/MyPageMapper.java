@@ -3,6 +3,7 @@ package com.ani.mapper;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import com.ani.dto.Ani;
 import com.ani.dto.Donation;
 import com.ani.dto.InterestAni;
 import com.ani.dto.Member;
@@ -24,7 +25,11 @@ public interface MyPageMapper {
 
 	ArrayList<Donation> getDonationAniList();
 
-	ArrayList<InterestAni> getInterestAniList(Member member);
+	ArrayList<Ani> selectAniByMemberno();
+
+	ArrayList<Ani> selectSpeciesByMemberno();
+
+	ArrayList<Donation> selectDonationListByMemberno();
 
 	
 	

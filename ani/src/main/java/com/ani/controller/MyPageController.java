@@ -12,10 +12,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.ani.dto.Ani;
 import com.ani.dto.Donation;
 import com.ani.dto.InterestAni;
 import com.ani.dto.Member;
 import com.ani.dto.MyPage;
+import com.ani.service.AniMService;
+import com.ani.service.DonationService;
 import com.ani.service.MyPageService;
 
 @Controller
@@ -25,6 +28,8 @@ public class MyPageController {
 	@Autowired
 	@Qualifier("mypageService")
 	private MyPageService service;
+	
+	
 	
 	@RequestMapping(value= "mypagelist.action", method = RequestMethod.GET)
 	public String mypagelist(@RequestParam(value="pageNo", required=false)Integer pageNo, Model model) {
@@ -108,31 +113,27 @@ public class MyPageController {
 		return "redirect:mypagelist.action";
 	}
 	
-	@RequestMapping(value="myinterestlist.action", method = RequestMethod.GET)
-	public String myinterestlist(HttpSession session, Member member, Model model) {
-		//Member m = (Member) session.getAttribute("loginuser");
-		
-		//member.setId(m.getId());
-		
-		ArrayList<InterestAni> ani = service.getInterestAniList(member);
-		
-		model.addAttribute("ani",ani);
-		
-		return "mypage/myinterestlist";
-	}
-	
 	@RequestMapping(value="mydonationlist.action", method = RequestMethod.GET)
 	public String mydonationlist(HttpSession session, Member member, Model model) {
-		
 		//Member m = (Member) session.getAttribute("loginuser");
 		
 		//member.setId(m.getId());
 		
-		ArrayList<Donation> ani = service.getDonateAniList();
 		
+		ArrayList<Donation> don = service.selectDonationListByMemberno();
+		ArrayList<Ani> ani = service.selectAniByMemberno();
+		
+		model.addAttribute("don",don);
 		model.addAttribute("ani",ani);
-		
-		return "mypage/myinterestlist";
+			
+		return "mypage/donation";
 	}
+	
+//	@RequestMapping(value="mydonationlist.action", method = RequestMethod.GET)
+//	public String mydonationlist(HttpSession session, Member member, Model model) {
+//		
+//		return "mypage/donation";
+//		
+//	}
 	
 }

@@ -41,17 +41,19 @@
 		WHERE MEMBERNO = 0
 	</select>
 	
-	<select id ="getDonationAniList" parameterType="int" resultType="Ani">
-		SELECT ANT.ANISAVENAME, A.ANINO, A.ANINAME, A.ANIBIRTH, A.SITE, A.ANIINFO, A.ANIBREED, A.ANIGENDER, D.DOAMOUNT
-		FROM ANI A, DONATION D, ANIATTACH ANT, 
-		WHERE A.ANINO = D.ANINO AND A.ANINO = ANT.ANINO AND D.ANINO = ANT.ANINO AND MEMBERNO = 0
+	<select id ="selectAniByMemberno" parameterType="int" resultType="Ani">
+		SELECT A.*
+		FROM ANI A, DONATION DO
+		WHERE DO.ANINO = A.ANINO AND A.MEMBERNO = DO.MEMBERNO AND DO.MEMBERNO = 0
 	</select>
 	
-	<select id ="getInterestAniList" parameterType="int" resultType="Ani">
-		SELECT DISTINCT A.ANINAME
-		FROM ANI A, INTERESTANI ITN
-		WHERE A.ANINO = ITN.ANINO AND A.MEMBERNO = ITN.MEMBERNO
+	<select id = "selectDonationListByMemberno" parameterType="int" resultType="Donation">
+		SELECT *
+		FROM DONATION
+		WHERE MEMBERNO = 0
 	</select>
+	
+	
 	
 
 
