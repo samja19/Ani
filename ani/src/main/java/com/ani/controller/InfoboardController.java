@@ -70,7 +70,7 @@ public class InfoboardController {
 	
 	public String infoboardwrite (InfoBoard board, HttpSession session) {
 		Member user = (Member) session.getAttribute("loginuser");
-		board.setId(user.getId());
+		
 		service.ibwrite(board);
 		return "redirect:infoboardlist.action";
 	}
@@ -78,7 +78,7 @@ public class InfoboardController {
 	public String infoboardwrite2(MultipartHttpServletRequest req, InfoBoard board) {
 		
 		Member user = (Member) req.getSession().getAttribute("loginuser");
-		board.setId(user.getId());
+		
 		
 		IBFileAttach attach = null;
 		MultipartFile file = req.getFile("attach");

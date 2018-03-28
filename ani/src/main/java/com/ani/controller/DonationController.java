@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -37,20 +38,64 @@ public class DonationController {
 	}
 	
 	
-	
-	
-	@RequestMapping(value="list.action", method=RequestMethod.GET)
-	public String aniList(Model model) {
-		int count = service.getDonationCount();
-		model.addAttribute("dcount",count);
-		return "adoption/donation_list";
+	@RequestMapping(value="selectdobyanino.action", method=RequestMethod.GET)
+	public String selectTest1(
+			@RequestParam(value="anino", required=false, defaultValue="7")int anino) {
+		ArrayList<Donation> dlist = service.selectDonationListByAni(anino);
+		for(Donation d : dlist) {
+			System.out.println("ano="+d.getAnino()+", mno="+d.getMemberno()+":"+d.getDoamount());
+		}
+		return "redirect:/";
 	}
 	
-	@RequestMapping(value="list.action", method=RequestMethod.POST)
-	@ResponseBody
-	public ArrayList<Ani> adoptionList(int pagecount, int page) {
-		ArrayList<Ani> list = null;
+	@RequestMapping(value="selectdobymemberno.action", method=RequestMethod.GET)
+	public String selectTest2(
+			@RequestParam(value="memberno", required=false, defaultValue="0")int memberno) {
+		ArrayList<Donation> dlist = service.selectDonationListByMemberno(memberno);
 		
-		return list;
-	} 
+		for(Donation d : dlist) {
+			System.out.println("ano="+d.getAnino()+", mno="+d.getMemberno()+":"+d.getDoamount());
+		}
+		return "redirect:/";
+	}
+	
+	
+	@RequestMapping(value="getdcountbyanino")
+	public String getAdoptionTest3(
+			@RequestParam(value="anino",required=false,defaultValue="12")int anino
+			){
+		
+		int count = service.getDonationCountByAnino(anino);
+		System.out.println(count);
+		return "redirect:/";
+	}
+	
+	@RequestMapping(value="getdcountbymemberno")
+	public String getAdoptionTest4(
+			@RequestParam(value="memberno",required=false,defaultValue="0")int memberno
+			){
+		int count = service.getDonationCountByMemberno(memberno);
+		System.out.println(count);
+		return "redirect:/";
+	}
+	
+	@RequestMapping(value="getdamountbyanino")
+	public String getAdoptionTest5(
+			@RequestParam(value="anino",required=false,defaultValue="7")int anino
+			){
+		int amount = service.getDonationAmountByAnino(anino);
+		System.out.println(amount);
+		return "redirect:/";
+	}
+	
+	@RequestMapping(value="getdamountbymemberno")
+	public String getAdoptionTest6(
+			@RequestParam(value="memberno",required=false,defaultValue="0")int memberno
+			){
+		int amount = service.getDonationAmountByMemberno(memberno);
+		System.out.println(amount);
+		return "redirect:/";
+	}
+	 
+	
 }

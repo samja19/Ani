@@ -61,7 +61,7 @@
 						<c:forEach var="infoboard" items="${ infoboardlist }">
 						<tr>
 							<td style='text-align: center'>${ infoboard.ib_num }</td>
-							<td style='text-align: center'>${ infoboard.cat_in }</td>
+							<!-- <td style='text-align: center'>${ infoboard.cat_in }</td> -->
 							<td style='text-align: left'>
 	<%-- 							<c:choose>
 									<c:when test="${ board.deleted }">

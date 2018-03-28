@@ -31,6 +31,22 @@ public class AdoptionDao {
 		map.put("end",end);
 		return mapper.selectAniListByParam(map);
 	}
+
+	public ArrayList<Adoption> selectAdoptionListByAnino(int anino) {
+		return mapper.selectAdoptioinListByAnino(anino);
+	}
+
+	public ArrayList<Adoption> selectAdoptionListByMemberno(int memberno) {
+		return mapper.selectAdoptioinListByMemberno(memberno);
+	}
+
+	public int selectAdoptionCountByAnino(int anino) {
+		return mapper.selectAdoptionCountByAnino(anino);
+	}
+
+	public int selectAdoptionCountByMemberno(int memberno) {
+		return mapper.selectAdoptionCountByMemberno(memberno);
+	}
  
  
 	

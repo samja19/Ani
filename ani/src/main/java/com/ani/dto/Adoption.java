@@ -9,6 +9,7 @@ import lombok.Setter;
 public class Adoption {
 	int adoptionno;
 	int anino;
+	int memberno;
 	String phone;
 	String address;
 	String addressDetail;
