@@ -12,14 +12,6 @@ $(function(){
 		function loginProcess(data, status, xhr){
 			if(data=='fail')
 				alert("로그인 실패");
-			else if(data=='survey'){
-				var yes = confirm("설문조사를 하시겠습니까?");
-				if(yes)
-					location.href="/duna/account/survey.action";
-				else
-					location.reload();
-					
-			}
 			else if(data=='success'){
 				location.reload();
 			}
@@ -31,7 +23,7 @@ $(function(){
 		
 		loginstat=true;
 		$.ajax({
-			url : '/duna/account/login.action',
+			url : '/ani/account/login.action',
 			data : { loginid : loginid, loginpassword : loginpassword },
 			method : "POST", 
 			success : loginProcess,

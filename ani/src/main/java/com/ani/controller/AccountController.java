@@ -110,7 +110,7 @@ public class AccountController {
 			session.removeAttribute("loginuser");
 		}
 		
-		return "redirect:/home.action";
+		return "home";
 		
 	}
 	

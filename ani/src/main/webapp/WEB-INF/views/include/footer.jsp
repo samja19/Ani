@@ -4,7 +4,7 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
 	<footer>
-		<div class="navbar navbar-default navbar-fixed-bottom">
+		<div class="navbar navbar-default">
 			<div>
 				<p class="text-center">
 					<br>
