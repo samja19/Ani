@@ -17,6 +17,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.ani.dto.Adoption;
 import com.ani.dto.Ani;
+import com.ani.dto.Member;
 import com.ani.service.AdoptionService;
 import com.ani.service.AniMService;
 import com.ani.service.DonationService;
@@ -53,7 +54,7 @@ public class AdoptionController {
 		
 	}
 	@RequestMapping(value="main.action", method=RequestMethod.POST)
-	public String insertAdoption(Adoption adoption) { 
+	public String insertAdoption(Adoption adoption, HttpSession ss) { 
 		
 //		System.out.println(adoption.getAddress());
 //		System.out.println(adoption.getAddressDetail());
@@ -63,8 +64,13 @@ public class AdoptionController {
 //		System.out.println(adoption.getReason());
 		
 		// 세션에서 회원 번호 가져오기
-		
-		service.insertAdoption(adoption);
+		Member m = (Member) ss.getAttribute("loginuser");
+		if(m!=null) {
+			adoption.setMemberno(m.getMemberNo());
+			service.insertAdoption(adoption);
+			return "redirect:/adoption/list.action";
+		}
+			
 		
 		 
 		return "redirect:/";

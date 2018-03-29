@@ -2,6 +2,8 @@ package com.ani.controller;
 
 import java.util.ArrayList;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -14,6 +16,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.ani.dto.Ani;
 import com.ani.dto.Donation;
+import com.ani.dto.Member;
 import com.ani.service.AniMService;
 import com.ani.service.DonationService;
 
@@ -47,12 +50,15 @@ public class DonationController {
 	}
 
 	@RequestMapping(value="main.action", method=RequestMethod.POST)
-	public String insertDonation(Donation d) { 
+	public String insertDonation(Donation d, HttpSession ss) { 
+		Member m = (Member)ss.getAttribute("loginuser");
 		
 		// 세션에서 회원 번호 가져오기
-		
-		service.insertDonation(d);
-		 //
+		if(m!=null){
+			service.insertDonation(d);
+			d.setMemberno(m.getMemberNo());
+			return "redirect:/adoption/list.action";
+		}
 		return "redirect:/";
 		
 	}
