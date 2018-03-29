@@ -79,7 +79,7 @@
 					var td_aniname = $('<td></td>');
 					var td_anibirth = $('<td></td>');
 					var td_aniregdate = $('<td></td>');
-					var td_adopted = $('<td></td>');
+					/* var td_adopted = $('<td></td>'); */
 					var td_icon = $('<td style="text-align:right;"></td>');
 					
 					if (anis[i].attachments.length > 0)	{				
@@ -93,7 +93,7 @@
 					td_anibirth.addClass("anitd").attr("data-anino", anis[i].aniNo).text(anis[i].aniBirth);
 					td_aniregdate.addClass("anitd").attr("data-anino", anis[i].aniNo).text(anis[i].aniRegdate);
 					
-					adoptedChecked = $('<input id="adoptedToggle' + anis[i].aniNo + '" checked type="checkbox"' +
+/* 					adoptedChecked = $('<input id="adoptedToggle' + anis[i].aniNo + '" checked type="checkbox"' +
 							'data-toggle="toggle" data-on="입양준비중" data-off="입양완료"' +
 							'data-size="mini" data-anino=' + anis[i].aniNo + '>');
 					
@@ -103,7 +103,7 @@
 					
 
 					td_adopted.append(adoptedChecked);
-					
+					 */
 					
 					td_update_icon = $('<a class=\'btn btn-default\' onclick=\'location.href="aniupdate.action?aniNo='+
 							anis[i].aniNo + '"\'><em class="fa fa-pencil"></em></a>');
@@ -121,7 +121,7 @@
 					atr.append(td_aniname);
 					atr.append(td_anibirth);
 					atr.append(td_aniregdate);
-					atr.append(td_adopted);
+					//atr.append(td_adopted);
 					atr.append(td_icon);
 					atr.attr("data-anitr", anis[i].aniNo);
 					$('#anilistbody').append(atr);
@@ -180,7 +180,7 @@
 	    });
 	  
 	
-		$('input[id^=adoptedToggle]').change(function(event){
+/* 		$('input[id^=adoptedToggle]').change(function(event){
 			//$(document).on('change','input[id^=adoptedToggle]', function(event){
 				var aniNo = $(this).attr('data-anino');
 				var adopted = ($(this).prop('checked')) ? 0 : 1;
@@ -194,7 +194,7 @@
 							alert("오류발생 : "+error);
 						}
 					});
-			});		
+			});		 */
 	
 	
 	
@@ -278,7 +278,7 @@
 											class="form-control" placeholder="생일" disabled></th>
 										<th class="col-md-1"><input type="text"
 											class="form-control" placeholder="등록일자" disabled></th>
-										<th class="col-md-1" style="vertical-align: middle; text-align: center;">입양 상태</th> 
+										<!-- <th class="col-md-1" style="vertical-align: middle; text-align: center;">입양 상태</th>  -->
 										<th class="col-md-1" style="vertical-align: middle; text-align: right;"><em
 											class="fa fa-cog"></em></th>
 									</tr>

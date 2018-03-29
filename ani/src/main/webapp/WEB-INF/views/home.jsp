@@ -50,30 +50,30 @@
 					<!-- <h1>홈페이지</h1> -->
 				</div>
 			</div>
-			<div class="item">
+			<!-- <div class="item">
 				<img src="/ani/resources/image/animalcare.jpg" height="300">
 				<div class="carousel-caption">
-<!-- 					<h1></h1>
-					<p>1인 가구를 위한 안성맞춤 제품! 두나가 직접 진행합니다!</p> -->
-					<!-- <p><a class="btn btn-lg btn-primary" href="/ani/communalpurchase/cpintro.action">바로가기</a></p> -->
+					<h1></h1>
+					<p>1인 가구를 위한 안성맞춤 제품! 두나가 직접 진행합니다!</p>
+					<p><a class="btn btn-lg btn-primary" href="/ani/communalpurchase/cpintro.action">바로가기</a></p>
 				</div>
 			</div>
 			<div class="item">
 				<img src="/ani/resources/image/cat.jpg">
 				<div class="carousel-caption">
-<!-- 					<h1>소모임</h1>
-					<p>직접 소모임을 만들고 참여도 해보세요 :) 만나면 더욱 즐거워요~ </p> -->
-					<!-- <p><a class="btn btn-lg btn-primary" href="/ani/smallgroup/smallgrouplist.action">바로가기</a></p> -->
+					<h1>소모임</h1>
+					<p>직접 소모임을 만들고 참여도 해보세요 :) 만나면 더욱 즐거워요~ </p>
+					<p><a class="btn btn-lg btn-primary" href="/ani/smallgroup/smallgrouplist.action">바로가기</a></p>
 				</div>
 			</div>
 			<div class="item">
 				<img src="/ani/resources/image/dog.jpg">
 				<div class="carousel-caption">	
-<!-- 					<h1>정보게시판</h1>
+					<h1>정보게시판</h1>
 					<p>생활,운동,독서 등 다양한 정보를 공유해보세요.</p>
-					<p><a class="btn btn-lg btn-primary" href="/ani/infoboard/infoboardlist.jsp">바로가기</a></p> -->
+					<p><a class="btn btn-lg btn-primary" href="/ani/infoboard/infoboardlist.jsp">바로가기</a></p>
 				</div>
-			</div>
+			</div> -->
 			<div class="item" style="align:center;">
 				<img src="/ani/resources/image/animal.jpg" height="300">
 				<div class="carousel-caption">
