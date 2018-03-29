@@ -27,6 +27,7 @@ import com.ani.common.Util;
 import com.ani.dto.IBFileAttach;
 import com.ani.dto.InfoBoard;
 import com.ani.dto.Member;
+import com.ani.service.AccountService;
 import com.ani.service.InfoBoardService;
 import com.ani.ui.IFBDownloadView;
  
@@ -34,6 +35,9 @@ import com.ani.ui.IFBDownloadView;
 @Controller
 @RequestMapping(value="/infoboard/")
 public class InfoboardController {
+	
+	
+	
 	
 	@InitBinder
 	public void InitBinder(WebDataBinder binder) {
@@ -46,23 +50,45 @@ public class InfoboardController {
 	@Qualifier("infoBoardService")
 	private InfoBoardService service;
 	
+
+	@Autowired
+	@Qualifier("AccountService")
+	AccountService accservice;
+	//�굹以묒뿉 吏��슱寃�
+	
+	
 	@RequestMapping(value = "/infoboardlist.action", method = RequestMethod.GET)
-	public String infoboardlist(@RequestParam(value="pageno", required=false)Integer pageNo,
-			Model model) {
-		
-		int pageSize =5;
+	public String infoboardlist(@RequestParam(value="pageno", required=false)Integer pageNo,	Model model) {
+		int pageSize = 5;
 		
 		if (pageNo == null) pageNo = 1;
 		
 		int start = (pageNo - 1) * pageSize + 1;
 		int last = start + pageSize;
-		
 		List<InfoBoard> ibs = service.getInfoboardBoardList(start, last);
 		
+		for(InfoBoard b : ibs) {
+			int mn = b.getMemberno();
+			String id = service.getIdByMemberNo(mn);
+			if(id==null)
+				id="null";
+			b.setId(id);
+		}
+		
+		
+		
 		model.addAttribute("infoboardlist", ibs);
+		
+		
 		return "infoboard/infoboardlist";
 	}
 	 
+	
+	
+	
+	
+	
+	
 	@RequestMapping(value = "/infoboardwrite.action", method = RequestMethod.GET)
 	public String infoboardwriteform() {
 		return "infoboard/infoboardwrite";
@@ -74,7 +100,7 @@ public class InfoboardController {
 		service.ibwrite(board);
 		return "redirect:infoboardlist.action";
 	}
-	@RequestMapping(value = "/infoboardwirte.action", method = RequestMethod.POST)
+	@RequestMapping(value = "/infoboardwrite.action", method = RequestMethod.POST)
 	public String infoboardwrite2(MultipartHttpServletRequest req, InfoBoard board) {
 		
 		Member user = (Member) req.getSession().getAttribute("loginuser");
@@ -100,6 +126,9 @@ public class InfoboardController {
 			attachments.add(attach);
 		}
 		board.setAttachments(attachments);
+		board.setIb_date(new java.util.Date());
+		board.setMemberno(6); //ii 吏��슱�삁�젙
+		
 		
 		service.ibwrite2(board);
 		
@@ -116,10 +145,57 @@ public class InfoboardController {
 		}
 		InfoBoard board = service.findBoardByBoardNo(ib_num);
 		
+		String id = service.getIdByMemberNo(board.getMemberno());
+		
+		board.setId(id);
+		
 		model.addAttribute("infoboard", board);
 		
 		return "infoboard/infoboarddetail";
 	}
+	
+	@RequestMapping(value="infoboardupdate.action", method = RequestMethod.GET)
+	public String infoboardupdateform (@RequestParam(value="ib_Num", required=false )Integer ib_num, Model model)
+	{
+		if (ib_num == null) {
+		return "redirect:infoboardlist.action";
+	}
+	
+	InfoBoard infoboard = service.getInfoBoardByIBNum(ib_num);
+	model.addAttribute("infoboard", infoboard);
+	
+	return "infoboard/infoboardupdate";
+}
+	@RequestMapping(value="infoboardupdate.action", method = RequestMethod.POST)
+	public String infoBoardupdate (InfoBoard board) {	
+		service.ibupdate(board);
+		return String.format("redirect:infoboardlist.action?ib_num=%d", board.getInfoboardNum());
+	}
+	
+	@RequestMapping(value="deleteinfoboard.action", method = RequestMethod.GET)
+	public String deleteinfoboard (HttpSession session, @RequestParam(value="ib_num", required=false)Integer ib_Num) {
+		Member m = (Member)session.getAttribute("loginuser");
+		int type;
+		System.out.println("삭제진입");
+//		if(m==null)
+//			return;
+		if(m==null) {
+			m = accservice.getMemberInfoById("ii");
+		}
+		Boolean usertype = true;
+		
+		if (usertype == true) {
+			type = 1;
+			System.out.println("뭐지");
+			service.ibdelete(ib_Num.intValue(), type);
+			
+		} else { 
+			type = 1;
+			service.ibdelete(ib_Num, type);
+		}
+		return "redirect:infoboardlist.action";
+	}
+	
 	
 	@RequestMapping(value="/download.action", method = RequestMethod.GET)
 	public ModelAndView download(@RequestParam(value="attachno",required=false) Integer ibf_num, Model model) {

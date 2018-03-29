@@ -26,8 +26,6 @@
 					
 					if (yes) {
 						location.href = 'deleteinfoboard.action?ib_num=' + ${ infoboard.ib_num } 
-								
-						
 						
 					}
 					
@@ -58,7 +56,7 @@
 				<tbody>
 					<tr>
 						<td class="infocell"><b>작성자  </b>
-						${ infoboard.id }<b>등록일  </b>
+						${ infoboard.id }&nbsp;&nbsp;<b>등록일  </b>
 						<fmt:formatDate value="${ infoboard.ib_date }" pattern="YYYY-MM-dd" />
 						<b>조회수  </b>${ infoboard.ib_hits } 
 						<tr>
@@ -77,7 +75,7 @@
 					</tr>
 					<tr>
 						<td class="contents" style="height:100px">
-<c:set var="newLine" value="" />                  
+						<c:set var="newLine" value="" />                  
 		                ${ fn:replace(infoboard.ib_content, newLine, "<br>") }
 						</td>
 					</tr>
@@ -87,19 +85,19 @@
 			</table>
 			
 			
-			
-			
+				<button class="btn btn-normal" onclick="location.href='infoboardupdate.action?ib_num=${ infoboard.ib_num }'">수정</button>
+			<button class="btn btn-normal btn-black" id="delete">삭제</button>
 			<!-- 작성자의 권한으로만 동작하는 기능 -->
-			<div class="huge-top">
-				<c:if test="${not empty loginuser and infoboard.id eq loginuser.id}">
-					<button class="btn btn-normal">수정</button>
+			<%-- <div class="huge-top">
+				<c:if test="${not empty loginuser and infoboard.memberno eq loginuser.memberno}">
+					<button class="btn btn-normal" onclick="location.href='infoboardupdate.action?ib_num=${ infoboard.ib_num }'">수정</button>
 				</c:if>	
-				<c:if test="${not empty loginuser and infoboard.id eq loginuser.id or  loginuser.id eq 'admin'}">
+				<c:if test="${not empty loginuser and infoboard.memberno eq loginuser.memberno or  loginuser.memberno eq 'admin'}">
 					<button class="btn btn-normal btn-black" id="delete">삭제</button>
 				</c:if>
 					<a class="btn btn-normal btn-blue pull-right" href="infoboardlist.action">목록</a>
 			</div>
-			
+			 --%>
 		</div><!-- container -->
 			            
         <!--// 본문 들어가는 부분 -->

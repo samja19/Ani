@@ -17,11 +17,19 @@ public class InfoBoard {
 	private String ib_content;
 	private Date ib_date;
 	private int ib_hits;
-	private String ib_delete;
+	private int ib_delete;
 	private int memberno;
 	private int in_cat_num;
+	private String cat_in;
+	private String id;
+	
  
 	private List<IBFileAttach> attachments;
+	private InfoCategory category;
+	public Object getInfoboardNum() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 	
 	

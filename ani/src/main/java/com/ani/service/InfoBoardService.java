@@ -36,7 +36,7 @@ public class InfoBoardService {
 	}
 	
 	public List<InfoBoard> getInfoboardBoardList(int start, int last) {
-		List<InfoBoard> infoboards =dao.seelctInfoBoardList(start ,last);
+		List<InfoBoard> infoboards =dao.selectInfoBoardList(start, last);
 		return infoboards;
 	}
 
@@ -60,6 +60,25 @@ public class InfoBoardService {
 		IBFileAttach attachment = dao.selectIBFileAttachByAttachNo(ibf_num);
 		attach.setIbf_num(ibf_num);
 		return attach;
+	}
+
+	public InfoBoard getInfoBoardByIBNum(Integer ib_num) {
+		InfoBoard infoboard = dao.selectInfoBoardByIBNum(ib_num);
+		return infoboard;
+	}
+
+	public void ibupdate(InfoBoard board) {
+		dao.updateInfoBoard(board);
+		
+	}
+
+	public void ibdelete(int ib_Num, int type) {
+		dao.deleteInfoBoard(ib_Num, type);
+		
+	}
+
+	public String getIdByMemberNo(int mn) {
+		return dao.selectIdByMemberNo(mn);
 	}
 
 	

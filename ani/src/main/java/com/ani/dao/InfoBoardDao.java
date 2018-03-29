@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.ani.dto.IBFileAttach;
 import com.ani.dto.InfoBoard;
+import com.ani.dto.InfoCategory;
 import com.ani.mapper.InfoBoardMapper;
  
 
@@ -30,12 +31,21 @@ public class InfoBoardDao {
 		infoBoardMapper.insertInfoBoard(board);
 	}
 	
-	public List<InfoBoard> seelctInfoBoardList(int start, int last) {
+	public List<InfoBoard> selectInfoBoardList(int start, int last) {
+		
+		
 	
-		HashMap<String, Object> params = new HashMap<>();
-		params.put("from", start);
-		params.put("to", last);
-		return infoBoardMapper.selectInfoBoardList(params);
+		
+		
+		
+		List<InfoBoard> boards = infoBoardMapper.selectInfoBoardList();
+		for (InfoBoard board : boards) {
+			InfoCategory c = infoBoardMapper.selectInfoCategoryByCategoryNo(board.getIn_cat_num());
+	
+			board.setCategory(c);
+		}
+		
+		return boards;
 	}
 	
 	public int countInfoBoard() {
@@ -87,6 +97,27 @@ public class InfoBoardDao {
 
 	public IBFileAttach selectIBFileAttachByAttachNo(int ibf_num) {
 		return infoBoardMapper.selectIBFileAttachByAttachNo(ibf_num);
+	}
+
+	public InfoBoard selectInfoBoardByIBNum(int ib_num) {
+		InfoBoard infoboard = infoBoardMapper.selectInfoBoardByIBNum(ib_num);
+		return infoboard;
+	}
+
+	public void updateInfoBoard(InfoBoard board) {
+		infoBoardMapper.updateIBoard(board);
+		
+	}
+
+	public void deleteInfoBoard(int ib_Num, int type) {
+		HashMap<String, Object> params = new HashMap<>();
+		params.put("infoNum", ib_Num);
+		params.put("type", type);
+		infoBoardMapper.deleteInfoBoard(params);
+	}
+
+	public String selectIdByMemberNo(int mn) {
+		return infoBoardMapper.selectIdByMemberNo(mn);
 	}
 	 	
 }
