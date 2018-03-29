@@ -103,6 +103,16 @@ public class MyPageDao {
 		return don;
 	}
 
+	public ArrayList<InterestAni> selectInterestListByMemberno(Member member) {
+		ArrayList<InterestAni> intr = mypageMapper.selectInterestListByMemberno(member);
+		return intr;
+	}
+
+	public ArrayList<Ani> selectAniByMemberno2(Member member) {
+		ArrayList<Ani> ani = mypageMapper.selectAniByMemberno2(member);
+		return ani;
+	}
+
 	
 
 }

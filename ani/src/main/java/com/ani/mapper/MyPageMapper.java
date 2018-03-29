@@ -31,6 +31,12 @@ public interface MyPageMapper {
 
 	ArrayList<Donation> selectDonationListByMemberno();
 
+	ArrayList<InterestAni> selectInterestListByMemberno();
+
+	ArrayList<Ani> selectAniByMemberno2(Member member);
+
+	ArrayList<InterestAni> selectInterestListByMemberno(Member member);
+
 	
 	
 
