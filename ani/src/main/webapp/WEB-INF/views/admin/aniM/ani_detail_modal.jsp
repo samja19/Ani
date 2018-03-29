@@ -157,11 +157,11 @@ $(function() {
 
 				<div class="text-right pull-right col-md-3">
 					후원적립금: <br /> <span class="h3 text-muted"><strong>
-							R$50,00 </strong></span>
+							100,000원</strong></span>
 				</div>
 
 				<div class="text-right pull-right col-md-3">
-					팔로워수: <br /> <span class="h3 text-muted"><strong>R$35,00</strong></span>
+					팔로워수: <br /> <span class="h3 text-muted"><strong>5명</strong></span>
 				</div>
 
 			</div>

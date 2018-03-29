@@ -27,25 +27,12 @@
 
 			<div id="navbar" class="navbar-collapse collapse">
 				<ul class="nav navbar-nav navbar-left">
-					<li class="dropdown"><a class="dropdown-toggle"
-						data-toggle="dropdown" href="#">공동구매<span class="caret"></span></a>
-						<ul class="dropdown-menu">
-							<li><a href="/ani/communalpurchase/cpintro.action">공구항목</a></li>
-							<li><a href="/ani/cppsboard/cppslist.action">공구후기</a></li>
-							<!-- <li><a href="/duna/views/communalpurchase/cpmain.jsp">공구요청</a></li> -->
-						</ul></li>
-					<li class="dropdown"><a class="dropdown-toggle"
-						data-toggle="dropdown" href="#">소모임<span class="caret"></span></a>
-						<ul class="dropdown-menu">
-							<li><a href="/ani/smallgroup/smallgrouplist.action">모임목록</a></li>
-							<!-- <li><a href="/duna/smallgrouppostscript/sgpostlist.action">모임후기</a></li> -->
-						</ul></li>
-					<li class=""><a href="/ani/infoboard/i	nfoboardlist.action">정보게시판</a></li>
-					<li class=""><a href="/ani/freeboard/freeboardlist.action">자유게시판</a></li>
+					<li class=""><a href="/ani/adoption/list.action">보호동물보기</a></li>
+					<li class=""><a href="/ani/infoboard/infoboardlist.action">정보게시판</a></li>
 					
 					<!--  관리자메뉴 -->
 					   <%-- <c:if test='${ not empty loginuser and not loginuser.usertype }'> --%>
-					   <li class=""><a href="/ani/admin/admin.action">관리자 페이지</a></li>
+					   <!-- <li class=""><a href="/ani/admin/admin.action">관리자 페이지</a></li> -->
                     	<!-- <li class="dropdown"><a class="dropdown-toggle"
 						data-toggle="dropdown" href="#" data-submenu>관리자메뉴<span class="caret"></span></a>
 						<ul class="dropdown-menu">
@@ -136,6 +123,8 @@
                              </ul>
                          </li>
              		</c:if> 
+             		<li class=""><a href="/ani/infoboard/infoboardlist.action">마이페이지</a></li>
+             		<li class=""><a href="/ani/admin/admin.action">관리자 페이지</a></li>
 				</ul>
 			</div>
 			<!--/.navbar-collapse -->
