@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.ani.dto.Member;
 import com.ani.service.AccountService;
+import com.ani.service.AniMService;
 
 
 
@@ -26,6 +27,10 @@ public class AdminController {
 	@Autowired
 	@Qualifier("AccountService")
 	AccountService service;
+
+	@Autowired
+	@Qualifier("aniMService")
+	AniMService service2;
 
 	@RequestMapping(value="memberlist.action", method=RequestMethod.GET)
 	public String memberlistForm( Model model) {
@@ -52,7 +57,10 @@ public class AdminController {
 		
 	}
 	@RequestMapping(value="admin.action", method = RequestMethod.GET)
-	public String adminPage() {
+	public String adminPage(Model model) {
+		int count = 0;
+		count = service2.getAniCount();
+		model.addAttribute("aniCount",count);
 		return "admin/admin";
 	}
 	

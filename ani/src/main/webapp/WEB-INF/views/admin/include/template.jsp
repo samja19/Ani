@@ -50,7 +50,7 @@
 						<ul class="list-group">
 							<li class="list-group-item"><a
 								href="/ani/aniM/aniregister.action"> 신규 등록</a></li>
-							<li class="list-group-item"><span class="badge">5</span>
+							<li class="list-group-item"><span class="badge">${ aniCount }</span>
 								<a href="/ani/aniM/anilist.action"> 목록</a></li>
 						</ul>
 					</div>
