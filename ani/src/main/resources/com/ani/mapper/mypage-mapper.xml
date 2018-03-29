@@ -38,21 +38,31 @@
 	<select id ="getMyProfile" parameterType="int" resultType="Member">
 		SELECT NICKNAME, USERTYPE, ID, NAME, BREEDS
 		FROM MEMBER
-		WHERE MEMBERNO = 0
+		WHERE MEMBERNO = #{memberNo }
 	</select>
 	
 	<select id ="selectAniByMemberno" parameterType="int" resultType="Ani">
 		SELECT A.*
 		FROM ANI A, DONATION DO
-		WHERE DO.ANINO = A.ANINO AND A.MEMBERNO = DO.MEMBERNO AND DO.MEMBERNO = 0
+		WHERE DO.ANINO = A.ANINO AND A.MEMBERNO = DO.MEMBERNO AND DO.MEMBERNO = #{ memberNo }
 	</select>
 	
 	<select id = "selectDonationListByMemberno" parameterType="int" resultType="Donation">
 		SELECT *
 		FROM DONATION
-		WHERE MEMBERNO = 0
+		WHERE MEMBERNO = #{ memberNo }
 	</select>
 	
+	<select id ="selectAniByMemberno2" parameterType="int" resultType="Ani">
+		SELECT A.*
+		FROM ANI A, INTERESTANI INTR
+		WHERE INTR.ANINO = A.ANINO AND A.MEMBERNO = INTR.MEMBERNO AND INTR.MEMBERNO = 0
+	</select>
+	<select id = "selectInterestListByMemberno" parameterType="int" resultType="InterestAni">
+		SELECT *
+		FROM INTERESTANI
+		WHERE MEMBERNO = #{ memberNo }
+	</select>
 	
 	
 
