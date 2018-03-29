@@ -28,6 +28,7 @@ import com.ani.common.Util;
 import com.ani.dto.Ani;
 import com.ani.dto.AniAttach;
 import com.ani.service.AniMService;
+import com.ani.service.DonationService;
 
 @Controller
 @RequestMapping(value="/aniM/")
@@ -43,6 +44,10 @@ public class AniMController {
 	@Autowired
 	@Qualifier("aniMService")
 	private AniMService service;
+	
+	@Autowired
+	@Qualifier("DonationService")
+	private DonationService service2;
 	
 	@RequestMapping(value="aniregister.action", method = RequestMethod.GET)
 	public String aniRegisterForm(Ani ani) {

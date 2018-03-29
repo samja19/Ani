@@ -275,11 +275,12 @@
     </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
 <!--// 모달창 --> 
-    	
+    		<!-- header -->
+	<jsp:include page="../include/header.jsp" />
     	
 	    <!-- 본문 들어가는 부분 -->
 		<div class="container">
-		    <h3>입양 목록 조회1</h3>
+		    <h3>보호 중인 유기 동물</h3>
 		    <hr>
 		    <br>
 		    
