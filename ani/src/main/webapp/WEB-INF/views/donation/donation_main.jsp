@@ -118,8 +118,8 @@ $(function(){
 			    				</div> 
 			    			</div>
 
-							<input type="text" id="memberno" name="memberno" value="0"> 
-			    			<input type="text" id="anino" name="anino" value="${anino}"> 
+							<input type="hidden" id="memberno" name="memberno" value="0"> 
+			    			<input type="hidden" id="anino" name="anino" value="${anino}"> 
 			    			
 			    			<div class="row">
 			    				<div class="col-xs-6 col-xs-offset-3 col-sm-6 col-sm-offset-3 col-md-6 col-md-offset-3 ">
