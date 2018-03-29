@@ -29,7 +29,7 @@
 	<div class="col col-md-9">
 		<div class="panel">
 			<div class="panel-body">
-				<legend>Panel Body</legend>
+				<legend>관리자 페이지</legend>
 			
 			</div>
 

@@ -40,46 +40,46 @@
 			<li data-target="#myCarousel" data-slide-to="1"></li>
 			<li data-target="#myCarousel" data-slide-to="2"></li>
 			<li data-target="#myCarousel" data-slide-to="3"></li>
-			<!-- <li data-target="#myCarousel" data-slide-to="4"></li> -->
+			<li data-target="#myCarousel" data-slide-to="4"></li>
 		</ol>
 
 		<div class="carousel-inner">
 			<div class="item active">
-				<img src="/ani/resources/image/space.jpg">
+				<img src="/ani/resources/image/dogcat.jpg">
 				<div class="carousel-caption">
-					<h1>홈페이지</h1>
+					<!-- <h1>홈페이지</h1> -->
 				</div>
 			</div>
-			<div class="item">
-				<img src="/ani/resources/image/hands.jpg">
+			<!-- <div class="item">
+				<img src="/ani/resources/image/animalcare.jpg" height="300">
 				<div class="carousel-caption">
-					<h1>유기동물기부</h1>
-					<p>유기동물의 행복한 삶을 위하여 기부하세요</p>
+					<h1></h1>
+					<p>1인 가구를 위한 안성맞춤 제품! 두나가 직접 진행합니다!</p>
 					<p><a class="btn btn-lg btn-primary" href="/ani/communalpurchase/cpintro.action">바로가기</a></p>
 				</div>
 			</div>
-<!--		<div class="item">
-				<img src="/ani/resources/image/friends.jpg">
+			<div class="item">
+				<img src="/ani/resources/image/cat.jpg">
 				<div class="carousel-caption">
 					<h1>소모임</h1>
 					<p>직접 소모임을 만들고 참여도 해보세요 :) 만나면 더욱 즐거워요~ </p>
 					<p><a class="btn btn-lg btn-primary" href="/ani/smallgroup/smallgrouplist.action">바로가기</a></p>
 				</div>
-			</div> -->
-			<div class="item">
-				<img src="/ani/resources/image/infoboard.jpg">
-				<div class="carousel-caption">	
-					<h1>정보게시판</h1>
-					<p>유기동물에 대한 다양한 정보를 공유해보세요.</p>
-					<p><a class="btn btn-lg btn-primary" href="/ani/infoboard/infoboardlist.jsp">바로가기</a></p>
-				</div>
 			</div>
 			<div class="item">
-				<img src="/ani/resources/image/freeboard.jpg">
+				<img src="/ani/resources/image/dog.jpg">
+				<div class="carousel-caption">	
+					<h1>정보게시판</h1>
+					<p>생활,운동,독서 등 다양한 정보를 공유해보세요.</p>
+					<p><a class="btn btn-lg btn-primary" href="/ani/infoboard/infoboardlist.jsp">바로가기</a></p>
+				</div>
+			</div> -->
+			<div class="item" style="align:center;">
+				<img src="/ani/resources/image/animal.jpg" height="300">
 				<div class="carousel-caption">
-					<h1>유기동물입양</h1>
-					<p>사지마세요! 입양하세요!</p>
-					<p><a class="btn btn-lg btn-primary" href="/ani/freeboard/freeboardlist.action">바로가기</a></p>
+<!-- 					<h1>자유게시판</h1>
+					<p>심심한 사람  모두모두 모여라!</p>
+					<p><a class="btn btn-lg btn-primary" href="/ani/freeboard/freeboardlist.action">바로가기</a></p> -->
 				</div>
 			</div>
 		</div>
@@ -101,7 +101,7 @@
 		<div class="row">
 			<div class="col-lg-12">
 				<h1 class="page-header">
-					두나 DUNA <small>소중한 생명! 여려분의 반려동물 사랑으로 지켜주세요</small>
+					I ♥ DONA! <small>소중한 생명! 유기동물을 사랑으로 지켜주세요</small>
 				</h1>
 			</div>
 		</div>
@@ -120,8 +120,8 @@
 				</a>
 			</div>
 			<div class="col-md-5">
-				<h3>두나의 탄생</h3>
-				<h4>행복한 동물을 위한</h4>
+				<h3>유기 동물의 집 "도나"</h3>
+				<p>  세상의 모든 유기동물이 행복하고 건강한 삶을 살 수 있기를 희망합니다.<p>
 				<p> "사지마세요! 입양하세요" </p>
 				
 				<p>동물학대를 방지하고 생명존중의 문화를 꽃피웁니다</p>

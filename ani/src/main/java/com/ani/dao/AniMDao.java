@@ -1,6 +1,7 @@
 package com.ani.dao;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -26,8 +27,20 @@ public class AniMDao {
 		aniMMapper.insertAniAttach(attachment);
 	}
 
+	public int selectAniCount() {
+		HashMap<String,Object> params = new HashMap<>();
+		return aniMMapper.selectAniCount(params);
+	}
+	
 	public ArrayList<Ani> selectAniList() {
 		return aniMMapper.selectAniList();
+	}
+	
+	public ArrayList<Ani> selectAniListByParams(int start, int end) {
+		HashMap<String,Object> params = new HashMap<>();
+		params.put("start", start);
+		params.put("end", end);
+		return aniMMapper.selectAniListByParams(params);
 	}
 
 	public Ani selectAniByAniNo(int aniNo) {
@@ -44,6 +57,18 @@ public class AniMDao {
 	}
 	
 	public void deleteAni(int aniNo) {
-		aniMMapper.deleteAni(aniNo);	
+		aniMMapper.deleteAni(aniNo);
 	}
+	
+	public void deleteAniAttach(int aniAttachNo) {
+		aniMMapper.deleteAniAttach(aniAttachNo);	
+	}
+
+	public void updateAdopted(int aniNo, int adopted) {
+		HashMap<String,Object> params = new HashMap<>();
+		params.put("aniNo", aniNo);
+		params.put("adopted", adopted);
+		aniMMapper.updateAdopted(params);
+	}
+	
 }

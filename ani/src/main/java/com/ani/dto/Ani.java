@@ -11,7 +11,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 
 public class Ani { 
 	
-	//ani�� aniAttach, aniComment媛꾩쓽 1:Many 愿�怨꾨�� 援ы쁽�븯�뒗 �븘�뱶
+	//ani와 aniAttach, aniComment간의 1:Many 관계를 구현하는 필드
 	//private ArrayList<AniComment> comments;
 	private ArrayList<AniAttach> attachments;
 	
@@ -25,35 +25,36 @@ public class Ani {
 	private int attention;
 	private int memberNo;
     private String speciesName;
+    private int adopted;
 	
-	@NotNull(message="�븘�닔 �꽑�깮 �빆紐� �엯�땲�떎.")
+	@NotNull(message="필수 선택 항목 입니다.")
 	private int speciesNo;	
 
-	@NotNull(message="�븘�닔 �엯�젰 �빆紐� �엯�땲�떎.")
-	@NotBlank(message="�븘�닔 �엯�젰 �빆紐� �엯�땲�떎.")
+	@NotNull(message="필수 입력 항목 입니다.")
+	@NotBlank(message="필수 입력 항목 입니다.")
 	private String aniBreed;
 	
-	@NotNull(message="�븘�닔 �엯�젰 �빆紐� �엯�땲�떎.")
-	@NotBlank(message="�븘�닔 �엯�젰 �빆紐� �엯�땲�떎.")
+	@NotNull(message="필수 입력 항목 입니다.")
+	@NotBlank(message="필수 입력 항목 입니다.")
 	private String aniName;
 	
 	@JsonFormat
     (shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
-	@NotNull(message="�븘�닔 �엯�젰 �빆紐� �엯�땲�떎.")
+	@NotNull(message="필수 입력 항목 입니다.")
 	private Date aniBirth; 
 	
-	@NotNull(message="�븘�닔 �꽑�깮 �빆紐� �엯�땲�떎.")
+	@NotNull(message="필수 선택 항목 입니다.")
 	private String aniGender;	
 	
-	@NotNull(message="�븘�닔 �꽑�깮 �빆紐� �엯�땲�떎.")
+	@NotNull(message="필수 선택 항목 입니다.")
 	private String neuter;	
 	
-	@NotNull(message="�븘�닔 �엯�젰 �빆紐� �엯�땲�떎.")
-	@NotBlank(message="�븘�닔 �엯�젰 �빆紐� �엯�땲�떎.")
+	@NotNull(message="필수 입력 항목 입니다.")
+	@NotBlank(message="필수 입력 항목 입니다.")
 	private String aniSite;
 	
-	@NotNull(message="�븘�닔 �엯�젰 �빆紐� �엯�땲�떎.")
-	@NotBlank(message="�븘�닔 �엯�젰 �빆紐� �엯�땲�떎.")
+	@NotNull(message="필수 입력 항목 입니다.")
+	@NotBlank(message="필수 입력 항목 입니다.")
 	private String aniInfo;
 
 	
@@ -183,6 +184,14 @@ public class Ani {
 
 	public void setSpeciesName(String speciesName) {
 		this.speciesName = speciesName;
+	}
+
+	public int getAdopted() {
+		return adopted;
+	}
+
+	public void setAdopted(int adopted) {
+		this.adopted = adopted;
 	}
 	
 	
