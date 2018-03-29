@@ -62,6 +62,11 @@
 	        <form:form id="regform" modelAttribute="member"
 	        class="form-horizontal" role="form" method="post" action="register.action">
 	            
+	            
+	            
+	            
+	            
+	            
 	            <div class="form-group" id="divId">
 	                <label for="inputId" class="col-lg-2 control-label" >아이디</label>
 	                <div class="col-lg-10">
@@ -79,17 +84,17 @@
 	                </div>
 	            </div>
 	            
-	            <div class="form-group" id="divpasswd">
-	                <label for="inputpasswd" class="col-lg-2 control-label">패스워드</label>
+	            <div class="form-group" id="divpassword">
+	                <label for="inputpassword" class="col-lg-2 control-label">패스워드</label>
 	                <div class="col-lg-10">
-                        <form:password class="form-control" id="passwd2" path="passwd"
+                        <form:password class="form-control" id="password2" path="password"
                         data-rule-required="true" placeholder="패스워드" maxlength="30"/> 
 	                </div>
 	            </div>
-	            <div class="form-group" id="divpasswdCheck">
-	                <label for="inputpasswdCheck" class="col-lg-2 control-label">패스워드 확인</label>
+	            <div class="form-group" id="divpasswordCheck">
+	                <label for="inputpasswordCheck" class="col-lg-2 control-label">패스워드 확인</label>
 	                <div class="col-lg-10">
-                        <input type="passwd" class="form-control" id="passwdCheck"   
+                        <input type="password" class="form-control" id="passwordCheck"   
                         data-rule-required="true" placeholder="패스워드 확인" maxlength="30">
 	                </div>
 	            </div>
@@ -100,98 +105,71 @@
                         data-rule-required="true" placeholder="한글만 입력 가능합니다." maxlength="15"/>
 	                </div>
 	            </div>
-	            
-	            <div class="form-group">
-	                <label for="inputPhoneNumber" class="col-lg-2 control-label">성별</label>
-	                <div class="col-lg-10">
-	                    <form:select class="form-control" id="gender" path="gender">
-	                        <form:option value="1">여성</form:option>
-	                        <form:option value="0">남성</form:option>
-	                        <form:option value="0">기타</form:option>
-	                    </form:select>
-	                </div>
-	            </div>
-	             
 	            <div class="form-group" id="divEmail">
-	                <label for="inputEmail" class="col-lg-2 control-label">이메일</label>
+                	<label for="inputEmail" class="col-lg-2 control-label">이메일</label>
+               		<div class="col-lg-10">
+                       <form:input type="text" class="form-control" id="email" path="email"
+                       data-rule-required="true" placeholder="이메일" maxlength="40"/>
+                       <form:errors path="email" cssClass="error" />
+                	</div>
+            	</div>
+	            <div class="form-group" id="divSpecies">
+	                <label for="inputSpecies" class="col-lg-2 control-label">동물 분류 </label>
 	                <div class="col-lg-10">
-                        <form:input type="text" class="form-control" id="email" path="email"
-                        data-rule-required="true" placeholder="이메일" maxlength="40"/>
-                        <form:errors path="email" cssClass="error" />
-	                </div>
-	            </div>
-	            <div class="form-group" id="divPhoneNumber">
-	                <label for="inputPhoneNumber" class="col-lg-2 control-label">휴대폰 번호</label>
-	                <div class="col-lg-10">
-                        <form:input type="tel" class="form-control onlyNumber" id="phoneNumber" path="phone"
-                        data-rule-required="true" placeholder="-를 제외하고 숫자만 입력하세요." maxlength="11"/>
-	                </div>
-	            </div>
-	            <div class="form-group" id="divPhoneNumber">
-	                <label for="inputBirth" class="col-lg-2 control-label">생년월일</label>
-	                <div class="col-lg-10">
-                        <form:input type="date" class="form-control" id="birth" path="birth"
-                        data-rule-required="true" min="1900-01-01" max="9999-12-31" placeholder="-날짜입력하세요." />
-	                </div>
-	            </div>
-	            
-				<div class="form-group" id="divAddress">
-	                <label for="inputAddress" class="col-lg-2 control-label"> 주소  </label>
-	                <div class="col-lg-10">
-                        <form:input class="form-control col-lg-5" id="address" path="address"
-                        data-rule-required="true"  maxlength="40"/>
-	                </div>
-	            </div>
-				<div class="form-group" id="divAddress">
-	                <label for="inputAddress" class="col-lg-2 control-label"> 1인가구 여부  </label>
-	                <div class="col-lg-10">
-                         <div class="radio">
+                         	<div class="radio">
+	                        	<label>
+	                            	<form:radiobutton id="speciesNo" path="speciesNo" value="1" />
+	                          	  	개
+	                        	</label>
+	                        	&nbsp;&nbsp;
 	                        <label>
-	                            <form:radiobutton   id="solo" path="solo" value="1" checked="checked" />
-	                          	  1인가구
+	                            <form:radiobutton id="speciesNo" path="speciesNo" value="2" />
+	                          	 고양이
 	                        </label>
 	                        &nbsp;&nbsp;
 	                        <label>
-	                            <form:radiobutton   id="solo" path="solo" value="0" />
-	                          	  1인가구 X
+	                            <form:radiobutton id="speciesNo" path="speciesNo" value="3" />
+	                          	 설치류
+	                        </label>
+	                        &nbsp;&nbsp;
+	                        <label>
+	                            <form:radiobutton id="speciesNo" path="speciesNo" value="4" />
+	                          	 조류
+	                        </label>
+	                        &nbsp;&nbsp;
+	                        <label>
+	                            <form:radiobutton id="speciesNo" path="speciesNo" value="5" />
+	                          	 파충류
+	                        </label>
+	                        &nbsp;&nbsp;
+	                        <label>
+	                            <form:radiobutton id="speciesNo" path="speciesNo" value="0"  checked="checked" />
+	                          	 기타
 	                        </label>
 	                    </div> 
 	                </div>
 	            </div>	
-	            <div class="form-group">
-	                <label for="memberInfo" class="col-lg-2 control-label">관심사</label>
-	                <div class="col-lg-10" id="hobbyDiv">
-	                    <form:textarea class="form-control" id="hobby" path="hobby"
-	                    maxlength ="100" rows="8" style="resize:none"></form:textarea> 
-	                </div>
-	            </div>	            
-				
-	            <!-- <div class="form-group">
-	                <label for="inputEmailReceiveYn" class="col-lg-2 control-label">이메일 수신여부</label>
-	                <div class="col-lg-10">
-	                    <label class="radio-inline">
-	                        <input type="radio" id="emailReceiveYn" name="emailReceiveYn" value="Y" checked> 동의합니다.
-	                    </label>
-	                    <label class="radio-inline">
-	                        <input type="radio" id="emailReceiveYn" name="emailReceiveYn" value="N"> 동의하지 않습니다.
-	                    </label>
-	                </div>
-	            </div>
-	            <div class="form-group">
-	                <label for="inputPhoneNumber" class="col-lg-2 control-label">SMS 수신여부</label>
-	                <div class="col-lg-10">
-	                    <label class="radio-inline">
-	                        <input type="radio" id="smsReceiveYn" name="smsReceiveYn" value="Y" checked> 동의합니다.
-	                    </label>
-	                    <label class="radio-inline">
-	                        <input type="radio" id="smsReceiveYn" name="smsReceiveYn" value="N"> 동의하지 않습니다.
-	                    </label>
-	                </div>
-	            </div> -->
 	            
-	            <div class="form-group">
-	                <label for="provision" class="col-lg-2 control-label">회원가입약관</label>
-	                <div class="col-lg-10" id="provision">
+	            <div class="form-group" id="divBreeds">
+	                <label for="inputBreeds" class="col-lg-2 control-label">품종</label>
+	                <div class="col-lg-10">
+                        <form:input class="form-control" id="breeds" path="breeds"
+                        data-rule-required="true" placeholder="품종을 입력하세요" maxlength="30"/>
+	                </div>
+	            </div> 
+	         	<div class="form-group" id="speciesname">
+	                <label for="inputspeciesname" class="col-lg-2 control-label">동물 이름</label>
+	                <div class="col-lg-10">
+                        <form:input class="form-control" id="speciesname" path="speciesname"
+                        data-rule-required="true" placeholder="이름을 입력하세요" maxlength="30"/>
+	                </div>
+	            </div> 
+	        
+	           
+	                    	   		      					
+        		   	         <div class="form-group">
+	             	   <label for="provision" class="col-lg-2 control-label">회원가입약관</label>
+              <div class="col-lg-10" id="provision">
 	                    <textarea class="form-control" rows="8" style="resize:none">
 약관동의
                     </textarea>
@@ -334,31 +312,31 @@
                     }
                 });
                  
-                $('#passwd2').keyup(function(event){
+                $('#password2').keyup(function(event){
                      
-                    var divpasswd = $('#divpasswd');
+                    var divpassword = $('#divpassword');
                      
-                    if($('#passwd2').val()==""){
-                        divpasswd.removeClass("has-success");
-                        divpasswd.addClass("has-error");
+                    if($('#password2').val()==""){
+                        divpassword.removeClass("has-success");
+                        divpassword.addClass("has-error");
                     }else{
-                        divpasswd.removeClass("has-error");
-                        divpasswd.addClass("has-success");
+                        divpassword.removeClass("has-error");
+                        divpassword.addClass("has-success");
                     }
                 });
                  
-                $('#passwdCheck').keyup(function(event){
+                $('#passwordCheck').keyup(function(event){
                      
-                    var passwdCheck = $('#passwdCheck').val();
-                    var passwd = $('#passwd2').val();
-                    var divpasswdCheck = $('#divpasswdCheck');
+                    var passwordCheck = $('#passwordCheck').val();
+                    var password = $('#password2').val();
+                    var divpasswordCheck = $('#divpasswordCheck');
                      
-                    if((passwdCheck=="") || (passwd!=passwdCheck)){
-                        divpasswdCheck.removeClass("has-success");
-                        divpasswdCheck.addClass("has-error");
+                    if((passwordCheck=="") || (password!=passwordCheck)){
+                        divpasswordCheck.removeClass("has-success");
+                        divpasswordCheck.addClass("has-error");
                     }else{
-                        divpasswdCheck.removeClass("has-error");
-                        divpasswdCheck.addClass("has-success");
+                        divpasswordCheck.removeClass("has-error");
+                        divpasswordCheck.addClass("has-success");
                     }
                 });
                  
@@ -411,12 +389,12 @@
                 
                 $( "#regform" ).submit(function( event ) {
                     var divId = $('#divId');
-                    var divpasswd = $('#divpasswd');
-                    var divpasswdCheck = $('#divpasswdCheck');
+                    var divpassword = $('#divpassword');
+                    var divpasswordCheck = $('#divpasswordCheck');
                     var divName = $('#divName');
                     var divNickname = $('#divNickname');
                     var divEmail = $('#divEmail');
-                    var divPhoneNumber = $('#divPhoneNumber');
+                    
                     var provision = $('#provision');
                     var memberInfo = $('#memberInfo');
                       
@@ -461,45 +439,45 @@
                     
                    
                     //패스워드 검사
-                    if($('#passwd2').val()==""){
+                    if($('#password2').val()==""){
                         modalContents.text("패스워드를 입력하여 주시기 바랍니다.");
                         modal.modal('show');
                          
-                        divpasswd.removeClass("has-success");
-                        divpasswd.addClass("has-error");
-                        $('#passwd2').focus();
+                        divpassword.removeClass("has-success");
+                        divpassword.addClass("has-error");
+                        $('#password2').focus();
                         return false;
                     }else{
-                        divpasswd.removeClass("has-error");
-                        divpasswd.addClass("has-success");
+                        divpassword.removeClass("has-error");
+                        divpassword.addClass("has-success");
                     }
                      
                     //패스워드 확인
-                    if($('#passwdCheck').val()==""){
+                    if($('#passwordCheck').val()==""){
                         modalContents.text("패스워드 확인을 입력하여 주시기 바랍니다.");
                         modal.modal('show');
                          
-                        divpasswdCheck.removeClass("has-success");
-                        divpasswdCheck.addClass("has-error");
-                        $('#passwdCheck').focus();
+                        divpasswordCheck.removeClass("has-success");
+                        divpasswordCheck.addClass("has-error");
+                        $('#passwordCheck').focus();
                         return false;
                     }else{
-                        divpasswdCheck.removeClass("has-error");
-                        divpasswdCheck.addClass("has-success");
+                        divpasswordCheck.removeClass("has-error");
+                        divpasswordCheck.addClass("has-success");
                     }
                      
                     //패스워드 비교
-                    if($('#passwd2').val()!=$('#passwdCheck').val() || $('#passwdCheck').val()==""){
+                    if($('#password2').val()!=$('#passwordCheck').val() || $('#passwordCheck').val()==""){
                         modalContents.text("패스워드가 일치하지 않습니다.");
                         modal.modal('show');
                          
-                        divpasswdCheck.removeClass("has-success");
-                        divpasswdCheck.addClass("has-error");
-                        $('#passwdCheck').focus();
+                        divpasswordCheck.removeClass("has-success");
+                        divpasswordCheck.addClass("has-error");
+                        $('#passwordCheck').focus();
                         return false;
                     }else{
-                        divpasswdCheck.removeClass("has-error");
-                        divpasswdCheck.addClass("has-success");
+                        divpasswordCheck.removeClass("has-error");
+                        divpasswordCheck.addClass("has-success");
                     }
                      
                     //이름
@@ -529,64 +507,8 @@
                         divEmail.removeClass("has-error");
                         divEmail.addClass("has-success");
                     }
-                     
-                    //휴대폰 번호
-                    if($('#phoneNumber').val()==""){
-                        modalContents.text("휴대폰 번호를 입력하여 주시기 바랍니다.");
-                        modal.modal('show');
-                         
-                        divPhoneNumber.removeClass("has-success");
-                        divPhoneNumber.addClass("has-error");
-                        $('#phoneNumber').focus();
-                        return false;
-                    }else{
-                        divPhoneNumber.removeClass("has-error");
-                        divPhoneNumber.addClass("has-success");
-                    }
-                    
-                    //생년월일
-                    if($('#birth').val()==""){
-                        modalContents.text("생년월일을 입력하여 주시기 바랍니다.");
-                        modal.modal('show');
-                         
-                        divPhoneNumber.removeClass("has-success");
-                        divPhoneNumber.addClass("has-error");
-                        $('#birth').focus();
-                        return false;
-                    }else{
-                        divPhoneNumber.removeClass("has-error");
-                        divPhoneNumber.addClass("has-success");
-                    }
-                    
-                    // 주소
-                    if($('#address').val()==""){
-                        modalContents.text("주소를 입력하여 주시기 바랍니다.");
-                        modal.modal('show');
-                         
-                        divPhoneNumber.removeClass("has-success");
-                        divPhoneNumber.addClass("has-error");
-                        $('#address').focus();
-                        return false;
-                    }else{
-                        divPhoneNumber.removeClass("has-error");
-                        divPhoneNumber.addClass("has-success");
-                    }
-                    
-                 // 관심사
-                    if($('#hobby').val()==""){
-                        modalContents.text("관심사를 입력하여 주시기 바랍니다..");
-                        modal.modal('show');
-                         
-                        divPhoneNumber.removeClass("has-success");
-                        divPhoneNumber.addClass("has-error");
-                        $('#hobby').focus();
-                        return false;
-                    }else{
-                        divPhoneNumber.removeClass("has-error");
-                        divPhoneNumber.addClass("has-success");
-                    }
-                    
-                    
+                                              
+                                       
                     //회원가입약관
                     if($('#provisionYn:checked').val()=="N"){
                         modalContents.text("회원가입약관에 동의하여 주시기 바랍니다."); //모달 메시지 입력

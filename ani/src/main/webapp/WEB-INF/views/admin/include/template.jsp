@@ -12,7 +12,7 @@
 						class="icon-bar"></span> <span class="icon-bar"></span> <span
 						class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="#"> ADMIN </a>
+				<a class="navbar-brand" href="/ani/home.action"> ADMIN </a>
 			</div>
 			<div class="collapse navbar-collapse"
 				id="bs-example-navbar-collapse-1">
@@ -77,15 +77,14 @@
 					<div class="panel-heading">
 						<h4 class="panel-title">
 							<a data-toggle="collapse" data-parent="#accordion"
-								href="#collapse3"> Settings</a>
+								href="#collapse3"> 회원관리 </a>
 						</h4>
 					</div>
 					<div id="collapse3" class="panel-collapse collapse">
 						<ul class="list-group">
-							<li class="list-group-item"><span class="badge">1</span>
-								Users Reported</li>
-							<li class="list-group-item"><span class="badge">5</span>
-								User Waiting Activation</li>
+							<li class="list-group-item"><a href="/ani/admin/memberlist.action">
+								회원 목록 </a></li>
+						
 						</ul>
 					</div>
 				</div>

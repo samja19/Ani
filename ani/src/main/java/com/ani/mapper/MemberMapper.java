@@ -11,7 +11,7 @@ public interface MemberMapper {
 
 	void insertMember(Member member);
 
-	Member selectMemberByIdAndPasswd(HashMap<String, Object> params);
+	Member selectMemberByIdAndPassword(HashMap<String, Object> params);
 
 	Member selectMemberById(String id);
 

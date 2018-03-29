@@ -2,10 +2,10 @@
 
 <!DOCTYPE html><html class=''>
 <head>
-<script src='/duna/resources/js/loginpage_console_runner.js'>
+<script src='/ani/resources/js/loginpage_console_runner.js'>
 </script>
-<script src='/duna/resources/js/loginpage_event_runner.js.js'></script>
-<script src='/duna/resources/loginpage_css_live_reload_init.js'></script>
+<script src='/ani/resources/js/loginpage_event_runner.js.js'></script>
+<script src='/ani/resources/loginpage_css_live_reload_init.js'></script>
 <meta charset='UTF-8'>
 <meta name="robots" content="noindex">
 <link rel="shortcut icon" type="image/x-icon" href="//production-assets.codepen.io/assets/favicon/favicon-8ea04875e70c4b0bb41da869e81236e54394d63638a1ef12fa558a4a835f1164.ico" />
@@ -205,7 +205,7 @@ label span {
 </style></head>
 <body>
 <div id="wrapper" >
-  <img id="logo" src="/duna/resources/image/Duna_world_logo.png"><br>
+  <img id="logo" src="/ani/resources/image/ani_world_logo.png"><br>
   <h2>A cool headline.</h2>
   <form>
     <input type="radio" id="login" name="action" value="login" checked>
@@ -229,7 +229,7 @@ label span {
     </div>
     <div id="labels">
       <label for="login">Already registered? <span>Login</span></label>
-      <label for="reset">Password lost? <span>Find</span></label>
+      <label for="reset">password lost? <span>Find</span></label>
       <label for="login"><span>Back</span></label>
       <label for="register">Not registered? <span>Create an account</span></label>
     </div>

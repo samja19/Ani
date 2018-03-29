@@ -19,17 +19,17 @@ public class AccountService {
 	AccountDao dao;
 	
 	public void registerMember(Member member) {
-		String hashedPasswd = Util.getHashedString(member.getPasswd(), "SHA-256");
-		member.setPasswd(hashedPasswd);
+		String hashedPassword = Util.getHashedString(member.getPassword(), "SHA-256");
+		member.setPassword(hashedPassword);
 		
 		
 		dao.insertMember(member);
 		
 	}
 
-	public Member loginMember(String id, String passwd) {
-		String hashedPasswd = Util.getHashedString(passwd, "SHA-256");
-		Member member = dao.selectMemberByIdAndPasswd(id,hashedPasswd);
+	public Member loginMember(String id, String password) {
+		String hashedPassword = Util.getHashedString(password, "SHA-256");
+		Member member = dao.selectMemberByIdAndPassword(id,hashedPassword);
 		return member;
 	}
 
@@ -39,8 +39,8 @@ public class AccountService {
 	}
 
 	public void updateMemberInfoById(Member updatemember) {
-		String hashedPasswd = Util.getHashedString(updatemember.getPasswd(), "SHA-256");
-		updatemember.setPasswd(hashedPasswd);
+		String hashedPassword = Util.getHashedString(updatemember.getPassword(), "SHA-256");
+		updatemember.setPassword(hashedPassword);
 		dao.updateMemberById(updatemember);
 	}
 

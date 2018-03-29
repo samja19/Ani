@@ -32,7 +32,7 @@ public class Member {
 	
 	@NotNull(message="필수 입력 항목 입니다.")
 	@NotBlank(message="필수 입력 항목 입니다.")
-	private String passwd;
+	private String password;
 	
 	@NotNull(message="필수 입력 항목 입니다.")
 	@NotBlank(message="필수 입력 항목 입니다.")
@@ -48,9 +48,11 @@ public class Member {
 	
 	@NotNull(message="필수 입력 항목 입니다.")
 	@NotBlank(message="필수 입력 항목 입니다.")
+	private String speciesname;
 
 	private String email;
 	private Boolean avtive;
 	private Boolean usertype;
+	private int speciesNo;
 	 
 } 

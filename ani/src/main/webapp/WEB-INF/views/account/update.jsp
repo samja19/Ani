@@ -4,15 +4,15 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-		<title>두나 : 정보수정2 </title>
+		<title>정보수정 </title>
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 		<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 		
-		<link rel="stylesheet" href="/duna/resources/styles/css/header.css">
-		<link rel="stylesheet" href="/duna/resources/styles/css/table.css">
-		<script src="/duna/resources/bootstrap/bootstrap-submenu.min.js" defer></script>
+		<link rel="stylesheet" href="/ani/resources/styles/css/header.css">
+		<link rel="stylesheet" href="/ani/resources/styles/css/table.css">
+		<script src="/ani/resources/bootstrap/bootstrap-submenu.min.js" defer></script>
 		<script>
 			$(document).ready(function(){
 				$('[data-submenu]').submenupicker();
@@ -86,17 +86,7 @@
 	                </div>
 	            </div>
 	            
-	            <div class="form-group">
-	                <label for="inputPhoneNumber" class="col-lg-2 control-label">성별 </label>
-	                <div class="col-lg-10">
-	                    <select class="form-control" id="gender" name="gender" >
-	                    	 
-	                        <option value="1" ${userinfo.gender == '1' ? 'selected' : '' }>여성</option> 
-	                        <option value="0" ${userinfo.gender == '0' ? 'selected' : '' }>남성</option>
-	                        <option value="2" ${userinfo.gender == '2' ? 'selected' : '' }>기타</option>
-	                    </select> 
-	                </div>
-	            </div>
+	           
 	             
 	            <div class="form-group" id="divEmail">
 	                <label for="inputEmail" class="col-lg-2 control-label">이메일</label>
@@ -105,48 +95,14 @@
                         data-rule-required="true" placeholder="이메일" maxlength="40">
 	                </div>
 	            </div>
-	            <div class="form-group" id="divPhoneNumber">
-	                <label for="inputPhoneNumber" class="col-lg-2 control-label">휴대폰 번호</label>
-	                <div class="col-lg-10">
-                        <input type="tel" class="form-control onlyNumber" id="phoneNumber" name="phone" value="${userinfo.phone}"
-                        data-rule-required="true" placeholder="-를 제외하고 숫자만 입력하세요." maxlength="11">
-	                </div>
-	            </div>
-	            <div class="form-group" id="divPhoneNumber">
-	                <label for="inputBirth" class="col-lg-2 control-label">생년월일</label>
-	                <div class="col-lg-10">
-                        <input type="date" class="form-control" id="birth" name="birth" value="${userinfo.birth }"
-                        data-rule-required="true" min="1900-01-01" max="9999-12-31" placeholder="-날짜입력하세요." >
-	                </div>
-	            </div>
-	 			<div class="form-group" id="divAddress">
-	                <label for="inputAddress" class="col-lg-2 control-label"> 주소  </label>
-	                <div class="col-lg-10">
-                        <input type="text" class="form-control col-lg-5" id="address" name="address" value="${userinfo.address}"
-                        data-rule-required="true"  maxlength="40">
-	                </div>
-	            </div>
-				<div class="form-group" id="divAddress">
-	                <label for="inputAddress" class="col-lg-2 control-label"> 1인가구 여부  </label>
-	                <div class="col-lg-10">
-                         <div class="radio">
-	                        <label>
-	                            <input type="radio" id="solo" name="solo" value="1" checked>
-	                          	  1인가구
-	                        </label>
-	                        &nbsp;&nbsp;
-	                        <label>
-	                            <input type="radio" id="solo" name="solo" value="0" >
-	                          	  1인가구 X
-	                        </label>
-	                    </div> 
-	                </div>
-	            </div>	
+	         
+	 			
+				
 	            <div class="form-group">
-	                <label for="memberInfo" class="col-lg-2 control-label">관심사</label>
-	                <div class="col-lg-10" id="hobbyDiv">
-	                    <textarea class="form-control" id="hobby" name="hobby"  
-	                    maxlength ="100" rows="8" style="resize:none">${userinfo.hobby}</textarea> 
+	                <label for="memberBreeds" class="col-lg-2 control-label">종</label>
+	                <div class="col-lg-10" id="BreedsDiv">
+	                    <textarea class="form-control" id="breeds" name="breeds"  
+	                    maxlength ="100" rows="8" style="resize:none">${member.breeds}</textarea> 
 	                </div>
 	            </div>	            
 				   
@@ -265,19 +221,7 @@
                         divEmail.addClass("has-success");
                     }
                 });
-                 
-                $('#phoneNumber').keyup(function(event){
-                     
-                    var divPhoneNumber = $('#divPhoneNumber');
-                     
-                    if($.trim($('#phoneNumber').val())==""){
-                        divPhoneNumber.removeClass("has-success");
-                        divPhoneNumber.addClass("has-error");
-                    }else{
-                        divPhoneNumber.removeClass("has-error");
-                        divPhoneNumber.addClass("has-success");
-                    }
-                });
+                
                  
                  
                 
@@ -294,7 +238,6 @@
                     var divName = $('#divName');
                     var divNickname = $('#divNickname');
                     var divEmail = $('#divEmail');
-                    var divPhoneNumber = $('#divPhoneNumber');
                     var provision = $('#provision');
                     var memberInfo = $('#memberInfo');
                       
@@ -385,58 +328,18 @@
                         divEmail.addClass("has-success");
                     }
                      
-                    //휴대폰 번호
-                    if($('#phoneNumber').val()==""){
-                        modalContents.text("휴대폰 번호를 입력하여 주시기 바랍니다.");
+                                  
+                  
+                                        
+                                      
+                 // 종
+                    if($('#breeds').val()==""){
+                        modalContents.text("종을 입력하여 주시기 바랍니다.");
                         modal.modal('show');
                          
                         divPhoneNumber.removeClass("has-success");
                         divPhoneNumber.addClass("has-error");
-                        $('#phoneNumber').focus();
-                        return false;
-                    }else{
-                        divPhoneNumber.removeClass("has-error");
-                        divPhoneNumber.addClass("has-success");
-                    }
-                    
-                    //생년월일
-                    if($('#birth').val()==""){
-                        modalContents.text("생년월일을 입력하여 주시기 바랍니다.");
-                        modal.modal('show');
-                         
-                        divPhoneNumber.removeClass("has-success");
-                        divPhoneNumber.addClass("has-error");
-                        $('#birth').focus();
-                        return false;
-                    }else{
-                        divPhoneNumber.removeClass("has-error");
-                        divPhoneNumber.addClass("has-success");
-                    }
-                    
-                    
-                    
-                 // 주소
-                    if($('#address').val()==""){
-                        modalContents.text("주소를 입력하여 주시기 바랍니다.");
-                        modal.modal('show');
-                         
-                        divPhoneNumber.removeClass("has-success");
-                        divPhoneNumber.addClass("has-error");
-                        $('#address').focus();
-                        return false;
-                    }else{
-                        divPhoneNumber.removeClass("has-error");
-                        divPhoneNumber.addClass("has-success");
-                    }
-                    
-                 // 관심사
-                    if($('#hobby').val()==""){
-                        modalContents.text("관심사를 입력하여 주시기 바랍니다.");
-                        modal.modal('show');
-                         
-                        divPhoneNumber.removeClass("has-success");
-                        divPhoneNumber.addClass("has-error");
-                        $('#hobby').focus();
+                        $('#breeds').focus();
                         return false;
                     }else{
                         divPhoneNumber.removeClass("has-error");

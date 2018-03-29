@@ -21,6 +21,8 @@ import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
+import org.springframework.validation.ObjectError;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
@@ -77,19 +79,23 @@ public class AccountController {
 		return "account/login";
 		
 	}
-	
-	
-	
+		
 	@RequestMapping(value="login.action", method = RequestMethod.POST)
 	@ResponseBody
 	public String login(@RequestParam(value="loginid") String id, 
-			@RequestParam(value="loginpasswd")String passwd,
+			@RequestParam(value="loginpassword")String password,
 			HttpSession session  ) {
 		
 		System.out.println(id);
-		System.out.println(Util.getHashedString(passwd, "SHA-256"));
-		Member member= service.loginMember(id,passwd);
+		System.out.println(Util.getHashedString(password, "SHA-256"));
+		Member member= service.loginMember(id,password);
 		String result = "fail";
+		
+		if(member!=null) {
+			session.setAttribute("loginuser", member);
+			result="success";
+		}
+		
 		  
 		System.out.println(result);
 		return result;

@@ -25,12 +25,12 @@ public class AccountDao {
 		memberMapper.insertMember(member);
 	}
 
-	public Member selectMemberByIdAndPasswd(String id, String passwd) {
+	public Member selectMemberByIdAndPassword(String id, String password) {
 		Member member = null;
 		HashMap<String,Object> params = new HashMap<>();
 		params.put("id", id);
-		params.put("passwd", passwd);
-		member = memberMapper.selectMemberByIdAndPasswd(params);
+		params.put("password", password);
+		member = memberMapper.selectMemberByIdAndPassword(params);
 		
 		return member;
 	}

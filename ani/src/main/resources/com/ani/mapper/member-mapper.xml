@@ -9,8 +9,8 @@
 <insert id="insertMember" parameterType="Member" useGeneratedKeys="true"
  		keyColumn="MemberNo" keyProperty="MemberNo">
 INSERT INTO MEMBER 
-( ACTIVE, USERTYPE, ID, NICKNAME, PASSWD, NAME, EMAIL,BREEDS,MEMBERNO) 
-VALUES (1, 1,#{id},#{nickname},#{passwd},#{name},#{email},#{breeds},MEMBER_SEQUENCE.NEXTVAL)
+( ACTIVE, USERTYPE, ID, NICKNAME, PASSWORD, NAME, EMAIL,BREEDS,MEMBERNO) 
+VALUES (1, 1,#{id},#{nickname},#{password},#{name},#{email},#{breeds},MEMBER_SEQUENCE.NEXTVAL)
 </insert>
  	 
 
@@ -24,9 +24,9 @@ VALUES (1, 1,#{id},#{nickname},#{passwd},#{name},#{email},#{breeds},MEMBER_SEQUE
 </select>
 
 
-<select id="selectMemberByIdAndPasswd" parameterType="hashmap" resultType="Member">
+<select id="selectMemberByIdAndPassword" parameterType="hashmap" resultType="Member">
 	SELECT ID, USERTYPE as usertype, NICKNAME,EMAIL FROM MEMBER 
-	WHERE ID = #{id} AND PASSWD = #{passwd} 
+	WHERE ID = #{id} AND password = #{password} 
 </select>
 
 <select id = "selectMemberById" parameterType="String" resultType="Member">
@@ -37,7 +37,7 @@ VALUES (1, 1,#{id},#{nickname},#{passwd},#{name},#{email},#{breeds},MEMBER_SEQUE
 
 <update id="updateMemberById" parameterType="Member">
 	UPDATE MEMBER SET 
-	PASSWD = #{passwd} ,NICKNAME = #{nickname}, NAME = #{name}, EMAIL = #{email}
+	PASSWORD = #{password} ,NICKNAME = #{nickname}, NAME = #{name}, EMAIL = #{email}
 	WHERE ID = #{id}
 	
 </update>
