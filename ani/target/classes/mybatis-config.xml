@@ -15,7 +15,8 @@
 		<typeAlias alias="Donation" type="com.ani.dto.Donation"/>
 		<typeAlias alias="InfoBoard" type="com.ani.dto.InfoBoard"/> 
 		<typeAlias alias="IBFileAttach" type="com.ani.dto.IBFileAttach"/> 
-		
+		<typeAlias alias="InterestAni" type="com.ani.dto.InterestAni"/>  
+		<typeAlias alias="InfoCategory" type="com.ani.dto.InfoCategory"/> 
 		
 		
 	</typeAliases>
