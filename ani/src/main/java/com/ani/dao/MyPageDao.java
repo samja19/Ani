@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
 
+import com.ani.dto.Ani;
 import com.ani.dto.Donation;
 import com.ani.dto.InterestAni;
 import com.ani.dto.Member;
@@ -90,9 +91,16 @@ public class MyPageDao {
 		return donateAni;
 	}
 
-	public ArrayList<InterestAni> getInterestAniList() {
-		ArrayList<InterestAni> interestAni = mypageMapper.getInterestAniList();
-		return interestAni;
+
+	public ArrayList<Ani> selectAniByMemberno() {
+		ArrayList<Ani> ani = mypageMapper.selectAniByMemberno();
+		return ani;
+	}
+
+
+	public ArrayList<Donation> selectDonationListByMemberno() {
+		ArrayList<Donation> don = mypageMapper.selectDonationListByMemberno();
+		return don;
 	}
 
 	

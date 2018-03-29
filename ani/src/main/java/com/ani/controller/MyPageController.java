@@ -12,10 +12,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.ani.dto.Ani;
 import com.ani.dto.Donation;
 import com.ani.dto.InterestAni;
 import com.ani.dto.Member;
 import com.ani.dto.MyPage;
+import com.ani.service.AniMService;
+import com.ani.service.DonationService;
 import com.ani.service.MyPageService;
 
 @Controller
@@ -25,6 +28,8 @@ public class MyPageController {
 	@Autowired
 	@Qualifier("mypageService")
 	private MyPageService service;
+	
+	
 	
 	@RequestMapping(value= "mypagelist.action", method = RequestMethod.GET)
 	public String mypagelist(@RequestParam(value="pageNo", required=false)Integer pageNo, Model model) {
@@ -41,18 +46,13 @@ public class MyPageController {
 		ArrayList<MyPage> mypagelist = service.getMypageList(first, last);
 		int countMypage = service.getPageCount();
 		Member member = service.getMyProfile();
-		ArrayList<Donation> donateAni = service.getDonateAniList();
-		ArrayList<InterestAni> interestAni = service.getInterestAniList();
-		
 		
 		
 		model.addAttribute("mypagelist", mypagelist);	
 		//model.addAttribute("paging", paging);
 		model.addAttribute("pageNo", pageNo);
 		model.addAttribute("member", member);
-		model.addAttribute("donateAni",donateAni);
-		model.addAttribute("interestAni", interestAni);
-		
+
 		
 		return "mypage/mypagelist";
 		
@@ -113,5 +113,27 @@ public class MyPageController {
 		return "redirect:mypagelist.action";
 	}
 	
+	@RequestMapping(value="mydonationlist.action", method = RequestMethod.GET)
+	public String mydonationlist(HttpSession session, Member member, Model model) {
+		//Member m = (Member) session.getAttribute("loginuser");
+		
+		//member.setId(m.getId());
+		
+		
+		ArrayList<Donation> don = service.selectDonationListByMemberno();
+		ArrayList<Ani> ani = service.selectAniByMemberno();
+		
+		model.addAttribute("don",don);
+		model.addAttribute("ani",ani);
+			
+		return "mypage/donation";
+	}
+	
+//	@RequestMapping(value="mydonationlist.action", method = RequestMethod.GET)
+//	public String mydonationlist(HttpSession session, Member member, Model model) {
+//		
+//		return "mypage/donation";
+//		
+//	}
 	
 }

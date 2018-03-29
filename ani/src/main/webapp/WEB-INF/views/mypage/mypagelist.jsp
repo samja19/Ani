@@ -12,11 +12,12 @@
 		<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 		
-		<link rel="stylesheet" href="/duna/resources/styles/css/header.css">
-		<link rel="stylesheet" href="/duna/resources/styles/css/table.css">
-		<link rel="stylesheet" href="/duna/resources/bootstrap/bootstrap-submenu.min.css">
-		<script src="/duna/resources/bootstrap/bootstrap-submenu.min.js" defer></script>
-		<script src="/duna/resources/bootstrap/jquery.twbsPagination.js"></script>
+		<link rel="stylesheet" href="/ani/resources/css/header.css">
+		<link rel="stylesheet" href="/ani/resources/css/table.css">
+		<link rel="stylesheet" href="/ani/resources/css/mypage.css">
+		<link rel="stylesheet" href="/ani/resources/bootstrap/bootstrap-submenu.min.css">
+		<script src="/ani/resources/bootstrap/bootstrap-submenu.min.js" defer></script>
+		<script src="/ain/resources/bootstrap/jquery.twbsPagination.js"></script>
 <!-- 		<script>
 		$(document).ready(function(){
 			$('[data-submenu]').submenupicker();
@@ -80,8 +81,13 @@
     <li class="list-group-item"><b>ID : </b> ${ member.id }</li>
     <li class="list-group-item"><b>NAME :  </b>  ${ member.name }</li>
     <li class="list-group-item"><b>NickName :  </b>  ${ member.nickname }</li>
-    <li class="list-group-item"><b>Interest Animal : </b>
-   					<c:choose>
+    <li class="list-group-item"><b>Interest Animal &nbsp;: 
+      
+            <a href="#" class="btn btn-sm red">
+                <span class="fa fa-home"></span>흥미동물내역보기
+            </a>
+        
+   <!-- 			<c:choose>
 						<c:when test="${not empty  interestAni}">
 						<c:forEach var="interestAni" items="${ interestAni }">
 							${ interestAni.aniName }
@@ -90,14 +96,19 @@
 						<c:otherwise>
 							흥미동물 내역이 없습니다.
 						</c:otherwise>
-					</c:choose>
+					</c:choose> -->
     
     
     </li>
 
-    <li class="list-group-item"><b>Donation Animal : </b>
+    <li class="list-group-item"><b>Donation Animal : 
+    	
+            <a href="mydonationlist.action" class="btn btn-sm red">
+                <span class="fa fa-home"></span>동물기부내역보기
+            </a>
+        
 
-					<c:choose>
+	<!-- 				<c:choose>
 						<c:when test="${not empty  donateAni}">
 						<c:forEach var="donateAni" items="${ donateAni }">
 							${ donateAni.aniName }
@@ -106,7 +117,7 @@
 						<c:otherwise>
 							동물기부 내역이 없습니다.
 						</c:otherwise>
-					</c:choose>
+					</c:choose> -->
 	</li>
 
 
