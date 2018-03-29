@@ -1,7 +1,7 @@
 ﻿<%@ page language="java" contentType="text/html;charset=utf-8" pageEncoding="utf-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
-<script src="/ani/resources/js/login.js?ver=2"></script>
+<script src="/ani/resources/js/login.js?ver=3"></script>
  
 
 	<!-- <div id="head" style='background-color:orange'>   -->
