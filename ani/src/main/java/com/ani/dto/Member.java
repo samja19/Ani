@@ -54,5 +54,6 @@ public class Member {
 	private Boolean avtive;
 	private Boolean usertype;
 	private int speciesNo;
+	private int memberNo;
 	 
 } 
