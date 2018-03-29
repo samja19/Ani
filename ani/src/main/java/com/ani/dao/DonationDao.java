@@ -29,19 +29,24 @@ public class DonationDao {
 	}
 
 	public int selectDonationCountByAnino(int anino) {
-		return mapper.selectDonationCountByAnino(anino);
+		Integer result = mapper.selectDonationCountByAnino(anino);
+		if(result==null)
+			result=0;
+		return result;
 	}
 
 	public int selectDonationCountByMemberno(int memberno) {
-		return mapper.selectDonationCountByMemberno(memberno);
+		return  mapper.selectDonationCountByMemberno(memberno);
 	}
 
 	public int selectDonationAmountByAnino(int anino) {
 		return mapper.selectDonationAmountByAnino(anino);
+	
 	}
 
 	public int selectDonationAmountByMemberno(int memberno) {
 		return mapper.selectDonationAmountByMemberno(memberno);
+
 	}
 	 
  

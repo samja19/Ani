@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>후원페이지12</title>
+<title>후원하기</title>
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 <script src='http://code.jquery.com/jquery-2.1.4.min.js'></script>
 <script src="/ani/resources/js/jquery-3.1.1.js"></script>
@@ -76,7 +76,7 @@ $(function(){
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="panel panel-default">
         		<div class="panel-heading">
-			    	<h3 class="panel-title"> 후원페이지23</h3>
+			    	<h3 class="panel-title"> 후원하기</h3>
 			 			</div>
 			 			<div class="panel-body">
 			 			<div class="row">
@@ -84,11 +84,11 @@ $(function(){
 			    					<img id="ani_img">
 			    				</div>
 			    				<div class="col-xs-6 col-sm-6 col-md-6" id="ani_img_div">
-			    					이름 : <BR><BR>
-			    					종	 : <BR><BR>
-			    					품종 : <BR><BR>
-			    					생일 : <BR><BR>
-			    					지역 : <BR><BR>
+			    					이름 :  ${aniinfo.aniName}<BR><BR>
+			    					종	 : ${aniinfo.speciesName}<BR><BR>
+			    					품종 : ${aniinfo.aniBreed}<BR><BR>
+			    					생일 : ${aniinfo.aniBirth}<BR><BR>
+			    					지역 : ${aniinfo.aniSite}<BR><BR>
 			    					
 			    				</div>
 			    		</div>
@@ -118,12 +118,12 @@ $(function(){
 			    				</div> 
 			    			</div>
 
-							<input type="hidden" id="memberno" name="memberno" value="0"> 
-			    			<input type="hidden" id="anino" name="anino" value="7"> 
+							<input type="text" id="memberno" name="memberno" value="0"> 
+			    			<input type="text" id="anino" name="anino" value="${anino}"> 
 			    			
 			    			<div class="row">
 			    				<div class="col-xs-6 col-xs-offset-3 col-sm-6 col-sm-offset-3 col-md-6 col-md-offset-3 ">
-			    					<input type="submit" value="신청하기" class="btn btn-info btn-block">
+			    					<input type="submit" value="후원하기" class="btn btn-info btn-block">
 			    				</div>
 			    			</div>
 			    			

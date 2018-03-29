@@ -17,28 +17,31 @@
 	</insert>
 	
 	
-	<select id="selectDonationListByAnino" parameterType="Int" resultType="Donation">
+	<select id="selectDonationListByAnino" parameterType="int" resultType="Donation">
 	  SELECT * FROM DONATION WHERE ANINO = #{anino} 
 	</select>
 	
-	<select id="selectDonationListByMemberno" parameterType="Int" resultType="Donation">
+	<select id="selectDonationListByMemberno" parameterType="int" resultType="Donation">
 	  SELECT * FROM DONATION WHERE MEMBERNO = #{memberno} 
 	</select>
 	
-	<select id="selectDonationCountByAnino">
-	SELECT count(*) FROM DONATION WHERE ANINO = #{anino} 
+	
+	
+	
+	<select id="selectDonationCountByAnino" resultType="int">
+	SELECT NVL(count(*),0) FROM DONATION WHERE ANINO = #{anino} 
 	</select>
 	
-	<select id="selectDonationCountByMemberno">
-	SELECT count(*) FROM DONATION WHERE MEMBERNO = #{memberno} 
+	<select id="selectDonationCountByMemberno" resultType="int">
+	SELECT NVL(count(*),0) FROM DONATION WHERE MEMBERNO = #{memberno} 
 	</select>
 	
-	<select id="selectDonationAmountByAnino">
-	SELECT sum(doamount) FROM DONATION WHERE ANINO = #{anino} 
+	<select id="selectDonationAmountByAnino" resultType ="int">
+	SELECT NVL(sum(doamount),0) FROM DONATION WHERE ANINO = #{anino} 
 	</select>
 
-	<select id="selectDonationAmountByMemberno">
-	SELECT sum(doamount) FROM DONATION WHERE MEMBERNO = #{memberno} 
+	<select id="selectDonationAmountByMemberno" resultType="int">
+	SELECT NVL(sum(doamount),0) FROM DONATION WHERE MEMBERNO = #{memberno} 
 	</select>
 	
 <!-- 

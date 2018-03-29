@@ -46,6 +46,7 @@ public class AdoptionDao {
 
 	public int selectAdoptionCountByMemberno(int memberno) {
 		return mapper.selectAdoptionCountByMemberno(memberno);
+ 
 	}
  
  

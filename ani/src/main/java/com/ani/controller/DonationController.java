@@ -14,6 +14,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.ani.dto.Ani;
 import com.ani.dto.Donation;
+import com.ani.service.AniMService;
 import com.ani.service.DonationService;
 
 @Controller
@@ -23,14 +24,33 @@ public class DonationController {
 	@Qualifier("DonationService")
 	DonationService service;
 	
+
+	@Autowired
+	@Qualifier("aniMService")
+	AniMService aservice;
+	
 	@RequestMapping(value="main.action", method=RequestMethod.GET)
-	public String donationMain() { 
+	public String donationMain(
+			@RequestParam(value="anino", required=false, defaultValue="-1")int anino, Model model) {
+		//System.out.println("donation : "+anino);
+		
+		Ani aniinfo = aservice.getAniByAniNo(anino);
+		
+		if(aniinfo==null)
+			return "redirect:/";
+		
+		model.addAttribute("aniinfo", aniinfo); 
+		model.addAttribute("anino", anino);
+		
 		return "donation/donation_main";
 		
 	}
 
 	@RequestMapping(value="main.action", method=RequestMethod.POST)
 	public String insertDonation(Donation d) { 
+		
+		// 세션에서 회원 번호 가져오기
+		
 		service.insertDonation(d);
 		 //
 		return "redirect:/";

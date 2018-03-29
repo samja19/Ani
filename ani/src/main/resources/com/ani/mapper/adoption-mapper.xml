@@ -20,26 +20,29 @@
 	
 	
 	 
-	 <select id="selectAdoptioinListByAnino">
+	 <select id="selectAdoptioinListByAnino" resultType="Adoption" parameterType="int">
 	 SELECT * FROM ADOPTION WHERE ANINO = #{anino}
 	 </select>
 	
-	 <select id="selectAdoptioinListByMemberno">
+	 <select id="selectAdoptioinListByMemberno" resultType="Adoption" parameterType="int">
 	 SELECT * FROM ADOPTION WHERE MEMBERNO = #{memberno}
 	 </select>
 	 
-	 <select id="selectAdoptionCountByAnino">
-	 SELECT count(*) FROM ADOPTION WHERE ANINO = #{anino}
+	 
+	 
+	 
+	 <select id="selectAdoptionCountByAnino" resultType="int" parameterType="int">
+	 SELECT NVL(count(*),0) FROM ADOPTION WHERE ANINO = #{anino}
 	 </select>
 	 
-	 <select id="selectAdoptionCountByMemberno">
-	 SELECT count(*) FROM ADOPTION WHERE MEMBERNO = #{memberno}
+	 <select id="selectAdoptionCountByMemberno" resultType="int" parameterType="int">
+	 SELECT NVL(count(*),0) FROM ADOPTION WHERE MEMBERNO = #{memberno}
 	 </select>
 	 
 	 
 	
-	<select id="selectAniCount" resultType="int">
-	SELECT count(anino) FROM ANI
+	<select id="selectAniCount" resultType="int" >
+	SELECT NVL(count(anino),0) FROM ANI
 	</select>
 	
 	

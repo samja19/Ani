@@ -27,6 +27,10 @@
 	<script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js'></script>
 	<script src="/ani/resources/bootstrap/jquery.twbsPagination.js"></script>
 	<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
+
+	
+
+
 	<script>
 	$(document).ready(function(){
 		$('[data-submenu]').submenupicker();
@@ -68,6 +72,51 @@
 			var anino = $(this).attr("data-anino");
 			$('#anino').val(anino);
 			modal.modal('show');
+			$.ajax({
+				url : '/ani/adoption/getaniinfo.action',
+				data : { anino : anino},
+				method : 'POST',
+				dataType : 'json',
+				success : modalProcess,
+				error : (xhr,stat, err)=>{alert("모달 오류");}
+			});
+			
+		}
+		
+		function modalProcess(data, status, xhr){
+			if(data!=null || data.length>0){
+				aniinfo = data.aniinfo; 
+
+				maniname = aniinfo.aniName;
+				$('#maniname').text(maniname);
+
+				msite = aniinfo.aniSite;
+				$('#msite').text(msite);
+
+				mspecies = aniinfo.speciesName;
+				$('#mspecies').text(mspecies);
+
+				mbreed = aniinfo.aniBreed;
+				$('#mbreed').text(mbreed);
+
+				mgender = aniinfo.aniGender;
+				$('#mgender').text(mgender);
+
+				mbirth = aniinfo.aniBirth;
+				$('#mbirth').text(mbirth);
+
+				mneuter = aniinfo.neuter;
+				$('#mneuter').text(mneuter);
+
+				maniinfo = aniinfo.aniInfo;
+				$('#maniinfo').text(maniinfo);
+
+				mdamount = data.damount;
+				$('#mdamount').text(mdamount+" 원");
+
+
+
+			}
 		}
 		
 		
@@ -98,8 +147,10 @@
 					td_anigender.text(anis[i].aniGender);
 					td_neuter.text(anis[i].neuter); 
 					birth = new Date(anis[i].aniBirth);
-					td_anibirth.text(birth.getFullYear()+"-"+(birth.getMonth()+1)+"-"+birth.getDate()+" "+
-							birth.getHours()+":"+birth.getMinutes()); 
+					//td_anibirth.text(birth.getFullYear()+"-"+(birth.getMonth()+1)+"-"+birth.getDate()+" "+
+					//		birth.getHours()+":"+birth.getMinutes()); 
+					td_anibirth.text(anis[i].aniBirth);
+					
 					//td_check_glyphicon = $('<span class="glyphicon glyphicon-check" style="width:10px;height:10px;">a</span>');
 					
 					//td_check_glyphicon = $('<a href="main.action?anino='+anis[i].aniNo+'"><span class="glyphicon glyphicon-check"></span></a>');
@@ -189,6 +240,9 @@
 	    });
 	});
 	</script>
+	<style>
+	 
+	</style>
 </head>
 <body>
     
@@ -209,7 +263,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                <h4 class="modal-title">알림</h4>
+                <h4 class="modal-title">상세정보</h4>
             </div>
             <div class="modal-body">
                 <p class="modal-contents"><jsp:include page="../adoption/adoption_detail.jsp"/></p>

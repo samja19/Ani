@@ -9,22 +9,34 @@
 
 <!------ Include the above in your HEAD tag ---------->
 <style> 
-#ad_detail img{
-	width: 100px;
-	height: 100px; 
-}
-
+ 
 #ad_detail a{
 	padding-top: 0px;
     padding-right: 0px;
     padding-bottom: 0px;
     padding-left: 0px;
 }
+
+.preview-pic img{
+	width:100px;
+	height:100px;
+}
+
+.preview-thumbnail img{
+	width:50px;
+	height:50px;
+}
+
 </style>
 <script>
 $(function(){ 
   
-	
+	$('#adoptionbtn').click(function(){
+		location.href="main.action?anino="+$('#anino').val();
+	});
+	$('#donationbtn').click(function(){
+		location.href="../donation/main.action?anino="+$('#anino').val();
+	});
 	
 });
 </script>
@@ -36,12 +48,12 @@ $(function(){
 				<div class="wrapper row">
 					<div class="preview col-md-6">
 						
-						<div class="preview-pic tab-content">
-						  <div class="tab-pane active" id="pic-1"><img src="http://placekitten.com/400/252" /></div>
-						  <div class="tab-pane" id="pic-2"><img src="http://placekitten.com/400/252" /></div>
-						  <div class="tab-pane" id="pic-3"><img src="http://placekitten.com/400/252" /></div>
-						  <div class="tab-pane" id="pic-4"><img src="http://placekitten.com/400/252" /></div>
-						  <div class="tab-pane" id="pic-5"><img src="http://placekitten.com/400/252" /></div>
+						<div class="preview-pic tab-content ">
+						  <div class="tab-pane active" id="pic-1"><img src="http://placekitten.com/200/126" /></div>
+						  <div class="tab-pane" id="pic-2"><img src="http://placekitten.com/200/126" /></div> 
+						  <div class="tab-pane" id="pic-3"><img src="http://placekitten.com/200/126" /></div> 
+						  <div class="tab-pane" id="pic-4"><img src="http://placekitten.com/200/126" /></div> 
+						  <div class="tab-pane" id="pic-5"><img src="http://placekitten.com/200/126" /></div> 
 						</div>
 						<ul class="preview-thumbnail nav nav-tabs">
 						  <li class="active"><a data-target="#pic-1" data-toggle="tab"><img src="http://placekitten.com/200/126" /></a></li>
@@ -53,7 +65,7 @@ $(function(){
 						
 					</div>
 					<div class="details col-md-6">
-						<h3 class="product-title">동물이름</h3>
+						<h3 class="product-title"><span id="maniname"></span></h3>
 						<div class="rating">
 							<div class="stars">
 								<span class="fa fa-star checked"></span>
@@ -64,33 +76,22 @@ $(function(){
 							</div> 
 						</div>
 						<p class="product-description">
-						종 : <BR>
-						품종 : <BR>
-						성별 : <BR>
-						생일 : <BR>
-						중성화여부 : <BR>
-						특이사항 : <BR> 
+						종 : <span id="mspecies"></span> <BR>
+						품종 : <span id="mbreed"></span> <BR>
+						성별 : <span id="mgender"></span> <BR>
+						지역 : <span id="msite"></span> <BR>
+						생일 : <span id="mbirth"></span> <BR>
+						중성화여부 : <span id="mneuter"></span> <BR>
+						특이사항 : <span id="maniinfo"></span> <BR> 
 						
 						
 						</p>
-						<h4 class="price">기부총액: <span>$180</span></h4>
-						<p class="vote"><strong>91%</strong> of buyers enjoyed this product! <strong>(87 votes)</strong></p>
-						<h5 class="sizes">sizes:
-							<span class="size" data-toggle="tooltip" title="small">s</span>
-							<span class="size" data-toggle="tooltip" title="medium">m</span>
-							<span class="size" data-toggle="tooltip" title="large">l</span>
-							<span class="size" data-toggle="tooltip" title="xtra large">xl</span>
-						</h5>
-						<h5 class="colors">colors:
-							<span class="color orange not-available" data-toggle="tooltip" title="Not In store"></span>
-							<span class="color green"></span>
-							<span class="color blue"></span>
-						</h5>
+						<h4 class="price">후원총액: <span><span id="mdamount"></span></h4>
 						<div class="action">
-							<button class="add-to-cart btn btn-default" type="button">add to cart</button>
-							<button class="like btn btn-default" type="button"><span class="fa fa-heart"></span></button>
+							<button id="adoptionbtn" class="btn-success" type="button">입양신청</button>
+							<button id="donationbtn" class="btn-primary" type="button">후원하기</button>
 						</div>
-						<input type="text" id="anino" name="anino" >
+						<input type="hidden" id="anino" name="anino" >
 					</div>
 				</div> 
 		</div> 

@@ -1,6 +1,7 @@
 package com.ani.controller;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import javax.servlet.http.HttpSession;
 
@@ -17,6 +18,8 @@ import org.springframework.web.servlet.ModelAndView;
 import com.ani.dto.Adoption;
 import com.ani.dto.Ani;
 import com.ani.service.AdoptionService;
+import com.ani.service.AniMService;
+import com.ani.service.DonationService;
 
 @Controller
 @RequestMapping(value="/adoption/")
@@ -25,12 +28,25 @@ public class AdoptionController {
 	@Qualifier("AdoptionService")
 	AdoptionService service;
 	
+	@Autowired
+	@Qualifier("aniMService")
+	AniMService aniservice;
+	
+	
+	@Autowired
+	@Qualifier("DonationService")
+	DonationService dservice;
+	
+	
+	
 	@RequestMapping(value="main.action", method=RequestMethod.GET)
 	public String adoptionMain( @RequestParam(value="anino",required=false)Integer anino,
 			Model m ,HttpSession session) { 
 		System.out.println(anino);
 		if(anino==null)
 			return "redirect:/adoption/list.action";
+		 
+		
 		
 		m.addAttribute("anino",anino);
 		return "adoption/adoption_main";
@@ -39,12 +55,15 @@ public class AdoptionController {
 	@RequestMapping(value="main.action", method=RequestMethod.POST)
 	public String insertAdoption(Adoption adoption) { 
 		
-		System.out.println(adoption.getAddress());
-		System.out.println(adoption.getAddressDetail());
-		System.out.println(adoption.getAnino());
-		System.out.println(adoption.getPhone());
-		System.out.println(adoption.getPostcode());
-		System.out.println(adoption.getReason());
+//		System.out.println(adoption.getAddress());
+//		System.out.println(adoption.getAddressDetail());
+//		System.out.println(adoption.getAnino());
+//		System.out.println(adoption.getPhone());
+//		System.out.println(adoption.getPostcode());
+//		System.out.println(adoption.getReason());
+		
+		// 세션에서 회원 번호 가져오기
+		
 		service.insertAdoption(adoption);
 		
 		 
@@ -81,6 +100,33 @@ public class AdoptionController {
 		
 		return list;
 	} 
+	
+	
+	@RequestMapping(value="getaniinfo.action", method=RequestMethod.POST)
+	@ResponseBody
+	public HashMap<String,Object> getAniDetail(
+			@RequestParam(value="anino",required=false,defaultValue="7")Integer anino){
+		HashMap<String, Object> info = new HashMap<String, Object>();
+		
+		if(anino!=null) {
+			Ani aniinfo = aniservice.getAniByAniNo(anino);
+			info.put("aniinfo", aniinfo);
+			
+			int damount = dservice.getDonationAmountByAnino(anino);
+			info.put("damount",damount);
+		}
+		
+		
+		
+		
+		
+		return info;
+	}
+	
+	
+	
+	
+	
 	
 	
 	
