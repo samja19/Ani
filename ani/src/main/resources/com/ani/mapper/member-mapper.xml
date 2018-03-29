@@ -25,7 +25,7 @@ VALUES (1, 1,#{id},#{nickname},#{password},#{name},#{email},#{breeds},MEMBER_SEQ
 
 
 <select id="selectMemberByIdAndPassword" parameterType="hashmap" resultType="Member">
-	SELECT ID, USERTYPE as usertype, NICKNAME,EMAIL FROM MEMBER 
+	SELECT ID, USERTYPE as usertype, NICKNAME,EMAIL, MEMBERNO FROM MEMBER 
 	WHERE ID = #{id} AND password = #{password} 
 </select>
 
