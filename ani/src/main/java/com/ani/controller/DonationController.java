@@ -55,8 +55,9 @@ public class DonationController {
 		
 		// 세션에서 회원 번호 가져오기
 		if(m!=null){
-			service.insertDonation(d);
 			d.setMemberno(m.getMemberNo());
+			service.insertDonation(d);
+			
 			return "redirect:/adoption/list.action";
 		}
 		return "redirect:/";
