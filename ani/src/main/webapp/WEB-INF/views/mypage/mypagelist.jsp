@@ -83,7 +83,7 @@
     <li class="list-group-item"><b>NickName :  </b>  ${ member.nickname }</li>
     <li class="list-group-item"><b>Interest Animal &nbsp;: 
       
-            <a href="#" class="btn btn-sm red">
+            <a href="myinterestlist.action" class="btn btn-sm red">
                 <span class="fa fa-home"></span>흥미동물내역보기
             </a>
         

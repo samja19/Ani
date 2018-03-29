@@ -114,10 +114,10 @@ public class MyPageController {
 	}
 	
 	@RequestMapping(value="mydonationlist.action", method = RequestMethod.GET)
-	public String mydonationlist(HttpSession session, Member member, Model model) {
-		//Member m = (Member) session.getAttribute("loginuser");
+	public String mydonationlist(HttpSession session, Member member, Model model, @RequestParam(value="memberNo", required=false)Integer memberNo) {
+		Member m = (Member) session.getAttribute("loginuser");
 		
-		//member.setId(m.getId());
+		member.setId(m.getId());
 		
 		
 		ArrayList<Donation> don = service.selectDonationListByMemberno();
@@ -129,11 +129,20 @@ public class MyPageController {
 		return "mypage/donation";
 	}
 	
-//	@RequestMapping(value="mydonationlist.action", method = RequestMethod.GET)
-//	public String mydonationlist(HttpSession session, Member member, Model model) {
-//		
-//		return "mypage/donation";
-//		
-//	}
+	@RequestMapping(value="myinterestlist.action", method = RequestMethod.GET)
+	public String myinterestlist(HttpSession session, Member member, Model model, @RequestParam(value="memberNo", required=false)Integer memberNo) {
+		Member m = (Member) session.getAttribute("loginuser");
+		
+		member.setId(m.getId());
+		
+		ArrayList<InterestAni> intr = service.selectInterestListByMemberno(member);
+		ArrayList<Ani> ani = service.selectAniByMemberno2(member);
+		
+		model.addAttribute("intr",intr);
+		model.addAttribute("ani",ani);
+		
+		return "mypage/interest";
+		
+	}
 	
 }

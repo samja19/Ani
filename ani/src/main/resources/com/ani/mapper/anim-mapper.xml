@@ -20,24 +20,45 @@
 	
 	<insert id="insertAniAttach" parameterType="AniAttach">
 		<selectKey resultType="int" keyProperty="aniAttachNo" order="AFTER">
-			SELECT ANI_SEQUENCE.CURRVAL FROM DUAL
+			SELECT ANI_ATTACH_SEQUENCE.CURRVAL FROM DUAL
 		</selectKey>
 		INSERT INTO ANIATTACH
 		(ANIATTACHNO, ANINO, ANISAVENAME, ANIUSERNAME, ANIFILESIZE) 
-		VALUES (ANI_ATTACH_SEQUENCE.NEXTVAL, #{aniNo}, #{aniSaveName}, #{aniUserName}, #{aniFileSize)
+		VALUES (ANI_ATTACH_SEQUENCE.NEXTVAL, #{aniNo}, #{aniSaveName}, #{aniUserName}, #{aniFileSize})
 	</insert>
 	
 	
 	<!-- 동물 목록 가져오기-->
+	<select id="selectAniCount" parameterType="hashmap" resultType="int">
+		SELECT count(ANINO) FROM ANI WHERE ANIDEL = 0
+		<if test="aniNo != null">
+			WHERE ANINO = #{aniNo}
+		</if>
+	</select>
 	<select id="selectAniList" resultType="Ani">
-		SELECT ANINO, ANINAME, ANIREGDATE, ANIBIRTH, ANI.SPECIESNO, SPECIESNAME, ANIDEL
+		SELECT ANINO, ANINAME, ANIREGDATE, ANIBIRTH, ANI.SPECIESNO, SPECIESNAME, ANIDEL, ADOPTED
 		FROM ANI INNER JOIN SPECIES ON ANI.SPECIESNO = SPECIES.SPECIESNO
 		ORDER BY ANINO DESC
+	</select>
+	<select id="selectAniListByParams" parameterType="hashmap" resultType="Ani">
+		SELECT ANINO, ANINAME, ANIREGDATE, ANIBIRTH, SPECIESNO, SPECIESNAME, ANIDEL
+		FROM 
+		(
+		 	SELECT rownum as rn, a.* 
+			FROM
+			(			
+			 	SELECT ANINO, ANINAME, ANIREGDATE, ANIBIRTH, ANI.SPECIESNO, SPECIESNAME, ANIDEL, ADOPTED 
+			 	FROM ANI INNER JOIN SPECIES S ON ANI.SPECIESNO = S.SPECIESNO
+				WHERE ANIDEL = 0
+			 	ORDER BY ANINO DESC		
+			) a
+		) 
+		WHERE rn>=#{start} AND rn<![CDATA[<]]>=#{end}
 	</select>
 	
 	<!-- 동물 사진 가져오기 -->
 	<select id="selectAniAttach" resultType="AniAttach" parameterType="int" >
-		SELECT ANIUSERNAME, ANISAVENAME, ANIFILESIZE 
+		SELECT ANIUSERNAME, ANISAVENAME, ANIFILESIZE, ANIATTACHNO
 		FROM ANIATTACH
 		WHERE ANINO = #{aniNo}
 	</select>	
@@ -66,4 +87,21 @@
 		WHERE ANINO = #{aniNo}
 	</update>
 	
+	<!-- 동물 사진 삭제 -->
+	<!-- 	<update id="deleteAniAttach" parameterType="int">
+		UPDATE ANIATTACH
+		SET ANIFILEDEL ='1'
+		WHERE ANIATTACHNO = #{aniAttachNo}
+	</update> -->
+	
+	<delete id="deleteAniAttach" parameterType="int">
+		delete from ANIATTACH where ANIATTACHNO = #{aniAttachNo}
+	</delete>
+	
+	<!-- 동물 입양상태 변경 -->
+	<update id="updateAdopted" parameterType="hashmap">
+		UPDATE ANI
+		SET ADOPTED = #{adopted}
+		WHERE ANINO = #{aniNo}
+	</update>
 </mapper>

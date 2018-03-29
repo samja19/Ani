@@ -19,14 +19,16 @@
 <!------ Include the above in your HEAD tag ---------->
 
 
-	<style type="text/css" >
-		@import url("//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css");
-	</style>
-	
-	<script src="/ani/resources/bootstrap/bootstrap-submenu.min.js" defer></script>
-	<script src="/ani/resources/bootstrap/jquery.twbsPagination.js"></script>
-	
-	<script>
+<style type="text/css">
+@import
+	url("//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css")
+	;
+</style>
+
+<script src="/ani/resources/bootstrap/bootstrap-submenu.min.js" defer></script>
+<script src="/ani/resources/bootstrap/jquery.twbsPagination.js"></script>
+
+<script>
 	
 	
 	
@@ -202,44 +204,56 @@
 	<div class="col col-md-9">
 		<div class="panel">
 			<div class="panel-body">
-				<legend>Panel Body</legend>
+
 				<div class="container">
-		    <h3>회원 목록 조회</h3>
-		    <hr>
-		    <br>
-		    
-		    <div class="row">
-		        <div class="panel panel-primary filterable">
-		            <div class="panel-heading">
-		                <h3 class="panel-title">Users</h3>
-		                <div class="pull-right">
-		                    <button class="btn btn-default btn-xs btn-filter"><span class="glyphicon glyphicon-filter"></span> Filter</button>
-		                </div>
-		            </div>
-		            <table class="table">
-		                <thead>
-		                    <tr class="filters">
-		                        <!-- <th><input type="text" class="form-control" placeholder="num" disabled></th> -->
-		                        <th class="col-md-1"><input type="text" class="form-control" placeholder="id" disabled></th>
-		                        <th class="col-md-2"><input type="text" class="form-control" placeholder="UserName" disabled></th>
-		                        <th class="col-md-2"><input type="text" class="form-control" placeholder="UserType" disabled></th>
-		                        <th class="col-md-4"><input type="text" class="form-control" placeholder="Email" disabled></th>
-		                        <th class="col-md-1"><input type="text" class="form-control" placeholder="Breeds" idsabled></th>
-		                        <th class="col-md-1"><input type="text" class="form-control" placeholder="Check" disabled></th>
-		                    </tr>
-		                </thead>
-		                <tbody id="listbody">
-		                	 
-		                     
-		                     
-		                </tbody>
-		            </table>
-		        </div>
-		    </div>
-		    <div class="text-center">
-				<ul id="pagination-demo" class="pagination" ></ul>
-			</div>
-		</div>
+					<h1>
+						<span class="glyphicon" style="vertical-align: top;">&#xe032;</span>&nbsp;동물
+						목록 <a href=""
+							class="btn btn-success pull-right" id="back-to-bootsnipp">회원 목록</a>
+					</h1>
+					<hr>
+					<br>
+
+					<div class="row">
+						<div class="panel panel-primary filterable">
+							<div class="panel-heading">
+								<h3 class="panel-title">Users</h3>
+								<div class="pull-right">
+									<button class="btn btn-default btn-xs btn-filter">
+										<span class="glyphicon glyphicon-filter"></span> Filter
+									</button>
+								</div>
+							</div>
+							<table class="table">
+								<thead>
+									<tr class="filters">
+										<!-- <th><input type="text" class="form-control" placeholder="num" disabled></th> -->
+										<th class="col-md-1"><input type="text"
+											class="form-control" placeholder="id" disabled></th>
+										<th class="col-md-2"><input type="text"
+											class="form-control" placeholder="UserName" disabled></th>
+										<th class="col-md-2"><input type="text"
+											class="form-control" placeholder="UserType" disabled></th>
+										<th class="col-md-4"><input type="text"
+											class="form-control" placeholder="Email" disabled></th>
+										<th class="col-md-1"><input type="text"
+											class="form-control" placeholder="Breeds" idsabled></th>
+										<th class="col-md-1"><input type="text"
+											class="form-control" placeholder="Check" disabled></th>
+									</tr>
+								</thead>
+								<tbody id="listbody">
+
+
+
+								</tbody>
+							</table>
+						</div>
+					</div>
+					<div class="text-center">
+						<ul id="pagination-demo" class="pagination"></ul>
+					</div>
+				</div>
 			</div>
 
 		</div>

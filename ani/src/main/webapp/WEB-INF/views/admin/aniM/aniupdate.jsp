@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%> 
 
 
 <!DOCTYPE html>
@@ -31,7 +32,7 @@
 				
 				<form:form id="regform" modelAttribute="ani"
 	       			 class="form-horizontal" role="form" method="post" action="aniupdate.action" enctype="multipart/form-data">
-	       			 
+	       		<form:hidden path="aniNo"/>	 
 	            <div class="form-group" id="divSpecies">
 	                <label for="inputSpecies" class="col-lg-2 control-label"> 동물 분류 </label>
 	                <div class="col-lg-10">
@@ -141,7 +142,16 @@
 	    			<label for="File" class="col-lg-2 control-label">동물 사진</label>
 	    			<div class="col-lg-10">
 	    				<table id="fileview">
-	    					<tr><td><input id="addFile" type="button" value="파일 추가" /></td><td></td><td></td></tr>
+	    					<tr><td><input id="addFile" type="button" value="파일 추가" /></td><td></td><td></td></tr>	    					
+					    	<c:if test="${not empty ani.attachments }">
+					    		<c:forEach var="aniAttach" items="${ ani.attachments }">
+						    		<tr id="filetr${ aniAttach.aniAttachNo }">
+						    			<td>${ aniAttach.aniUserName }&nbsp;&nbsp;</td>
+						    			<td></td>
+		        	              	    <td><a id="aniFileDel${ aniAttach.aniSaveName }" data-fileno="${ aniAttach.aniAttachNo }">삭제</a></td>
+		        	                </tr>
+					    		</c:forEach>	                
+        	                </c:if>
 					    </table>
 	    			</div>
 	  			</div>
@@ -157,8 +167,8 @@
 	            <div class="form-group" id="divAniInfo">
 	                <label for="aniInfo" class="col-lg-2 control-label">상세정보</label>
 	                <div class="col-lg-10" id="aniInfoDiv">
-	                    <textarea class="form-control" id="aniInfo" path="aniInfo"
-	                    maxlength ="1000" rows="20" style="resize:none">${ani.aniInfo}</textarea> 
+	                    <textarea class="form-control" id="aniInfo" name="aniInfo"
+	                    maxlength ="1000" rows="20" style="resize:none" >${ani.aniInfo}</textarea> 
 	                </div>
 	            </div>	            
 				
@@ -195,7 +205,24 @@
         <script>
          
         	$(document).ready(function(){
-        		
+         		$('a[id^=aniFileDel]').click(function(event){
+        			var aniAttachNo = $(this).attr('data-fileno');
+        			$.ajax({
+        				url : 'anifiledel.action',
+        				data : { aniAttachNo : aniAttachNo },
+        				method : "POST", 
+        				success : anifiledel,
+        				error :	(xhr,status,error) => {
+        					alert("오류발생 : "+error);
+        				}
+        			});
+        			
+        			function anifiledel(data, status, xhr){
+        				//alert(data);
+        				$("tr[id=filetr" + aniAttachNo + "]").remove();
+        			}; 
+        		}); 
+         		
         	    //add more file components if Add is clicked
         	    $('#addFile').click(function() {
         	        var trno = $('#fileview tr').children().length;   

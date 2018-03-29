@@ -63,4 +63,14 @@ public class MyPageService {
 		return don;
 	}
 
+	public ArrayList<InterestAni> selectInterestListByMemberno(Member member) {
+		ArrayList<InterestAni> intr = dao.selectInterestListByMemberno(member);
+		return intr;
+	}
+
+	public ArrayList<Ani> selectAniByMemberno2(Member member) {
+		ArrayList<Ani> ani = dao.selectAniByMemberno2(member);
+		return ani;
+	}
+
 }
