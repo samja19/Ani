@@ -1,7 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%> 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
 <!DOCTYPE html>
 
@@ -19,65 +20,211 @@
 	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="/ani/resources/css/anitable.css">
 
-<script>
-	$(function() {
-		/* BOOTSNIPP FULLSCREEN FIX */
-		if (window.location == window.parent.location) {
-			$('#back-to-bootsnipp').removeClass('hide');
-			$('.alert').addClass('hide');
-		}
+<link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
+<script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
 
-		$('#fullscreen').on('click', function(event) {
-			event.preventDefault();
-			window.parent.location = "http://bootsnipp.com/iframe/Q60Oj";
-		});
+<script src="/ani/resources/bootstrap/jquery.twbsPagination.js"></script>
+
+<script>
+
+
+	$(document).ready(function(){
+		var pageCount = 5;
+		var aniCount = parseInt("${aniCount}");
+		var totalPage = parseInt(aniCount/pageCount)+(aniCount%pageCount > 0 ? 1 : 0);
 		
-		$('a[id^=anidelete]').click(function(event){
-			var aniNo = $(this).attr('data-anino');
-			var yes = confirm(aniNo + '번을 삭제하시겠습니까?');
-			if (yes) {
-				location.href = 'anidelete.action?aniNo=' + aniNo; 
+		var $pagination = $('#pagination-demo');
+		
+		var visiblePages = (totalPage < 5 ? totalPage : 5);
+		
+		//alert(totalPage+"/"+visiblePages);
+		var defaultOpts = {
+				startPage : 1,
+				visiblePages : visiblePages,
+			    totalPages : totalPage,
+			    onPageClick : function (evt, page) {
+		            //$('#content').text('Page ' + page);
+		            $.ajax({
+		    			url : '/ani/aniM/anilist.action',
+		    			data : { pageno : page, pagecount : pageCount},
+		    			method : "POST", 
+		    			dataType : "json",
+		    			success : listProcess,
+		    			error :	(xhr,status,error)=>{alert("오류발생 : "+error);}
+		    			
+		    		});
+		        }
+		};
+		
+		
+		$pagination.twbsPagination('destroy');
+		$pagination.twbsPagination(defaultOpts);
+		
+		
+		function listProcess(data, status, xhr){
+			if(data!=null){
+				
+				anis=data;
+				var newTotalPage = parseInt(anis.length/5)+(anis.length%5 > 0 ? 1 : 0);
+				if(totalPage )
+				
+				
+				$('#anilistbody').children().remove();
+				for(var i =0 ; i<anis.length;i++){
+					var atr = $('<tr></tr>');
+
+					var td_animg = $('<td></td>');
+					var td_anino = $('<td></td>');
+					var td_anispecies = $('<td></td>');
+					var td_aniname = $('<td></td>');
+					var td_anibirth = $('<td></td>');
+					var td_aniregdate = $('<td></td>');
+					var td_adopted = $('<td></td>');
+					var td_icon = $('<td style="text-align:right;"></td>');
+					
+					if (anis[i].attachments.length > 0)	{				
+						img = $('<img src="/ani/resources/animg/'+ anis[i].attachments[0].aniSaveName+'" width="100">')						
+						td_animg.addClass("anitd").attr("data-anino", anis[i].aniNo).append(img);
+					};
+					td_anino.addClass("anitd").attr("data-anino", anis[i].aniNo).text(anis[i].aniNo);
+					td_anispecies.addClass("anitd").attr("data-anino", anis[i].aniNo).text(anis[i].speciesName);		
+					td_aniname.addClass("anitd").attr("data-anino", anis[i].aniNo).text(anis[i].aniName);
+					
+					td_anibirth.addClass("anitd").attr("data-anino", anis[i].aniNo).text(anis[i].aniBirth);
+					td_aniregdate.addClass("anitd").attr("data-anino", anis[i].aniNo).text(anis[i].aniRegdate);
+					
+					adoptedChecked = $('<input id="adoptedToggle' + anis[i].aniNo + '" checked type="checkbox"' +
+							'data-toggle="toggle" data-on="입양준비중" data-off="입양완료"' +
+							'data-size="mini" data-anino=' + anis[i].aniNo + '>');
+					
+					if (anis[i].adopted = 1) {
+						adoptedChecked.attr("checked", false);
+					};
+					
+
+					td_adopted.append(adoptedChecked);
+					
+					
+					td_update_icon = $('<a class=\'btn btn-default\' onclick=\'location.href="aniupdate.action?aniNo='+
+							anis[i].aniNo + '"\'><em class="fa fa-pencil"></em></a>');
+					td_delete_icon = $('<a class=\'btn btn-danger\' id="anidelete'+ anis[i].aniNo +
+							'" data-anino=' + anis[i].aniNo + '><em class="fa fa-trash"></em></a>');
+					td_icon.append(td_update_icon);
+					td_icon.append(td_delete_icon);
+						
+		
+					
+					
+					atr.append(td_animg);
+					atr.append(td_anino);
+					atr.append(td_anispecies);
+					atr.append(td_aniname);
+					atr.append(td_anibirth);
+					atr.append(td_aniregdate);
+					atr.append(td_adopted);
+					atr.append(td_icon);
+					atr.attr("data-anitr", anis[i].aniNo);
+					$('#anilistbody').append(atr);
+
+				}
+				 
+				
 			}
-		});
-		
-		$('.btn-mais-info').on('click', function(event) {
-			$('.open_info').toggleClass("hide");
-		})
+			
+		};
+
 		
 		
- 		$('tbody > tr > .anitr').on('click',function(event){
-			var aniNo = $(this).attr('data-anino');
+		 
+		
+		
+	    $('.filterable .btn-filter').click(function(){
+	        var $panel = $(this).parents('.filterable'),
+	        $filters = $panel.find('.filters input'),
+	        $tbody = $panel.find('.table tbody');
+	        if ($filters.prop('disabled') == true) {
+	            $filters.prop('disabled', false);
+	            $filters.first().focus();
+	        } else {
+	            $filters.val('').prop('disabled', true);
+	            $tbody.find('.no-result').remove();
+	            $tbody.find('tr').show();
+	        }
+	    });
+
+	    $('.filterable .filters input').keyup(function(e){
+	        /* Ignore tab key */
+	        var code = e.keyCode || e.which;
+	        if (code == '9') return;
+	        /* Useful DOM data and selectors */
+	        var $input = $(this),
+	        inputContent = $input.val().toLowerCase(),
+	        $panel = $input.parents('.filterable'),
+	        column = $panel.find('.filters th').index($input.parents('th')),
+	        $table = $panel.find('.table'),
+	        $rows = $table.find('tbody tr');
+	        /* Dirtiest filter function ever ;) */
+	        var $filteredRows = $rows.filter(function(){
+	            var value = $(this).find('td').eq(column).text().toLowerCase();
+	            return value.indexOf(inputContent) === -1;
+	        });
+	        /* Clean previous no-result if exist */
+	        $table.find('tbody .no-result').remove();
+	        /* Show all rows, hide filtered ones (never do that outside of a demo ! xD) */
+	        $rows.show();
+	        $filteredRows.hide();
+	        /* Prepend no-result row if all rows are filtered */
+	        if ($filteredRows.length === $rows.length) {
+	            $table.find('tbody').prepend($('<tr class="no-result text-center"><td colspan="'+ $table.find('.filters th').length +'">No result found</td></tr>'));
+	        }
+	    });
+	  
+	
+		$('input[id^=adoptedToggle]').change(function(event){
+			//$(document).on('change','input[id^=adoptedToggle]', function(event){
+				var aniNo = $(this).attr('data-anino');
+				var adopted = ($(this).prop('checked')) ? 0 : 1;
+				
+				
+					$.ajax({
+						url : 'updateadopted.action',
+						data : { aniNo : aniNo, adopted : adopted },
+						method : "POST", 
+						error :	(xhr,status,error) => {
+							alert("오류발생 : "+error);
+						}
+					});
+			});		
+	
+	
+	
+	
+	});
+	function trDelete(data, status, xhr){
+		$('tr[data-anitr='+data+']').remove();
+	};
+	
+	$(document).on('click', 'a[id^=anidelete]', function(event){
+		var aniNo = $(this).attr('data-anino');
+		var yes = confirm(aniNo + '번을 삭제하시겠습니까?');
+		if (yes) {
 			$.ajax({
-				url : 'aniDetail.action',
+				url : 'anidelete.action',
 				data : { aniNo : aniNo },
 				method : "POST", 
-				success : aniDetail,
+				success : trDelete,
 				error :	(xhr,status,error) => {
 					alert("오류발생 : "+error);
 				}
 			});
 			
-			event.preventDefault();
-			$('#aniDetail').modal('show');
 			
-			function aniDetail(data, status, xhr){
-				//alert(data);
-				$('#modal_no').text(data.aniNo)
-				$('#modal_name').text(data.aniName)
-				$('#modal_species').text(data.speciesName)
-				$('#modal_breed').text(data.aniBreed)
-				$('#modal_regdate').text(data.aniRegdate)
-				$('#modal_birth').text(data.aniBirth)
-				$('#modal_gender').text(data.aniGender)
-				$('#modal_neuter').text(data.neuter)
-				$('#modal_site').text(data.aniSite)
-				$('#modal_info').text(data.aniInfo)
-				$('#modal_img').attr("src", "/ani/resources/animg/"+data.attachments[0].aniSaveName)
-			};
-		}); 
-		 
+			
+		}
 		
 	});
+	
+
 </script>
 </head>
 
@@ -88,284 +235,70 @@
 	<div class="col col-md-9">
 		<div class="panel">
 			<div class="panel-body">
-				<legend>신규 동물 등록</legend>
-
-
-				<!-- 				<link
-					href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css"
-					rel='stylesheet' type='text/css'>
-
-				<div class="col-md-12">
-
-					<div class="panel panel-default panel-table">
-						<div class="panel-heading">
-							<div class="row">
-								<div class="col col-xs-6">
-									<h3 class="panel-title">Panel Heading</h3>
-								</div>
-							<div class="btn-group">
-								<button type="button" class="btn btn-success btn-filter" data-target="pagado">Pagado</button>
-								<button type="button" class="btn btn-warning btn-filter" data-target="pendiente">Pendiente</button>
-								<button type="button" class="btn btn-danger btn-filter" data-target="cancelado">Cancelado</button>
-								<button type="button" class="btn btn-default btn-filter" data-target="all">Todos</button>
-							</div>
-							
-								<div class="col col-xs-6 text-right">
-									<button type="button" class="btn btn-sm btn-primary btn-create">Create
-										New</button>
-								</div>
-							</div>
-						</div>
-						<div class="panel-body">
-							<table class="table table-striped table-bordered table-list">
-								<thead>
-									<tr>
-										<th class="hidden-xs">번호</th>
-										<th>사진</th>
-										<th>이름</th>
-										<th>나이</th>
-										<th>등록일자</th>
-										<th class="hidden-xs"><em class="fa fa-cog"></em></th>
-									</tr>
-								</thead>
-								<tbody>
-									<tr>
-										<td class="hidden-xs">1</td>
-										<td>ㄷㅁ</td>
-										<td>동물</td>
-										<td>10</td>
-										<td>2018-03-31</td>
-										<td class="hidden-xs" align="center"><a class="btn btn-default"><em
-												class="fa fa-pencil"></em></a> <a class="btn btn-danger"><em
-												class="fa fa-trash"></em></a></td>
-									</tr>
-								</tbody>
-							</table>
-
-						</div>
-						<div class="panel-footer">
-							<div class="row">
-								<div class="col col-xs-4">Page 1 of 5</div>
-								<div class="col col-xs-8">
-									<ul class="pagination hidden-xs pull-right">
-										<li><a href="#">1</a></li>
-										<li><a href="#">2</a></li>
-										<li><a href="#">3</a></li>
-										<li><a href="#">4</a></li>
-										<li><a href="#">5</a></li>
-									</ul>
-									<ul class="pagination visible-xs pull-right">
-										<li><a href="#">«</a></li>
-										<li><a href="#">»</a></li>
-									</ul>
-								</div>
-							</div>
-						</div>
-					</div>
-
-				</div> -->
+				<!-- <legend>신규 동물 등록</legend> -->
 
 				<!-- --------------------------------------------------------------------------------------------------------- -->
 
 				<div class="container">
-
-					<!-- 					<div class="alert alert-info">
-						<a id="fullscreen" href="#fullscreen" class="alert-link"><strong>Click
-								here</strong></a> to view this snippet in an iframe. <i
-							class="fa fa-info-circle fa-2x pull-right"></i>
-					</div>
- -->
-
-					<!-- 					<div class="btn-group">
-					<button type="button" class="btn btn-success btn-filter" data-target="pagado">Pagado</button>
-					<button type="button" class="btn btn-warning btn-filter" data-target="pendiente">Pendiente</button>
-					<button type="button" class="btn btn-danger btn-filter" data-target="cancelado">Cancelado</button>
-					<button type="button" class="btn btn-default btn-filter" data-target="all">Todos</button>
-				</div> -->
-
-
 					<h1>
-						<i class="fa fa-shopping-cart"></i> Produtos <small> -
-							click on product for details</small> <a
+						<span class="glyphicon" style="vertical-align:top;">&#xe032;</span>&nbsp;동물 목록
+							<a
+							href="/ani/aniM/allanilist.action"
+							class="btn btn-success pull-right" id="back-to-bootsnipp">전체 목록</a>
+							<a
 							href="/ani/aniM/aniregister.action"
-							class="btn btn-danger pull-right hide" id="back-to-bootsnipp">동물
+							class="btn btn-warning pull-right" id="back-to-bootsnipp">동물
 							등록</a>
 					</h1>
 
 					<hr>
 
-					<table
-						class="table table-hover table-striped table-bordered table-list">
-						<thead>
-							<tr>
-								<th class="hidden-xs">#번호</th>
-								<th>분류</th>
-								<th>사진</th>
-								<th>이름</th>
-								<th>나이</th>
-								<th>등록일자</th>
-								<th><em class="fa fa-cog"></em></th>
-							</tr>
-						</thead>
-						<tbody>
-							<c:choose>
-								<c:when test="${not empty aniList}">
-									<c:forEach var="ani" items="${ aniList }">
-										<tr>
-											<c:choose>
-												<c:when test="${ ani.aniDel eq 1 }">
-													<td class="anitr">${ ani.aniNo }</td>
-													<td colspan="5"><span style="color: lightgray">[ 동물 정보가 삭제되었습니다. ]</span><td>
-												</c:when>
-												<c:otherwise>
-													<td class="anitr" data-anino=${ ani.aniNo }>${ ani.aniNo }</td>
-													<td class="anitr" data-anino=${ ani.aniNo }>${ ani.speciesName }</td>
-													<td class="anitr" data-anino=${ ani.aniNo }>
-													<img src="/ani/resources/animg/${ ani.attachments[0].aniSaveName }" width="100">
-													</td>
-													<td class="anitr" data-anino=${ ani.aniNo }>${ ani.aniName }</td>
-													<td class="anitr" data-anino=${ ani.aniNo }>${ ani.aniBirth }</td>
-													<td class="anitr" data-anino=${ ani.aniNo }>${ ani.aniRegdate }</td>
-													<td class="hidden-xs" align="center">
-														<a class="btn btn-default"
-														 	onclick="location.href='aniupdate.action?aniNo=${ ani.aniNo }'"><em class="fa fa-pencil"></em></a> 
-														<a class="btn btn-danger" id="anidelete${ ani.aniNo }" data-anino=${ ani.aniNo }><em class="fa fa-trash"></em></a></td>														
-												</c:otherwise>
-											</c:choose>
-										</tr>
-									</c:forEach>
-								</c:when>
-								<c:otherwise>
-									<tr>
-										<td colspan="7" style='text-align: center'>조회된 동물 정보가 없습니다.</td>
+					<div class="row">
+						<div class="panel panel-primary filterable">
+							<div class="panel-heading">
+								<div>
+									<h3 class="panel-title">List
+									<button class="btn btn-default btn-xs btn-filter pull-right">
+										<span class="glyphicon glyphicon-filter"></span> 필터 On/Off
+									</button>
+									</h3>
+								</div>
+							</div>
+							<table class="table">
+								<thead>
+									<tr class="filters">
+										<th style="vertical-align: middle;">사진</th>
+										<th class="col-md-1"><input type="text"
+											class="form-control" placeholder="번호" disabled></th>
+										<th class="col-md-2"><input type="text"
+											class="form-control" placeholder="동물분류" disabled></th>
+										<th class="col-md-2"><input type="text"
+											class="form-control" placeholder="이름" disabled></th>
+										<th class="col-md-2"><input type="text"
+											class="form-control" placeholder="생일" disabled></th>
+										<th class="col-md-1"><input type="text"
+											class="form-control" placeholder="등록일자" disabled></th>
+										<th class="col-md-1" style="vertical-align: middle; text-align: center;">입양 상태</th> 
+										<th class="col-md-1" style="vertical-align: middle; text-align: right;"><em
+											class="fa fa-cog"></em></th>
 									</tr>
-								</c:otherwise>
-							</c:choose> 
-						</tbody>
-					</table>
-
-					<div class="col-sm-12 ">
-						<div class="result pull-left">
-							<strong>Mostrando 1 até 6 de 5000</strong>
+								</thead>
+								<tbody id="anilistbody">
+								
+								</tbody>
+							</table>
 						</div>
+					</div>
 
-						<ul class="pagination pull-right">
-							<li><a href="#">«</a></li>
-							<li><a href="#">1</a></li>
-							<li><a href="#">2</a></li>
-							<li><a href="#">3</a></li>
-							<li><a href="#">4</a></li>
-							<li><a href="#">5</a></li>
-							<li><a href="#">»</a></li>
-						</ul>
-
+					<div class="text-center">
+						<ul id="pagination-demo" class="pagination pull-right"></ul>
 					</div>
 				</div>
-
-
-
 
 				<!-- Modal -->
 				<div class="modal" id="aniDetail" tabindex="-1" role="dialog"
 					aria-labelledby="myModalLabel" aria-hidden="true">
-					<div class="modal-dialog">
-						<div class="modal-content">
-							<div class="modal-header">
-								<button type="button" class="close" data-dismiss="modal"
-									aria-hidden="true">
-									<i class="text-danger fa fa-times"></i>
-								</button>
-								<h4 class="modal-title" id="myModalLabel">
-									<i class="text-muted fa fa-shopping-cart"></i> <strong id="modal_no"></strong>
-									<font id="modal_name"></font>
-								</h4>
-							</div>
-							<div class="modal-body">
-
-								<!-- <div class="col-md-4">
-									<img id="modal_img" width="100" alt="teste" class="img-thumbnail">
-								</div> -->
-
-								<table class="pull-left col-md-8 ">
-									<tbody>
-										<tr>
-											<td rowspan="9"><img id="modal_img" width="100" alt="teste" class="img-thumbnail"></td>
-											<td class="h6"><strong>동물 분류</strong></td>
-											<td></td>
-											<td class="h5" id="modal_species"></td>
-										</tr>
-
-										<tr>
-											<td class="h6"><strong>품종</strong></td>
-											<td></td>
-											<td class="h5" id="modal_breed"></td>
-										</tr>
-
-										<tr>
-											<td class="h6"><strong>등록일자</strong></td>
-											<td></td>
-											<td class="h5" id="modal_regdate"></td>
-										</tr>
-
-										<tr>
-											<td class="h6"><strong>생일</strong></td>
-											<td></td>
-											<td class="h5" id="modal_birth"></td>
-										</tr>
-
-										<tr>
-											<td class="h6"><strong>성별</strong></td>
-											<td></td>
-											<td class="h5" id="modal_gender"></td>
-										</tr>
-
-										<tr>
-											<td class="h6"><strong>중성화 여부</strong></td>
-											<td></td>
-											<td class="h5" id="modal_neuter"></td>
-										</tr>
-
-										<tr>
-											<td class="h6"><strong>발견장소</strong></td>
-											<td></td>
-											<td class="h5" id="modal_site"></td>
-										</tr>
-
-										<tr>
-											<td class="btn-mais-info text-primary"><i
-												class="open_info fa fa-plus-square-o"></i> <i
-												class="open_info hide fa fa-minus-square-o"></i> 상세정보</td>
-											<td></td>
-											<td class="h5"></td>
-										</tr>
-										<tr><td><p class="open_info hide" id="modal_info"></p></td></tr>
-
-									</tbody>
-								</table>
-
-
-<!-- 								<div class="col-md-4">
-									<img id="modal_img" width="100" alt="teste" class="img-thumbnail">
-								</div>
- -->
-								<div class="clearfix"></div>
-									<!-- <p class="open_info hide" id="modal_info"></p> -->
-								</div>
-
-							<div class="modal-footer">
-
-								<div class="text-right pull-right col-md-3">
-									후원적립금: <br /> <span class="h3 text-muted"><strong>
-											R$50,00 </strong></span>
-								</div>
-
-								<div class="text-right pull-right col-md-3">
-									팔로워수: <br /> <span class="h3 text-muted"><strong>R$35,00</strong></span>
-								</div>
-
-							</div>
-						</div>
-					</div>
+					<jsp:include page="./ani_detail_modal.jsp" />
 				</div>
 				<!-- fim Modal-->
 			</div>
